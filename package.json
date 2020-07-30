@@ -2,7 +2,7 @@
   "name": "jin-seven",
   "version": "1.0.0",
   "description": "a cute bot",
-  "main": "main.js",
+  "main": "bot.js",
   "dependencies": {
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
