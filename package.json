@@ -1,7 +1,7 @@
 {
   "name": "jin-seven",
   "version": "1.0.0",
-  "description": "",
+  "description": "a cute bot",
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.2.0",
