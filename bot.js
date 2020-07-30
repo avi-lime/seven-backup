@@ -8,7 +8,7 @@ client.on('ready', () => {
    client.user.setPresence({
       status: 'dnd',
       activity: {
-        name: 'mint\'s birthday todayâœ¨í«¶í½§,
+        name: 'mint\'s birthday todayâœ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
         type: 'STREAMING', 
         url: 'http://twitch.tv/seven'
       }
@@ -102,4 +102,4 @@ client.on('message', msg => {
 
 
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.token);
