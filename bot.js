@@ -8,7 +8,7 @@ client.on('ready', () => {
    client.user.setPresence({
       status: 'dnd',
       activity: {
-        name: 'mint\'s birthday today✨������',
+        name: 'join the event 🍭',
         type: 'STREAMING', 
         url: 'http://twitch.tv/seven'
       }
