@@ -1,16 +1,20 @@
 {
   "name": "seven",
   "version": "1.0.0",
-  "description": "",
-  "main": "bot.js",
+  "description": "a new and cute bot",
+  "main": "node bot.js",
   "dependencies": {
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "npm": "^6.14.6"
   },
+  "engines": {
+    "node": "12.16.3"
+  },
   "devDependencies": {},
   "scripts": {
-    "test": "echo "Error: no test specified" && exit 1"
+    "test": "echo "Error: no test specified" && exit 1",
+    "start": "node bot.js"
   },
   "keywords": [],
   "author": "",
