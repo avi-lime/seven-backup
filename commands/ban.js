@@ -1,6 +1,6 @@
 module.exports = {
     name: 'ban',
-    description: 'tbd',
+    description: 'Bans a member from this guild',
     execute(message, args) {
         if (!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) {
             return message.channel.send("You don't have the permission to ban users!");
