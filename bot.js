@@ -36,7 +36,7 @@ client.on('message', message => {
             message.channel.send("안녕하세요!");
     }
 //message which adds to the current event going on
-    if (message.content.match('<@&735802382038073364>') {
+    if (message.content.match('<@&735802382038073364>')) {
         if (!message.author.bot)
              return;
         const eventEmbed = new Discord.MessageEmbed()
