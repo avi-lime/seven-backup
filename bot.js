@@ -80,7 +80,6 @@ client.on('message', msg => {
             msg.channel.send('mention a valid team to join, either `angi` or `avi`');
         }
     }
- //always end ur paranthesis wamen! i-
 /*client.on('guildMemberAdd', member =>  {
   
   console.log('User' + member.user.username + 'has joined the server!')
