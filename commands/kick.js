@@ -13,9 +13,9 @@ module.exports = {
             return message.channel.send("User not found!");
         }
 
-        kickMember.ban().then(member => {
+        kickMember.kick().then(member => {
             message.channel.send(
-                `<:jirachi_ban:737976093398663169> **${member.displayName}** has been kicked by **${message.author}**`
+                `**${member.displayName}** has been kicked by **${message.author.tag}**`
             );
         });
 	},
