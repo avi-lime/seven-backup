@@ -37,8 +37,8 @@ client.on('message', message => {
     }
 //message which adds to the current event going on
     if (message.content.toLowerCase() === "<@&735802382038073364>") {
-        /*if (!message.author.bot)
-             return; */
+        if (!message.author.bot)
+             return;
         const eventEmbed = new Discord.MessageEmbed()
             .setColor('#9b4b45')
             .setTitle('**✰⁀➴ongoing event!**')
