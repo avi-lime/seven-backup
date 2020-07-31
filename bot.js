@@ -40,10 +40,9 @@ client.on('message', message => {
         /*if (!message.author.bot)
              return; */
         const eventEmbed = new Discord.MessageEmbed()
-            .setColor('#2DC3B7')
+            .setColor('#9b4b45')
             .setTitle('**✰⁀➴ongoing event!**')
-            .setURL('https://discord.com/channels/688102135363141652/737298671531720765/738459604802863245')
-            .setDescription('make sure to also check out \n <#737298948695261185> \n <#737298671531720765> for further information about the event')
+            .setDescription('for more information, make sure to check out \n <#737298671531720765> \n <#737298948695261185>')
             .setTimestamp();
             message.channel.send(eventEmbed);
     }
