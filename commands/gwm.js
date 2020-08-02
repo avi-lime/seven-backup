@@ -6,7 +6,7 @@ module.exports = {
     execute(msg) {
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const user = msg.mentions.members.first();
-        const sub = args[0];
+        const sub = args[1];
         if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
         if (!user) {
             return msg.channel.send('mention someone to appoint as giveaway manager');
