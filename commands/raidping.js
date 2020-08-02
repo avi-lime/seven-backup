@@ -3,7 +3,7 @@ module.exports = {
     name: 'raidping',
     description: 'pings the raid role',
     execute(message) {
-        var raidchannels = [688108643966779420, 688109298852692055];
+        var raidchannels = 688108643966779420;
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
