@@ -1,4 +1,6 @@
 const prefix = '-';
+const Discord = require('discord.js');
+const client = new Discord.Client();
 module.exports = {
     name: 'gwm',
     description: 'adds the mentioned user to giveway manager roles',
