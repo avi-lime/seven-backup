@@ -12,3 +12,4 @@ module.exports = {
             return;
         message.channel.send('<@&688438198116024345>' + message.content.replace(prefix + commandName, " "));
     }
+}
