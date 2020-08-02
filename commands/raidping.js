@@ -8,7 +8,7 @@ module.exports = {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
 
-        if (!message.member.roles.cache.has(735091954047647745) || message.channel.id != raidchannels)
+        if (!message.member.roles.cache.has(735091954047647745) /* || message.channel.id != raidchannels */)
             return;
         message.channel.send('<@&688438198116024345>' + message.content.replace(prefix + commandName, " "));
     }
