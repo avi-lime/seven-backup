@@ -2,6 +2,7 @@ module.exports = {
     name: 'gwm',
     description: 'adds the mentioned user to giveway manager roles',
     execute(msg) {
+        const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const user = msg.mentions.members.first();
         if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
         if (!user) {
