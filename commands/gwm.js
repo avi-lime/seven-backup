@@ -1,3 +1,4 @@
+const prefix = '-';
 module.exports = {
     name: 'gwm',
     description: 'adds the mentioned user to giveway manager roles',
