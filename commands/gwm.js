@@ -13,7 +13,7 @@ module.exports = {
         }
         if (sub === 'fix') {
 
-            const ran_reply = [`successfully added missing roles for **${user.displayName}**`, `all roles for **${user.displayName}** have been fixed`, `successfully fixed **${user.displayName}**'s' roles`, `all roles have been fixed for **${user.displayname}**`, `successfully fixed roles for **${user.displayName}**`];
+            const ran_reply = [`successfully added missing roles for **${user.displayName}**`, `all roles for **${user.displayName}** have been fixed`, `successfully fixed **${user.displayName}**'s' roles`, `all roles have been fixed for **${user.displayName}**`, `successfully fixed roles for **${user.displayName}**`];
             const rr = ran_reply[Math.floor(Math.random() * ran_reply.length)];
             msg.delete().then
             user.roles.add(['735437137356521583', '688386729807577284', '690566791407206431']).then
