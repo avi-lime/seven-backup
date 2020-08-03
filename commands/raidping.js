@@ -18,7 +18,7 @@ module.exports = {
         }
         else {
             msg.channel.send('<@&688438198116024345>' + msg.content.replace(prefix + commandName, " "));
-            lastChan.set(msg.channel.id, Date.now() + 1000 * 60 * 5);
+            lastChan.add(msg.channel.id);
             setTimeout(() => { lastChan.delete(msg.channel.id), 1000 * 60 * 5 });
         }
     }
