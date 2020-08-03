@@ -19,6 +19,10 @@ module.exports = {
             msg.channel.send('<@&688438198116024345>' + msg.content.replace(prefix + commandName, " "));
             lastChan.set(msg.channel.id, Date.now() + 1000 * 60 * 5);
             setTimeout(() => { lastChan.delete(msg.channel.id) }, 1000 * 60 * 5);
+            if (!msg.channel.permissionsFor(msg.channel.guild.roles.everyone).has("SEND_MESSAGES", false)) {
+                msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
+                msg.channel.send('opened the channel for everyone, good luck!');
+            } else return;
         }
     }
 }
