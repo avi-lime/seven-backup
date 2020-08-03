@@ -27,9 +27,10 @@ module.exports = {
             msg.member.roles.remove('735865064996732948').then
             msg.channel.send(`<a:sevenloading:739558030420475904> claiming channel ...`).then(sentMessage => {
                 setTimeout(function () {
-                    sentMessage.edit(claimed)
+                    sentMessage.delete()
                 }, 1500);
-                }).then
+                }).then 
+            msg.channel.send(claimed).then
             channel.send(`${msg.author.tag} claimed ${msg.channel}!`);
             } 
         }
