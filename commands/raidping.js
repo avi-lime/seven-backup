@@ -1,5 +1,6 @@
 const prefix = '-';
 const lastChan = new Map();
+const Discord = require('discord.js');
 const Duration = require('humanize-duration');
 module.exports = {
     name: 'raidping',
