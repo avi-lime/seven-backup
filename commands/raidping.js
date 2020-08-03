@@ -28,7 +28,7 @@ module.exports = {
             setTimeout(() => { lastChan.delete(msg.channel.id) }, 1000 * 60 * 5);
             if (!msg.channel.permissionsFor(msg.channel.guild.roles.everyone).has("SEND_MESSAGES", false)) {
                 msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
-                msg.channel.permissionsOverwrite.get(msg.author.id).delete().then
+                msg.channel.permissionOverwrites.get(msg.author.id).delete().then
                 msg.member.roles.add('735865064996732948').then
                 msg.channel.send(unlock).then
                 channel.send(`${msg.channel} was unclaimed automatically due to a raid`);
