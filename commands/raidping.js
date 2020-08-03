@@ -16,12 +16,21 @@ module.exports = {
             return msg.channel.send(`This command was just used in this channel! \nYou need to wait **${remaining}** before using it again.`).catch((err) => msg.reply(`${err}`));
         }
         else {
+            let channel = msg.guild.channels.cache.get('735884448280608798');
+            const unlock = new Discord.MessageEmbed()
+                .setTitle('unlocked!')
+                .setDescription(`I unlocked the channel for everyone!\nGood Luck!`)
+                .setFooter('claim again once the raid ends!')
+                .setColor("YELLOW");
             msg.channel.send('<@&688438198116024345>' + msg.content.replace(prefix + commandName, " "));
             lastChan.set(msg.channel.id, Date.now() + 1000 * 60 * 5);
             setTimeout(() => { lastChan.delete(msg.channel.id) }, 1000 * 60 * 5);
             if (!msg.channel.permissionsFor(msg.channel.guild.roles.everyone).has("SEND_MESSAGES", false)) {
                 msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
-                msg.channel.send('opened the channel for everyone, good luck!');
+                msg.channel.permissionsFor(msg.author.id).delete().then
+                msg.member.roles.add('735865064996732948').then
+                msg.channel.send(unlock).then
+                channel.send(`${msg.channel} was unclaimed automatically due to a raid`);
             } else return;
         }
     }
