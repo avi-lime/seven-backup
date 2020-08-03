@@ -20,10 +20,9 @@ module.exports = {
             msg.member.roles.add('735865064996732948').then
             msg.channel.send(`<a:sevenloading:739558030420475904> unclaiming channel ...`).then(sentMessage => {
                 setTimeout(function () {
-                    sentMessage.delete()
+                    sentMessage.delete(unclaim)
                 }, 1500);
                 }).then 
-           msg.channel.send(unclaimed).then
            channel.send(`${msg.author.tag} unclaimed ${msg.channel}!`);
             } 
         }
