@@ -1,5 +1,5 @@
 const prefix = '-';
-const lastChan = new Set();
+const lastChan = new Map();
 const Duration = require('humanize-duration');
 module.exports = {
     name: 'raidping',
@@ -9,15 +9,15 @@ module.exports = {
 
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
-
+        const cooldown = lastChan.get(msg.channel.id);
         if (!msg.member.roles.cache.has('735091954047647745') || !raidchannels.includes(msg.channel.id)) return;
-        if (lastChan.has(msg.channel.id)) {
+        if (cooldown) {
             const remaining = Duration(cooldown - Date.now(), { units: ['m', 's'], round: true });
-            return msg.channel.send(`This command was just used in this channel! \nYou need to wait **${remaining}** before using it again.`);
+            return msg.channel.send(`This command was just used in this channel! \nYou need to wait **${remaining}** before using it again.`).catch((err) => msg.reply(`${err}`));
         }
         else {
             msg.channel.send('<@&688438198116024345>' + msg.content.replace(prefix + commandName, " "));
-            lastChan.add(msg.channel.id);
+            lastChan.set(msg.channel.id, Date.now() + 1000 * 60 * 5);
             setTimeout(() => { lastChan.delete(msg.channel.id) }, 1000 * 60 * 5);
         }
     }
