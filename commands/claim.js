@@ -28,9 +28,9 @@ module.exports = {
             msg.channel.send(`<a:sevenloading:739558030420475904> claiming channel ...`).then(sentMessage => {
                 setTimeout(function () {
                     sentMessage.edit(claimed)
-                }, 1500).then
+                }, 1500);
+                }).then
             channel.send(`${msg.author.tag} claimed ${msg.channel}!`);
-                })
             } 
         }
     };         
