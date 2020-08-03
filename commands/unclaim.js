@@ -22,8 +22,8 @@ module.exports = {
                 setTimeout(function () {
                     sentMessage.edit(unclaim)
                 }, 1500);
-                })
-            }
-            channel.send(`${msg.author.tag} unclaimed ${msg.channel}!`);
+                }).then 
+           channel.send(`${msg.author.tag} unclaimed ${msg.channel}!`);
+            } 
         }
     };
