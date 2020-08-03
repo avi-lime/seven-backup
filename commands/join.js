@@ -31,5 +31,5 @@ module.exports = {
                 .setColor('RED');
             msg.member.roles.add(role).then(msg.channel.send(angi));
         }
-    },
+    }
 };
