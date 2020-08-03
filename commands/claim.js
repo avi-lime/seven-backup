@@ -12,7 +12,7 @@ module.exports = {
                 .setThumbnail(msg.author.displayAvatarURL())
                 .setColor("RED")
                 .setDescription(`you've either already claimed a channel or you've been banned from claiming channels!`)
-                .setFooter(`contact staff for more info~`)
+                .setFooter(`contact staff for more info`)
             return msg.channel.send(banned);
         } else {
             let channel = msg.guild.channels.cache.get('735884448280608798');
@@ -25,12 +25,12 @@ module.exports = {
             msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then
             msg.channel.updateOverwrite(msg.author.id, { SEND_MESSAGES: true }).then
             msg.member.roles.remove('735865064996732948').then
-            msg.channel.send(`<a:sevenloading:739558030420475904> unclaiming channel ...`).then(sentMessage => {
+            msg.channel.send(`<a:sevenloading:739558030420475904> claiming channel ...`).then(sentMessage => {
                 setTimeout(function () {
                     sentMessage.edit(claimed)
                 }, 1500);
                 })
             }
-            channel.send(`${msg.author.tag} unclaimed ${msg.channel}!`);
+            channel.send(`${msg.author.tag} claimed ${msg.channel}!`);
         }
     };         
