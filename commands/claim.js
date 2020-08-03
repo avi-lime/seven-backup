@@ -25,8 +25,12 @@ module.exports = {
             msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then
             msg.channel.updateOverwrite(msg.author.id, { SEND_MESSAGES: true }).then
             msg.member.roles.remove('735865064996732948').then
-            msg.channel.send(claimed).then
-            channel.send(`${msg.channel} has been claimed by ${msg.author.tag}!`);
+            msg.channel.send(`<a:sevenloading:739558030420475904> unclaiming channel ...`).then(sentMessage => {
+                setTimeout(function () {
+                    sentMessage.edit(claimed)
+                }, 1500);
+                })
+            }
+            channel.send(`${msg.author.tag} unclaimed ${msg.channel}!`);
         }
-    }
-}
+    };         
