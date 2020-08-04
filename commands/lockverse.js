@@ -34,109 +34,30 @@ module.exports = {
         const adv10 = msg.guild.channels.cache.get('735802656588562477');
 
         if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin'].includes(r.name))) return;
-        const time = parseInt(args[0]) * 60 * 1000;
-        if (isNaN(time)) {
-            adv1.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv1.send(locked).then
-            adv2.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv2.send(locked).then
-            adv3.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv3.send(locked).then
-            adv4.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv4.send(locked).then
-            adv5.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv5.send(locked).then
-            adv6.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv6.send(locked).then
-            adv7.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv7.send(locked).then
-            adv8.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv8.send(locked).then
-            adv9.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv9.send(locked).then
-            adv10.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv10.send(locked).then
-            msg.channel.send(`<a:sevenloading:739558030420475904> locking channels...`).then(m => {
-                setTimeout(function () {
-                    m.edit(`all channels locked!\n  - make sure to \`${prefix}unlockverse\` once the bot is up.`)
-                }, 2000);
-            })
-        } else {
-            adv1.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv1.send(locked).then(adv1 => {
-                setTimeout(function () {
-                    adv1.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv1.send(unlocked)
-                }, time);
-            }).then
-            adv2.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv2.send(locked).then(adv2 => {
-                setTimeout(function () {
-                    adv2.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv2.send(unlocked)
-                }, time);
-            }).then
-            adv3.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv3.send(locked).then(adv3 => {
-                setTimeout(function () {
-                    adv3.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv3.send(unlocked)
-                }, time);
-            }).then
-            adv4.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv4.send(locked).then(adv4 => {
-                setTimeout(function () {
-                    adv4.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv4.send(unlocked)
-                }, time);
-            }).then
-            adv5.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv5.send(locked).then(adv5 => {
-                setTimeout(function () {
-                    adv5.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv5.send(unlocked)
-                }, time);
-            }).then
-            adv6.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv6.send(locked).then(adv6 => {
-                setTimeout(function () {
-                    adv6.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv6.send(unlocked)
-                }, time);
-            }).then
-            adv7.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv7.send(locked).then(adv7 => {
-                setTimeout(function () {
-                    adv7.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv7.send(unlocked)
-                }, time);
-            }).then
-            adv8.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv8.send(locked).then(adv8 => {
-                setTimeout(function () {
-                    adv8.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv8.send(unlocked)
-                }, time);
-            }).then
-            adv9.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv9.send(locked).then(adv9 => {
-                setTimeout(function () {
-                    adv9.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv9.send(unlocked)
-                }, time);
-            }).then
-            adv10.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-            adv10.send(locked).then(adv10 => {
-                setTimeout(function () {
-                    adv10.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
-                    adv10.send(unlocked)
-                }, time);
-            }).then
-            msg.channel.send(`<a:sevenloading:739558030420475904> locking channels...`).then(m => {
-                setTimeout(function () {
-                    m.edit(`all channels locked!\n  - make sure to \`${prefix}unlockverse\` once the bot is up.`)
-                }, 2000);
-            })
-        }
+        adv1.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv1.send(locked).then
+        adv2.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv2.send(locked).then
+        adv3.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv3.send(locked).then
+        adv4.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv4.send(locked).then
+        adv5.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv5.send(locked).then
+        adv6.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv6.send(locked).then
+        adv7.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv7.send(locked).then
+        adv8.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv8.send(locked).then
+        adv9.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv9.send(locked).then
+        adv10.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+        adv10.send(locked).then
+        msg.channel.send(`<a:sevenloading:739558030420475904> locking channels...`).then(m => {
+            setTimeout(function () {
+                m.edit(`all channels locked!\n  - make sure to \`${prefix}unlockverse\` once the bot is up.`)
+            }, 2000);
+        })
     }
 }
