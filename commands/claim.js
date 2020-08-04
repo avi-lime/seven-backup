@@ -33,7 +33,7 @@ module.exports = {
                         sentMessage.edit(`${user} has been banned from claiming channels by ${msg.author.tag}!`)
                     }, 1500);
                 }).then
-                user.roles.add('735865064996732948');
+                user.roles.remove('735865064996732948');
                 return;
             }
         } else if (!sub.includes(types)) {
