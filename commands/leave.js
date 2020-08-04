@@ -10,7 +10,7 @@ module.exports = {
                 .setTitle('Team Left')
                 .setDescription('You left Team Angi')
                 .setColor('#243334')
-                .setFooter(`You can use \`${prefix}join\` to join another team.`)
+                .setFooter(`You can use ${prefix}join to join another team.`)
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             msg.member.roles.remove(['735606747481374770']).then(msg.channel.send(leave));
         }
@@ -19,7 +19,7 @@ module.exports = {
                 .setTitle('Team Left')
                 .setDescription('You left Team Avi')
                 .setColor('#243334')
-                .setFooter(`You can use \`${prefix}join\` to join another team.`)
+                .setFooter(`You can use ${prefix}join to join another team.`)
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             msg.member.roles.remove(['735608688441557055']).then(msg.channel.send(leave));
         }

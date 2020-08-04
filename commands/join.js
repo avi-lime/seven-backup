@@ -19,7 +19,8 @@ module.exports = {
                 .setTitle(`Team Avi`)
                 .setThumbnail(msg.author.displayAvatarURL())
                 .setDescription(`You've chosen Team Avi! \n Good Luck!`)
-                .setColor('#d2cb97');
+                .setColor('#d2cb97')
+                .setFooter(`you can leave the team by doing ${prefix}leave`);
             msg.member.roles.add(role).then(msg.channel.send(avi));
         }
         if (team === 'angi') {
@@ -28,7 +29,8 @@ module.exports = {
                 .setTitle(`Team Angi`)
                 .setThumbnail(msg.author.displayAvatarURL())
                 .setDescription(`You've chosen Team Angi! \nGood Luck!`)
-                .setColor('#9b4b45');
+                .setColor('#9b4b45')
+                .setFooter(`you can leave the team by doing ${prefix}leave`);
             msg.member.roles.add(role).then(msg.channel.send(angi));
         }
     }
