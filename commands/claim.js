@@ -3,7 +3,35 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'claim',
     description: 'claims a channel by the user',
-    execute(msg) {
+    execute(msg, args) {
+        const sub = args[0];
+        if (sub === 'fix') {
+            if (!msg.member.roles.cache.has(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
+            const user = msg.mentions.members.first();
+            if (user.roles.cache.has('735865064996732948'))
+                return msg.channel.send(`${user} already has the required role!`);
+            else {
+                msg.channel.send(`<a:sevenloading:739558030420475904> fixing roles for ${user.displayName}...`).then(sentMessage => {
+                    setTimeout(function () {
+                        sentMessage.edit(`fixed roles for ${user.displayName}!`)
+                    }, 1500);
+                }).then
+                user.roles.add('735865064996732948');
+            }
+        } else if (sub === 'ban') {
+            if (!msg.member.roles.cache.has(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
+            const user = msg.mentions.members.first();
+            if (!user.roles.cache.has('735865064996732948'))
+                return msg.channel.send(`${user} is already banned!`);
+            else {
+                msg.channel.send(`<a:sevenloading:739558030420475904> banning ${user.displayName} from claiming channels...`).then(sentMessage => {
+                    setTimeout(function () {
+                        sentMessage.edit(`${user} has been banned from claiming channels by ${msg.author.tag}!`)
+                    }, 1500);
+                }).then
+                user.roles.add('735865064996732948');
+            }
+        }
         const raidchannels = ['735089552326393957', '735089631871238155', '735089717703606345', '735089719712677919', '735089800574664715', '735089802944446474', '735791071115870271', '735802535272775710', '735802613563523142', '735802656588562477', '688108643966779420'];
         if (!raidchannels.includes(msg.channel.id)) return;
         if (!msg.member.roles.cache.has('735865064996732948')) {
