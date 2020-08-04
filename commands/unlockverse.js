@@ -50,7 +50,7 @@ module.exports = {
         msg.channel.send(`<a:sevenloading:739558030420475904> unlocking channels...`).then(m => {
             setTimeout(function () {
                 m.edit(`all channels have been unlocked!`)
-            }, 3000);
+            }, 2000);
         })
 
     }
