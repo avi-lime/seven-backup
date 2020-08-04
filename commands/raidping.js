@@ -18,6 +18,12 @@ module.exports = {
         }
         else {
             let channel = msg.guild.channels.cache.get('735884448280608798');
+            const claimchan = new Discord.MessageEmbed()
+                .setTitle('unclaimed')
+                .setDescription(`${msg.channel} was unclaimed automatically due to raid!`)
+                .setFooter('have a lovely day~')
+                .setColor('#243234')
+                .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             const unlock = new Discord.MessageEmbed()
                 .setTitle('unlocked!')
                 .setDescription(`I unlocked the channel for everyone!\nGood Luck!`)
@@ -31,7 +37,7 @@ module.exports = {
                 msg.channel.permissionOverwrites.get(msg.author.id).delete().then
                 msg.member.roles.add('735865064996732948').then
                 msg.channel.send(unlock).then
-                channel.send(`${msg.channel} was unclaimed automatically due to a raid`);
+                channel.send(claimchan);
             } else return;
         }
     }
