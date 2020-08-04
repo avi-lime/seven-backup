@@ -9,7 +9,7 @@ module.exports = {
         const sub = args[1];
         const types = ['fix', 'ban'];
         if (sub === 'fix') {
-            if (!msg.member.roles.cache.has(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
+            if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
 
             if (user.roles.cache.has('735865064996732948'))
                 return msg.channel.send(`${user} already has the required role!`);
@@ -23,7 +23,7 @@ module.exports = {
                 return;
             }
         } else if (sub === 'ban') {
-            if (!msg.member.roles.cache.has(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
+            if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
 
             if (!user.roles.cache.has('735865064996732948'))
                 return msg.channel.send(`${user} is already banned!`);
