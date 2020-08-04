@@ -16,7 +16,7 @@ module.exports = {
             else {
                 msg.channel.send(`<a:sevenloading:739558030420475904> fixing roles for ${user.displayName}...`).then(sentMessage => {
                     setTimeout(function () {
-                        sentMessage.edit(`fixed roles for ${user.displayName}!`)
+                        sentMessage.edit(`fixed roles for ${user}!`)
                     }, 1500);
                 }).then
                 user.roles.add('735865064996732948');
