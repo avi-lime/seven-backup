@@ -7,7 +7,6 @@ module.exports = {
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const user = msg.mentions.members.first();
         const sub = args[1];
-        const types = ['fix', 'ban'];
         if (sub === 'fix') {
             if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
 
