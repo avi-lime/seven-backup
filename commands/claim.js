@@ -3,8 +3,9 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'claim',
     description: 'claims a channel by the user',
-    execute(msg, args) {
-        const sub = args[0];
+    execute(msg) {
+        const args = msg.content.slice(prefix.length).trim().split(/ +/);
+        const sub = args[1];
         if (sub === 'fix') {
             if (!msg.member.roles.cache.has(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
             const user = msg.mentions.members.first();
