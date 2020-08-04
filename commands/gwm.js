@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const prefix = '-';
 
 module.exports = {
@@ -24,13 +25,21 @@ module.exports = {
             });
             return;
         } else if (sub !== 'fix') {
+            const guide = new Discord.MessageEmbed()
+                .setTitle('Giveaway Manager Guide')
+                .setColor(user.displayHexColor)
+                .setDescription(``)
+                .setFooter(':blossom: made by angel for her lovely giveaway managers ♡')
+                .setThumbnail(msg.guild.iconURL());
+
             msg.delete().then
             user.roles.add(['735437137356521583', '688386729807577284', '690566791407206431']).then
             msg.channel.send(`<a:sevenloading:739558030420475904> adding roles to **${user.displayName}**...`).then(sentMessage => {
                 setTimeout(function () {
-                    sentMessage.edit(`:tada: | Congratulations ${user}! ${msg.author.tag} has promoted you to **giveaway manager**.`)
+                    sentMessage.edit(`:tada: | Congratulations ${user}! ${msg.author.tag} has promoted you to **giveaway manager**.\n   -also sent ${user} the giveaway manager guide!`)
                 }, 1500)
-            });
+            }).then
+            user.send(guide);
         }
     }
 }

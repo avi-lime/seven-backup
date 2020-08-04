@@ -28,7 +28,7 @@ module.exports = {
                 .setTitle('unlocked!')
                 .setDescription(`I unlocked the channel for everyone!\nGood Luck!`)
                 .setFooter('claim again once the raid ends!')
-                .setColor("YELLOW");
+                .setColor("#243234");
             msg.channel.send('<@&688438198116024345>' + msg.content.replace(prefix + commandName, " "));
             lastChan.set(msg.channel.id, Date.now() + 1000 * 60 * 5);
             setTimeout(() => { lastChan.delete(msg.channel.id) }, 1000 * 60 * 5);
