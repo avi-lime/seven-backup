@@ -9,12 +9,19 @@ module.exports = {
             return msg.channel.send(`This channel has not been claimed!`);
         } else {
             let channel = msg.guild.channels.cache.get('735884448280608798');
+            const unclaimrep = [`${msg.author} you successfully unclaimed this adventure channel!\n  - thank you for using our server, check out <#737298948695261185> if you want to win awesome prizes `, `This adventure channel has been unclaimed\n  - thank you for playing and have a great day!`, `I've successfully unclaimed this channel! \n  - thanks for playing in our server`];
+            const claimchan = new Discord.MessageEmbed()
+                .setTitle('unclaimed')
+                .setDescription(`${msg.author} unclaimed ${msg.channel}`)
+                .setFooter('have a lovely day~')
+                .setColor('#243234')
+                .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             const unclaim = new Discord.MessageEmbed()
                 .setTitle('Channel unclaimed!')
-                .setDescription(`${msg.author} has unclaimed ${msg.channel}! \n   -Thanks for using our server ^-^`)
-                .setThumbnail(msg.author.displayAvatarURL())
+                .setDescription(unclaimrep[Math.floor(Math.random() * unclaimrep.length)])
+                .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
                 .setFooter('enjoy your day')
-                .setColor('YELLOW');
+                .setColor('#243234');
             msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
             msg.channel.permissionOverwrites.get(msg.author.id).delete().then
             msg.member.roles.add('735865064996732948').then
@@ -23,8 +30,8 @@ module.exports = {
                     sentMessage.delete().then
                     msg.channel.send(unclaim)
                 }, 1500);
-                }).then 
-           channel.send(`${msg.author.tag} unclaimed ${msg.channel}!`);
-            } 
+            }).then
+            channel.send(claimchan);
         }
-    };
+    }
+};
