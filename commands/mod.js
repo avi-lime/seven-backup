@@ -18,5 +18,6 @@ module.exports = {
                 sentMessage.edit(`:tada: | Congratulations ${user}! ${msg.author.tag} has promoted you to **moderator**.`)
             }, 1500);
         });
-    }
+        }   
+    }   
 }
