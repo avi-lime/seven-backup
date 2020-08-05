@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['number'],
     description: 'guess the number and win the prize',
     execute(msg) {
-        if (msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '°•. mod .•°', '催し主事 — event manager'].includes(r.name))) return;
+        if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '°•. mod .•°', '催し主事 — event manager'].includes(r.name))) return;
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const sub = args[0];
@@ -59,9 +59,8 @@ module.exports = {
                         msg.channel.send(timeup).then
                         msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false });
                     })
-            }); return;
-        }
-        if (sub === 'rules') {
+            });
+        } else if (sub === 'rules') {
             const rules = new Discord.MessageEmbed()
                 .setColor('#aab5ee')
                 .setTitle('✦ RULES ✦')
