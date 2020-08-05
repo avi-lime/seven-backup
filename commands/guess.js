@@ -59,19 +59,13 @@ module.exports = {
                         msg.channel.send(timeup).then
                         msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false });
                     })
-            });
+            }); return;
         }
         if (sub === 'rules') {
             const rules = new Discord.MessageEmbed()
                 .setColor('#aab5ee')
                 .setTitle('✦ RULES ✦')
-                .setDescription(`
-                ➵ You have to guess the number in the **given time period** and within the **given range** of numbers.\n
-                ➵ You'll get the **mentioned** prize if you guess the correct number.\n
-                ➵ The channel will be unlocked once the game starts and will be locked again if the time runs out or someone guesses the number\n
-                ➵ You can spam as much as you want and get **unlimited attempts** to the guess the number. \n
-                
-                `)
+                .setDescription(`➵ You have to guess the number in the **given time period** and within the **given range** of numbers.\n➵ You'll get the **mentioned** prize if you guess the correct number.\n➵ The channel will be unlocked once the game starts and will be locked again if the time runs out or someone guesses the number\n➵ You can spam as much as you want and get **unlimited attempts** to the guess the number. \n`)
                 .setFooter('⇀ contact staff for other queries')
                 .setThumbnail(msg.guild.iconURL({ dynamic: true }));
             msg.delete().then
