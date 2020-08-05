@@ -22,6 +22,7 @@ module.exports = {
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
                 .setFooter('enjoy your day')
                 .setColor('#243234');
+            msg.delete().then
             msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
             msg.channel.permissionOverwrites.get(msg.author.id).delete().then
             msg.member.roles.add('735865064996732948').then
