@@ -45,6 +45,7 @@ module.exports = {
                             .setDescription(`${collected.first().author} guessed the correct number!\n  ➵ The number was **${answer}**\n  ➵ You won**${prize}**`)
                             .setFooter(`thanks for playing`)
                             .setColor("GREEN")
+                            .setTimestamp()
                             .setThumbnail(collected.first().author.displayAvatarURL({ dynamic: true }));
                         msg.channel.send(winner).then
                         msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false });
