@@ -59,8 +59,9 @@ module.exports = {
                         msg.channel.send(timeup).then
                         msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false });
                     })
-            })
-        } else if (sub === 'rules') {
+            });
+        }
+        if (sub === 'rules') {
             const rules = new Discord.MessageEmbed()
                 .setColor('#aab5ee')
                 .setTitle('✦ RULES ✦')
