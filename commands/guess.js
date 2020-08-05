@@ -74,7 +74,7 @@ module.exports = {
             const help = new Discord.MessageEmbed()
                 .setColor('#aab5ee')
                 .setTitle('✧ GUESS THE NUMBER ✧')
-                .setDescription(`➵ Command usage:\n - \`guess start <range> <time> <prize>\`\n   - \`<range>\`: to fix the range from 0, for the random number\n   - \`<time>\`: sets the time limit for the game, **in minutes**\n   - \`<prize>\` to set the prize for the winner\n\n ➵ The command won't work if any of the fields are missing.\n ➵ The game will end once either someone guesses the number or the time runs out.\n ➵ The channel will be locked once the game end, you're immune to this if you're starting the game.`)
+                .setDescription(`➵ Command usage:\n> \`guess start <range> <time> <prize>\`\n   - \`<range>\`  to fix the range from 0, for the random number\n   - \`<time>\`  sets the time limit for the game, **in minutes**\n   - \`<prize>\`  to set the prize for the winner\n\n ➵ The command won't work if any of the fields are missing.\n ➵ The game will end once either someone guesses the number or the time runs out.\n ➵ The channel will be locked once the game end, you're immune to this if you're starting the game.`)
                 .setFooter(`⇀ contact 𝐨𝐜𝐭𝐨𝐛𝐞𝐫#7777 or 𝐯𝐢𝐯𝐢#3952, if you have any other questions.`)
                 .setThumbnail(msg.guild.iconURL({ dynamic: true }));
             msg.channel.send(help);
