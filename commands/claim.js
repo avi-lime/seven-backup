@@ -54,12 +54,14 @@ module.exports = {
                     .setDescription(`${msg.channel} has been claimed by ${msg.author}`)
                     .setFooter('enjoy~')
                     .setColor('#D2CB97')
+                    .setTimestamp()
                     .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
                 const claimed = new Discord.MessageEmbed()
                     .setTitle('Channel Claimed!')
                     .setDescription(claimreply[Math.floor(Math.random() * claimreply.length)])
                     .setColor('#D2CB97')
                     .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp()
                     .setFooter('enjoy~');
                 msg.delete().then
                 msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then

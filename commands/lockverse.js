@@ -11,16 +11,11 @@ module.exports = {
         const everyone = msg.channel.guild.roles.everyone;
         const locked = new Discord.MessageEmbed()
             .setThumbnail(msg.guild.iconURL({ dynamic: true }))
+            .setTimestamp()
             .setTitle('Channel Locked')
             .setDescription(`Reason: ${msg.content.replace(prefix + commandName, '')}`)
             .setFooter('you can use other bots in the server till the bot is back')
             .setColor('RED');
-        const unlocked = new Discord.MessageEmbed()
-            .setThumbnail(msg.guild.iconURL({ dynamic: true }))
-            .setTitle('Channel Unlocked')
-            .setDescription(`Channel has been unlocked and can be used again!`)
-            .setFooter('thanks for your patience')
-            .setColor('GREEN');
 
         const adv1 = msg.guild.channels.cache.get('735089552326393957');
         const adv2 = msg.guild.channels.cache.get('735089631871238155');

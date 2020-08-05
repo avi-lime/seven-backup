@@ -13,6 +13,7 @@ module.exports = {
             .setTitle('Channel Unlocked')
             .setDescription(`Channel has been unlocked and can be used again!`)
             .setFooter('thanks for your patience')
+            .setTimestamp()
             .setColor('GREEN');
 
         const adv1 = msg.guild.channels.cache.get('735089552326393957');

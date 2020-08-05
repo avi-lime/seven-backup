@@ -23,12 +23,14 @@ module.exports = {
                 .setDescription(`${msg.channel} was unclaimed automatically due to raid!`)
                 .setFooter('have a lovely day~')
                 .setColor('#243234')
+                .setTimestamp()
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             const unlock = new Discord.MessageEmbed()
                 .setTitle('unlocked!')
                 .setDescription(`I unlocked the channel for everyone!\nGood Luck!`)
                 .setFooter('claim again once the raid ends!')
-                .setColor("#243234");
+                .setColor("#243234")
+                .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             msg.channel.send('<@&688438198116024345>' + msg.content.replace(prefix + commandName, " "));
             lastChan.set(msg.channel.id, Date.now() + 1000 * 60 * 5);
             setTimeout(() => { lastChan.delete(msg.channel.id) }, 1000 * 60 * 5);

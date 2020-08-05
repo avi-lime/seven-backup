@@ -15,12 +15,14 @@ module.exports = {
                 .setDescription(`${msg.author} unclaimed ${msg.channel}`)
                 .setFooter('have a lovely day~')
                 .setColor('#243234')
+                .setTimestamp()
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }));
             const unclaim = new Discord.MessageEmbed()
                 .setTitle('Channel unclaimed!')
                 .setDescription(unclaimrep[Math.floor(Math.random() * unclaimrep.length)])
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
                 .setFooter('enjoy your day')
+                .setTimestamp()
                 .setColor('#243234');
             msg.delete().then
             msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
