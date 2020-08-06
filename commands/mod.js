@@ -11,13 +11,13 @@ module.exports = {
             return msg.channel.send('mention someone to appoint as moderator');
         }
         else {
-        msg.delete().then
-        user.roles.add(['735437137356521583', '688388235981881374']).then
-        msg.channel.send(`<a:sevenloading:739558030420475904> adding roles to **${user.displayName}**...`).then(sentMessage => {
-            setTimeout(function () {
-                sentMessage.edit(`:tada: | Congratulations ${user}! ${msg.author.tag} has promoted you to **moderator**.`)
-            }, 1500);
-        });
-        }   
-    }   
+            msg.delete().then
+            user.roles.add(['735437137356521583', '688388235981881374']).then
+            msg.channel.send(`<a:sevenloading:739558030420475904> adding roles to **${user.displayName}**...`).then(sentMessage => {
+                setTimeout(function () {
+                    sentMessage.edit(`<a:sevensuccess:740956620678234222> | Congratulations ${user}! ${msg.author.tag} has promoted you to **moderator**.`)
+                }, 1500);
+            });
+        }
+    }
 }

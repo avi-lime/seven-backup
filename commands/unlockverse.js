@@ -50,7 +50,7 @@ module.exports = {
         adv10.send(unlocked).then
         msg.channel.send(`<a:sevenloading:739558030420475904> unlocking channels...`).then(m => {
             setTimeout(function () {
-                m.edit(`all channels have been unlocked!`)
+                m.edit(`<a:sevensuccess:740956620678234222> all channels have been unlocked!`)
             }, 2000);
         })
 

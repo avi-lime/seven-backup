@@ -36,7 +36,7 @@ module.exports = {
             user.roles.add(['735437137356521583', '688386729807577284', '690566791407206431']).then
             msg.channel.send(`<a:sevenloading:739558030420475904> adding roles to **${user.displayName}**...`).then(sentMessage => {
                 setTimeout(function () {
-                    sentMessage.edit(`:tada: | Congratulations ${user}! ${msg.author.tag} has promoted you to **giveaway manager**.\n   ➵ also sent ${user} the giveaway manager guide!`)
+                    sentMessage.edit(`<a:sevensuccess:740956620678234222> | Congratulations ${user}! ${msg.author.tag} has promoted you to **giveaway manager**.\n   ➵ also sent ${user} the giveaway manager guide!`)
                 }, 1500)
             }).then
             user.send(guide);

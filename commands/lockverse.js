@@ -51,7 +51,7 @@ module.exports = {
         adv10.send(locked).then
         msg.channel.send(`<a:sevenloading:739558030420475904> locking channels...`).then(m => {
             setTimeout(function () {
-                m.edit(`all channels locked!\n  - make sure to \`${prefix}unlockverse\` once the bot is up.`)
+                m.edit(`<a:sevensuccess:740956620678234222> all channels locked!\n  - make sure to \`${prefix}unlockverse\` once the bot is up.`)
             }, 2000);
         })
     }
