@@ -15,7 +15,7 @@ module.exports = {
             else {
                 msg.channel.send(`<a:sevenloading:739558030420475904> fixing roles for ${user.displayName}...`).then(sentMessage => {
                     setTimeout(function () {
-                        sentMessage.edit(`<a:sevenloading:739558030420475904> fixed roles for ${user}!`)
+                        sentMessage.edit(`<a:sevensuccess:740956620678234222> fixed roles for ${user}!`)
                     }, 1500);
                 }).then
                 user.roles.add('735865064996732948');
@@ -29,7 +29,7 @@ module.exports = {
             else {
                 msg.channel.send(`<a:sevenloading:739558030420475904> banning ${user.displayName} from claiming channels...`).then(sentMessage => {
                     setTimeout(function () {
-                        sentMessage.edit(`<a:sevenloading:739558030420475904> ${user} has been banned from claiming channels by ${msg.author.tag}!`)
+                        sentMessage.edit(`<a:sevensuccess:740956620678234222> ${user} has been banned from claiming channels by ${msg.author.tag}!`)
                     }, 1500);
                 }).then
                 user.roles.remove('735865064996732948');
