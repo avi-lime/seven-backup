@@ -75,35 +75,36 @@ client.on('message', msg => {
     const sub = args[0];
     const logchan = msg.guild.channels.cache.get('688108643966779420');
     const lc = ['688108643966779420', '688668135754432604', '688109298852692055'];
-
-    if (msg.author.bot) return;
-    if (msg.content.match(/^\!pay (\<\@\!?(454307252392951819)\>|\<\@\!?(629768073414574110)\>) (100k|100000)/gi)) {
-        if (!lotteryB) return;
-        else {
-            if (!lc.includes(msg.channel.id)) return;
+    if (commandName === 'lottery') {
+        if (msg.author.bot) return;
+        if (msg.content.match(/^\!pay (\<\@\!?(454307252392951819)\>|\<\@\!?(629768073414574110)\>) (100k|100000)/gi)) {
+            if (!lotteryB) return;
             else {
-                if (playerList.indexOf(msg.author) >= 0) {
-                    return msg.channel.send(`You've already joined the lottery.`);
-                }
+                if (!lc.includes(msg.channel.id)) return;
                 else {
-                    const joined = new Discord.MessageEmbed()
-                        .setTitle(`Entered!`)
-                        .setDescription(`Congratulations ${msg.author}, you've successfully entered the lottery\n  ➵ please be patient till the lottery ends.`)
-                        .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
-                        .setTimestamp();
-                    const logjoin = new Discord.MessageEmbed()
-                        .setTitle(msg.author.tag)
-                        .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
-                        .setTimestamp()
-                        .setDescription(`${msg.author} has entered the lottery.`);
-                    playerList.push(msg.author);
-                    logchan.send(logjoin);
-                    msg.channel.send(joined);
+                    if (playerList.indexOf(msg.author) >= 0) {
+                        return msg.channel.send(`You've already joined the lottery.`);
+                    }
+                    else {
+                        const joined = new Discord.MessageEmbed()
+                            .setTitle(`Entered!`)
+                            .setDescription(`Congratulations ${msg.author}, you've successfully entered the lottery\n  ➵ please be patient till the lottery ends.`)
+                            .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
+                            .setColor("ORANGE")
+                            .setTimestamp();
+                        const logjoin = new Discord.MessageEmbed()
+                            .setTitle(msg.author.tag)
+                            .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
+                            .setTimestamp()
+                            .setColor("ORANGE")
+                            .setDescription(`${msg.author} has entered the lottery.`);
+                        playerList.push(msg.author);
+                        logchan.send(logjoin);
+                        msg.channel.send(joined);
+                    }
                 }
             }
         }
-    }
-    if (commandName === 'lottery') {
         if (!msg.content.startsWith(prefix)) return;
         if (sub === 'start') {
             if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '催し主事 — event manager'].includes(r.name))) return;
