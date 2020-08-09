@@ -131,39 +131,48 @@ client.on('message', msg => {
             logchan.send(logstart);
             msg.channel.send(started);
         }
-    }
-    if (sub === 'end') {
-        if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '催し主事 — event manager'].includes(r.name))) return;
-        if (!lc.includes(msg.channel.id)) return;
-        lotteryB = false;
-        if (playerList.length >= 1) {
-            const winner = playerList[Math.floor(Math.random() * playerList.length)];
-            const logend = new Discord.MessageEmbed()
-                .setTitle(`Ended!`)
-                .setDescription(`${msg.author} ended the lottery!\n  ➵ winner: ${winner}`)
-                .setTimestamp()
-                .set("ORANGE")
-                .setFooter(`Good Luck!`)
-                .setThumbnail(msg.author.displayAvatarURL());
-            const ended = new Discord.MessageEmbed()
-                .setTitle(`Lottery Ended!`)
-                .setDescription(`:confetti_ball: | ${winner} won the lottery!\n  ➵ For those who didn't win, better luck next time!`)
-                .setTimestamp()
-                .setColor('ORANGE')
-                .setThumbnail(msg.guild.iconURL({ dynamic: true }));
-            const winsend = new Discord.MessageEmbed()
-                .setTitle(`:tada: CONGRATULATIONS :tada:`)
-                .setDescription(`Congratulations! you won the lottery in **your eyes tell :sparkles:**!\n  ➵ Thanks for joining, hope you liked it :heart:`)
-                .setThumbnail(msg.guild.iconURL({ dynamic: true }))
-                .setColor("ORANGE")
-                .setFooter(`Make sure to join the upcoming lotteries too!`);
-            winner.send(winsend);
-            msg.channel.send(ended);
-            logchan.send(logend);
-        } else {
-            return msg.channel.send(`No one joined the lottery :sob:`);
+
+        if (sub === 'end') {
+            if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '催し主事 — event manager'].includes(r.name))) return;
+            if (!lc.includes(msg.channel.id)) return;
+            lotteryB = false;
+            if (playerList.length >= 1) {
+                const winner = playerList[Math.floor(Math.random() * playerList.length)];
+                const logend = new Discord.MessageEmbed()
+                    .setTitle(`Ended!`)
+                    .setDescription(`${msg.author} ended the lottery!\n  ➵ winner: ${winner}`)
+                    .setTimestamp()
+                    .set("ORANGE")
+                    .setFooter(`Good Luck!`)
+                    .setThumbnail(msg.author.displayAvatarURL());
+                const ended = new Discord.MessageEmbed()
+                    .setTitle(`Lottery Ended!`)
+                    .setDescription(`:confetti_ball: | ${winner} won the lottery!\n  ➵ For those who didn't win, better luck next time!`)
+                    .setTimestamp()
+                    .setColor('ORANGE')
+                    .setThumbnail(msg.guild.iconURL({ dynamic: true }));
+                const winsend = new Discord.MessageEmbed()
+                    .setTitle(`:tada: CONGRATULATIONS :tada:`)
+                    .setDescription(`Congratulations! you won the lottery in **your eyes tell :sparkles:**!\n  ➵ Thanks for joining, hope you liked it :heart:`)
+                    .setThumbnail(msg.guild.iconURL({ dynamic: true }))
+                    .setColor("ORANGE")
+                    .setFooter(`Make sure to join the upcoming lotteries too!`);
+                winner.send(winsend);
+                msg.channel.send(ended);
+                logchan.send(logend);
+            } else {
+                return msg.channel.send(`No one joined the lottery :sob:`);
+            }
+            playerList = [];
         }
-        playerList = [];
+        if (sub === 'show') {
+            const show = new Discord.MessageEmbed()
+                .setDescription(playerList)
+                .setTitle(`Lottery Participants`)
+                .setColor("ORANGE")
+                .setFooter(`good luck!`);
+            msg.channel.send(show);
+        }
     }
 });
 
