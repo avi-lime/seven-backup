@@ -8,7 +8,7 @@ var lotteryB = false;
 
 module.exports = {
     name: 'lottery',
-    aliases: ["lotto"],
+    aliases: ['lotto'],
     description: 'lottery commands',
     execute(msg) {
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
@@ -36,7 +36,6 @@ module.exports = {
             lotteryB = true;
             logchan.send(`${msg.author} started the lottery!`);
             msg.channel.send(`The lottery has started!`);
-
         }
         if (sub === 'end') {
             if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '催し主事 — event manager'].includes(r.name))) return;
@@ -45,7 +44,7 @@ module.exports = {
             if (playerList.length >= 1) {
                 const winner = playerList[Math.floor(Math.random() * playerList.length)];
                 winner.send(`Congratulations, you've won the lottery!`);
-                logchan.send(`:confetti_ball: ${winnner} won the lottery! for those who didn't win, better luck next time`);
+                logchan.send(`:confetti_ball: ${winner} won the lottery! for those who didn't win, better luck next time`);
             } else {
                 return msg.channel.send(`No one joined the lottery :sob:`);
             }
