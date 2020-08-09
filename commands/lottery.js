@@ -1,8 +1,8 @@
 const prefix = '-';
 const Discord = require('discord.js');
 const fs = require('fs');
-const playerList = [];
-const lotteryB = false;
+var playerList = [];
+var lotteryB = false;
 
 
 
@@ -49,6 +49,7 @@ module.exports = {
             } else {
                 return msg.channel.send(`No one joined the lottery :sob:`);
             }
+            playerList = [];
         }
     }
 }
