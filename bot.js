@@ -51,12 +51,14 @@ client.on('message', message => {
         return; // this is for all that, just start with if statements
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-    if (!client.commands.has(command))
+    const commandName = args.shift().toLowerCase();
+
+    const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+    if (!command)
         return;
 
     try {
-        client.commands.get(command).execute(message, args);
+        command.execute(message, args);
     } catch (error) {
         console.error(error);
         message.reply('there was an error trying to execute that command!');
