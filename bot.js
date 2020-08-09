@@ -143,7 +143,7 @@ client.on('message', msg => {
                     .setTitle(`Ended!`)
                     .setDescription(`${msg.author} ended the lottery!\n  ➵ winner: ${winner}`)
                     .setTimestamp()
-                    .set("ORANGE")
+                    .setColor("ORANGE")
                     .setFooter(`Good Luck!`)
                     .setThumbnail(msg.author.displayAvatarURL());
                 const ended = new Discord.MessageEmbed()
