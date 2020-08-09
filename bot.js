@@ -73,7 +73,6 @@ client.on('message', msg => {
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const sub = args[0];
-    const logchan = msg.guild.channels.cache.get('688108643966779420');
     const lc = ['688108643966779420', '688668135754432604', '688109298852692055'];
 
     if (msg.author.bot) return;
@@ -86,6 +85,7 @@ client.on('message', msg => {
                     return msg.channel.send(`You've already joined the lottery.`);
                 }
                 else {
+                    const logchan = msg.guild.channels.cache.get('688108643966779420');
                     const joined = new Discord.MessageEmbed()
                         .setTitle(`Entered!`)
                         .setDescription(`Congratulations ${msg.author}, you've successfully entered the lottery\n  ➵ please be patient till the lottery ends.`)
@@ -112,6 +112,7 @@ client.on('message', msg => {
             if (!lc.includes(msg.channel.id)) return;
             const p = args[1];
             if (!p) return msg.channel.send(`Set a prize money for the lottery!`);
+            const logchan = msg.guild.channels.cache.get('688108643966779420');
             const prize = msg.content.replace(prefix + commandName + " " + sub, '');
             const logstart = new Discord.MessageEmbed()
                 .setTitle(`Started!`)
@@ -138,6 +139,7 @@ client.on('message', msg => {
             if (!lc.includes(msg.channel.id)) return;
             lotteryB = false;
             if (playerList.length >= 1) {
+                const logchan = msg.guild.channels.cache.get('688108643966779420');
                 const winner = playerList[Math.floor(Math.random() * playerList.length)];
                 const logend = new Discord.MessageEmbed()
                     .setTitle(`Ended!`)
