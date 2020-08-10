@@ -4,7 +4,7 @@ module.exports = {
     execute(message, args) {
         if (args.length == 0) {
             // help
-            var cmdlist[];
+            var cmdlist = [];
             message.client.commands.forEach(function(key, value) {
                 cmdlist.append(key);
             });
