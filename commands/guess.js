@@ -20,7 +20,8 @@ module.exports = {
             if (isNaN(time)) return msg.channel.send('set a time for the game');
             if (!args[3]) return msg.channel.send(`set a prize`);
             const answer = Math.floor(Math.random() * range);
-            const filter = a => a.content.startsWith(answer);
+            var a = new RegExp("^" + answer + "$", "g")
+            const filter = a => a.content.match(a);
             const startmsg = new Discord.MessageEmbed()
                 .setTitle(`GAME STARTED`)
                 .setDescription(`Guess the number between **0 to ${range}** in **${time} minutes**\n  ➵ First to guess the number wins**${prize}**`)
