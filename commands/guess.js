@@ -25,13 +25,13 @@ module.exports = {
             const startmsg = new Discord.MessageEmbed()
                 .setTitle(`GAME STARTED`)
                 .setDescription(`Guess the number between **0 to ${range}** in **${time} minutes**\n  ➵ First to guess the number wins**${prize}**`)
-                .setColor("ORANGE")
+                .setColor(msg.member.displayHexColor)
                 .setTimestamp()
                 .setFooter(`Good Luck`)
                 .setThumbnail(msg.guild.iconURL({ dynamic: true }));
             const foradmin = new Discord.MessageEmbed()
                 .setTitle("ANSWER")
-                .setColor("ORANGE")
+                .setColor(msg.member.displayHexColor)
                 .setDescription(`The number is **${answer}**!`)
                 .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
                 .setFooter('Good Luck');
@@ -46,7 +46,7 @@ module.exports = {
                             .setTitle(':tada: CONGRATULATIONS :tada:')
                             .setDescription(`${collected.first().author} guessed the correct number!\n  ➵ The number was **${answer}**\n  ➵ You won**${prize}**`)
                             .setFooter(`thanks for playing`)
-                            .setColor("GREEN")
+                            .setColor(collected.first().member.displayHexColor)
                             .setThumbnail(collected.first().author.displayAvatarURL({ dynamic: true }));
                         msg.channel.send(winner).then
                         msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false });
