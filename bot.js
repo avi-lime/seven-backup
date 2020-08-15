@@ -37,17 +37,6 @@ client.on('message', message => {
         else
             message.channel.send("안녕하세요!");
     }
-    //message which adds to the current event going on
-    if (message.content.match('<@&735802382038073364>')) {
-        if (!message.author.bot)
-            return;
-        const eventEmbed = new Discord.MessageEmbed()
-            .setColor('#9b4b45')
-            .setTitle('**✰⁀➴ongoing event!**')
-            .setDescription('for more information, make sure to check out \n <#737298671531720765> \n <#737298948695261185>')
-            .setTimestamp();
-        message.channel.send(eventEmbed);
-    }
 
     if (!message.content.startsWith(prefix) || message.author.bot)
         return; // this is for all that, just start with if statements
