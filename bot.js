@@ -156,6 +156,7 @@ client.on('message', msg => {
                 return msg.channel.send(`No one joined the lottery :sob:`);
             }
             playerList = [];
+            msg.channel.updateOverwrite(msg.channel.guild.roles.everyone, { SEND_MESSAGES: false });
         }
         if (sub === 'show') {
             const show = new Discord.MessageEmbed()
