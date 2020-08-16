@@ -98,10 +98,10 @@ client.on('message', message => {
     if (commandName === 'lottery') {
         if (!message.content.startsWith(prefix)) return;
         const subCommands = ['start', 'end', 'show'];
-        if (!sub.includes(subCommands)) {
+        if (!sub.includes(subCommands) || !subCommands) {
             const help = new Discord.MessageEmbed()
                 .setTitle(`Lottery!`)
-                .setDescription(`sub-commands: \`start\`,\`show\`,\`end\`\n  start\n  - usage: \`${prefix}lottery start <prize>\`\n  end\n\n  -usage: \`${prefix}lottery ennd\` in the lottery channel\n  - it also locks the channel for everyone.\n  show\n  - shows the list of people in the lottery\n  - usage \`${prefix}lottery show\``)
+                .setDescription(`sub-commands: \`start\`,\`show\`,\`end\`\n  \n\`start\`\n  - usage: \`${prefix}lottery start <prize>\`\n  \n\`end\`\n  -usage: \`${prefix}lottery ennd\` in the lottery channel\n  - it also locks the channel for everyone.\n  \n\`show\`\n  - shows the list of people in the lottery\n  - usage \`${prefix}lottery show\``)
                 .setColor('#aab5ee');
             message.channel.send(help);
         }
