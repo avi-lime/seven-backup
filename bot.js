@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const Discord = require('discord.js');
+const { setUncaughtExceptionCaptureCallback } = require('process');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -96,11 +97,19 @@ client.on('message', message => {
     }
     if (commandName === 'lottery') {
         if (!message.content.startsWith(prefix)) return;
+        const subCommands = ['start', 'end', 'show'];
+        if (!sub.includes(subCommands)) {
+            const help = new Discord.MessageEmbed()
+                .setTitle(`Lottery!`)
+                .setDescription(`sub-commands: \`start\`,\`show\`,\`end\`\n  start\n  - usage: \`${prefix}lottery start <prize>\`\n  end\n\n  -usage: \`${prefix}lottery ennd\` in the lottery channel\n  - it also locks the channel for everyone.\n  show\n  - shows the list of people in the lottery\n  - usage \`${prefix}lottery show\``)
+                .setColor('#aab5ee');
+            message.channel.send(help);
+        }
         if (sub === 'start') {
             if (!message.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '催し主事 — event manager'].includes(r.name))) return;
             if (!lc.includes(message.channel.id)) return;
             const p = args[1];
-            if (!p) return message.channel.send(`Set a prize money for the lottery!`);
+            if (!p) return message.channel.send(`The correct usage is \`${prefix}lottery start <prize>\``);
             const logchan = message.guild.channels.cache.get('688108643966779420');
             const prize = message.content.replace(prefix + commandName + " " + sub, '');
             const logstart = new Discord.MessageEmbed()
