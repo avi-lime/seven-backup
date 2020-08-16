@@ -32,7 +32,7 @@ module.exports = {
         if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin'].includes(r.name))) return;
 
         raidchannels.forEach((channel) => {
-            msg.guild.channel.cache.get(channel).updateOverwrite(everyone, { SEND_MESSAGES: false }).then(chan => {
+            msg.guild.channels.cache.get(channel).updateOverwrite(everyone, { SEND_MESSAGES: false }).then(chan => {
                 chan.send(locked);
             })
         });
