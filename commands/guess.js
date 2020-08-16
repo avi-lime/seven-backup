@@ -46,39 +46,39 @@ module.exports = {
                             .setTitle(':tada: CONGRATULATIONS :tada:')
                             .setDescription(`${collected.first().author} guessed the correct number!\n  ➵ The number was **${answer}**\n  ➵ You won**${prize}**`)
                             .setFooter(`thanks for playing`)
-                            .setColor(collected.first().member.displayHexColor)message
+                            .setColor(collected.first().member.displayHexColor)
                             .setThumbnail(collected.first().author.displayAvatarURL({ dynamic: true }));
-                message.channel.send(winner).then
-                message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
-            })
-                .catch(collected => {
-                    const timeup = new Discord.MessageEmbed()
-                        .setColor('RED')
-                        .setTitle("TIME UP")
-                        .setDescription(`oop, looks like no one could guess the number!\n  ➵ The number was **${answer}**`)
-                        .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                        .setFooter('better luck next time');
-                    message.channel.send(timeup).then
-                    message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
-                })
-        });
-    } else if(sub === 'rules') {
-    const rules = new Discord.MessageEmbed()
-        .setColor('#aab5ee')
-        .setTitle('✦ RULES ✦')
-        .setDescription(`➵ You have to guess the number in the **given time period** and within the **given range** of numbers.\n➵ You'll get the **mentioned** prize if you guess the correct number.\n➵ The channel will be unlocked once the game starts and will be locked again if the time runs out or someone guesses the number\n➵ You can spam as much as you want and get **unlimited attempts** to the guess the number. \n`)
-        .setFooter('⇀ contact staff for other queries')
-        .setThumbnail(message.guild.iconURL({ dynamic: true }));
-    message.delete().then
-    message.channel.send(rules);
-} else if (sub === 'help') {
-    const help = new Discord.MessageEmbed()
-        .setColor('#aab5ee')
-        .setTitle('✧ GUESS THE NUMBER ✧')
-        .setDescription(`➵ Command usage:\n> \`guess start <range> <time> <prize>\`\n   - \`<range>\`  to fix the range from 0, for the random number\n   - \`<time>\`  sets the time limit for the game, **in minutes**\n   - \`<prize>\`  to set the prize for the winner\n\n ➵ The command won't work if any of the fields are missing.\n ➵ The game will end once either someone guesses the number or the time runs out.\n ➵ The channel will be locked once the game end, you're immune to this if you're starting the game.`)
-        .setFooter(`⇀ contact 𝐨𝐜𝐭𝐨𝐛𝐞𝐫#7777 or 𝐯𝐢𝐯𝐢#3952, if you have any other questions.`)
-        .setThumbnail(message.guild.iconURL({ dynamic: true }));
-    message.channel.send(help);
-}
+                        message.channel.send(winner).then
+                        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
+                    })
+                    .catch(collected => {
+                        const timeup = new Discord.MessageEmbed()
+                            .setColor('RED')
+                            .setTitle("TIME UP")
+                            .setDescription(`oop, looks like no one could guess the number!\n  ➵ The number was **${answer}**`)
+                            .setThumbnail(message.guild.iconURL({ dynamic: true }))
+                            .setFooter('better luck next time');
+                        message.channel.send(timeup).then
+                        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
+                    })
+            });
+        } else if (sub === 'rules') {
+            const rules = new Discord.MessageEmbed()
+                .setColor('#aab5ee')
+                .setTitle('✦ RULES ✦')
+                .setDescription(`➵ You have to guess the number in the **given time period** and within the **given range** of numbers.\n➵ You'll get the **mentioned** prize if you guess the correct number.\n➵ The channel will be unlocked once the game starts and will be locked again if the time runs out or someone guesses the number\n➵ You can spam as much as you want and get **unlimited attempts** to the guess the number. \n`)
+                .setFooter('⇀ contact staff for other queries')
+                .setThumbnail(message.guild.iconURL({ dynamic: true }));
+            message.delete().then
+            message.channel.send(rules);
+        } else if (sub === 'help') {
+            const help = new Discord.MessageEmbed()
+                .setColor('#aab5ee')
+                .setTitle('✧ GUESS THE NUMBER ✧')
+                .setDescription(`➵ Command usage:\n> \`guess start <range> <time> <prize>\`\n   - \`<range>\`  to fix the range from 0, for the random number\n   - \`<time>\`  sets the time limit for the game, **in minutes**\n   - \`<prize>\`  to set the prize for the winner\n\n ➵ The command won't work if any of the fields are missing.\n ➵ The game will end once either someone guesses the number or the time runs out.\n ➵ The channel will be locked once the game end, you're immune to this if you're starting the game.`)
+                .setFooter(`⇀ contact 𝐨𝐜𝐭𝐨𝐛𝐞𝐫#7777 or 𝐯𝐢𝐯𝐢#3952, if you have any other questions.`)
+                .setThumbnail(message.guild.iconURL({ dynamic: true }));
+            message.channel.send(help);
+        }
     }
 }
