@@ -61,7 +61,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.match(/^(𝗰𝗵𝗼𝗰𝗼𝗹𝗮𝘁𝗲|𝗽𝗹𝘂𝘁𝗼) Please type \`\!captcha \[Text From Image\]\` to continue\.\nGet a different captcha by typing any command\.$/) && message.author.id === '432616859263827988') {
-        if (guild.id === '723209746945015809') {
+        if (message.guild.id === '723209746945015809') {
             const chan = message.guild.channels.cache.get('743459461980618823');
             const pluto = new Discord.MessageEmbed()
                 .setTitle(`Captcha`)
@@ -71,8 +71,8 @@ client.on('message', message => {
             chan.send(pluto);
 
         }
-        if (guild.id === '688102135363141652') {
-            const chan = message.guild.channels.cache.get('629768073414574110')
+        if (message.guild.id === '688102135363141652') {
+            const chan = message.guild.channels.cache.get('688109298852692055')
             if (message.content.startsWith('𝗽𝗹𝘂𝘁𝗼')) {
                 const pluto = new Discord.MessageEmbed()
                     .setTitle(`Captcha`)
