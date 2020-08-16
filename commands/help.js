@@ -9,7 +9,7 @@ module.exports = {
                 cmdlist.push(key);
             });
             var str = cmdlist.join("\n");
-            msg.channel.send(str);
+            message.channel.send(str);
         } else {
             // help <command>
 
