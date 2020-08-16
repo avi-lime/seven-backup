@@ -5,14 +5,14 @@ module.exports = {
         if (args.length == 0) {
             // help
             var cmdlist = [];
-            message.client.commands.forEach(function(key, value) {
-                cmdlist.append(key);
+            message.client.commands.forEach(function (key, value) {
+                cmdlist.push(key);
             });
             var str = cmdlist.join("\n");
             msg.channel.send(str);
         } else {
             // help <command>
-                
+
         }
     }
 }
