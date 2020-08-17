@@ -69,7 +69,6 @@ client.on('message', message => {
                 .setColor('RED');
             chan.send(`<@629768073414574110> captcha in ${message.channel}`);
             chan.send(pluto);
-
         }
         if (message.guild.id === '688102135363141652') {
             const chan = message.guild.channels.cache.get('688109298852692055')
@@ -91,11 +90,9 @@ client.on('message', message => {
             }
         }
     }
-});
 
-// lottery command 
+    // lottery command 
 
-client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const sub = args[0];
@@ -212,8 +209,38 @@ client.on('message', message => {
             message.channel.send(show);
         }
     }
-});
 
+
+    // DM channel
+
+    // if someone sends the DM, it redirects to the staff-bot1 channel.
+    if (message.channel.type === 'dm') {
+        if (message.author.bot) return;
+        const usermsg = new Discord.MessageEmbed()
+            .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+            .setColor(message.member.displayHexColor || client.displayHexColor)
+            .setDescription(message.content)
+            .setFooter(messsage.author.id);
+        client.guilds.cache.get('688102135363141652').channels.cache.get('688109298852692055').send(usermsg);
+    }
+    if (commandName === 'dm' || commandName === 'reply') {
+
+        const toSend = message.mentions.users.first();
+        if (toSend) {
+            toSend.send(message.content.replace(prefix + commandName + ' ' + args[0], ''));
+            message.delete;
+            message.channel.send(`message sent to ${toSend}`);
+        } else if (message.mentions.users.size === 0) {
+            const userid = args[0].toString();
+            const user = message.guild.members.cache.get(userid);
+            if (user) {
+                user.send(message.content.replace(prefix + commandName + ' ' + args[0], ''));
+                message.delete;
+                message.channel.send(`message sent to ${user.displayName}`);
+            } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
+        }
+    }
+});
 
 
 /*client.on('guildMemberAdd', member =>  {

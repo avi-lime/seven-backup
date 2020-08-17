@@ -48,7 +48,7 @@ module.exports = {
                 return message.channel.send(banned);
             } else {
                 let channel = message.guild.channels.cache.get('735884448280608798');
-                const claimreply = [`${message.author} you successfully claimed this adventure channel!\n  - have fun playing and don't forget to \`${prefix}unclaim\` `, `This adventure channel has been claimed by ${msg.author} \n  - don't forget to \`${prefix}unclaim\` once you're done playing`, `${msg.author} I've successfully claimed this channel for you! \n  - use \`${prefix}unclaim\`, when you finished playing`];
+                const claimreply = [`${message.author} you successfully claimed this adventure channel!\n  - have fun playing and don't forget to \`${prefix}unclaim\` `, `This adventure channel has been claimed by ${message.author} \n  - don't forget to \`${prefix}unclaim\` once you're done playing`, `${message.author} I've successfully claimed this channel for you! \n  - use \`${prefix}unclaim\`, when you finished playing`];
                 const claimchan = new Discord.MessageEmbed()
                     .setTitle('claimed')
                     .setDescription(`${message.channel} has been claimed by ${message.author}`)
