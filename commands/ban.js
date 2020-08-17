@@ -19,7 +19,7 @@ module.exports = {
         }
         const NumberOfDays = parseInt(args[1]);
         if (!isNaN(NumberOfDays)) {
-            const reasonForBan = message.content.replace(prefix + commandName + ' ' + days, "");
+            const reasonForBan = message.content.replace(prefix + commandName + ' ' + NumberOfDays, "");
             if (!args[2]) {
                 banMember.send(`You've been banned from ${message.guild.name}`);
                 banMember.ban({ days: NumberOfDays });
