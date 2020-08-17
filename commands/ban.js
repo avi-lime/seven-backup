@@ -19,7 +19,7 @@ module.exports = {
         }
         const NumberOfDays = parseInt(args[1]);
         if (!isNaN(NumberOfDays)) {
-            const reasonForBan = message.content.replace(prefix + commandName + ' ' + NumberOfDays, "");
+            const reasonForBan = message.content.replace(prefix + commandName + ' ' + banMember + NumberOfDays, "");
             if (!args[2]) {
                 banMember.send(`You've been banned from ${message.guild.name}`);
                 banMember.ban({ days: NumberOfDays });
@@ -32,15 +32,15 @@ module.exports = {
                 return;
             }
         } else {
-            const reasonForBan = message.content.replace(prefix + commandName, "");
+            const reasonForBan = message.content.replace(prefix + commandName + ' ' + banMember, "");
             if (!args[1]) {
                 banMember.send(`You've been banned from ${message.guild.name}`);
-                banMember.ban();
+                banMember.ban({ days: 3 });
                 message.channel.send(`<:jirachi_ban:737976093398663169> **${banMember.displayName}** has been banned by **${message.author}**`);
                 return;
             } else {
                 banMember.send(`You've been banned from ${message.guild.name}\nReason: ${reasonForBan}`);
-                banMember.ban({ reason: reasonForBan });
+                banMember.ban({ days: 3, reason: reasonForBan });
                 message.channel.send(`<:jirachi_ban:737976093398663169> **${banMember.displayName}** has been banned by **${message.author}**`);
                 return;
             }
