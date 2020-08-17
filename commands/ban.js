@@ -21,7 +21,7 @@ module.exports = {
         }
         const NumberOfDays = parseInt(args[1]);
         if (!isNaN(NumberOfDays)) {
-            const reasonForBan = message.content.replace(prefix + commandName + ' ' + banMember + NumberOfDays, "");
+            const reasonForBan = message.content.replace(prefix + commandName + ' ' + banMember + ' ' + NumberOfDays, "");
             if (!args[2]) {
                 const r = new Discord.MessageEmbed()
                     .setAuthor(message.guild.name, message.guild.iconURL)
