@@ -221,7 +221,7 @@ client.on('message', message => {
             .setColor("RED")
             .setDescription(message.content)
             .setTimestamp()
-            .setFooter(messsage.author.id);
+            .setFooter(message.author.id);
         client.guilds.cache.get('688102135363141652').channels.cache.get('688109298852692055').send(usermsg);
     }
     if (commandName === 'dm' || commandName === 'reply') {
