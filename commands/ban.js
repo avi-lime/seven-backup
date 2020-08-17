@@ -10,14 +10,14 @@ module.exports = {
         if (!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) {
             return message.channel.send("You don't have the permission to ban users!");
         }
-        if (message.mentions.users.size === 0 || !args[0]) {
+        if (message.mentions.users.size === 0 && !args[0]) {
             return message.channel.send(`Mention someone or use their ID to ban!`);
         }
         const banMember = message.mentions.members.first() || message.client.members.cache.get(args[0].toString());
         if (!banMember) {
-            return message.channel.send("User no found!");
+            return message.channel.send("User not found!");
         }
-        const NumberOfDays = parseInt(agrs[1]);
+        const NumberOfDays = parseInt(args[1]);
         if (!isNaN(NumberOfDays)) {
             const reasonForBan = message.content.replace(prefix + commandName + ' ' + days, "");
             if (!args[2]) {

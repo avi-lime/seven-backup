@@ -225,12 +225,12 @@ client.on('message', message => {
         client.guilds.cache.get('688102135363141652').channels.cache.get('688109298852692055').send(usermsg);
     }
     if (commandName === 'dm' || commandName === 'reply') {
-
-        const toSend = message.mentions.users.first();
+        if (!message.startsWith(prefix) || message.author.bot) return;
+        const toSend = message.mentions.members.first();
         if (toSend) {
             toSend.send(message.content.replace(prefix + commandName + ' ' + args[0], ''));
             message.delete;
-            message.channel.send(`message sent to ${toSend}`);
+            message.channel.send(`message sent to ${toSend.displayName}`);
         } else if (message.mentions.users.size === 0) {
             const userid = args[0].toString();
             const user = message.guild.members.cache.get(userid);
