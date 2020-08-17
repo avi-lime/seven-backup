@@ -218,8 +218,9 @@ client.on('message', message => {
         if (message.author.bot) return;
         const usermsg = new Discord.MessageEmbed()
             .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
-            .setColor(message.member.displayHexColor || client.displayHexColor)
+            .setColor("RED")
             .setDescription(message.content)
+            .setTimestamp()
             .setFooter(messsage.author.id);
         client.guilds.cache.get('688102135363141652').channels.cache.get('688109298852692055').send(usermsg);
     }
