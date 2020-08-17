@@ -241,6 +241,23 @@ client.on('message', message => {
             } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
         }
     }
+    if (commandName === 'dmw' || commandName === 'replyw') {
+        if (!message.content.startsWith(prefix) || message.author.bot) return;
+        const toSend = message.mentions.members.first();
+        if (toSend) {
+            toSend.send(`${message.author.tag}: ${message.content.replace(prefix + commandName + ' ' + args[0], '')}`);
+            message.delete;
+            message.channel.send(`message sent to ${toSend.displayName}`);
+        } else if (message.mentions.users.size === 0) {
+            const userid = args[0].toString();
+            const user = message.guild.members.cache.get(userid);
+            if (user) {
+                user.send(`${message.author.tag}: ${message.content.replace(prefix + commandName + ' ' + args[0], '')}`);
+                message.delete;
+                message.channel.send(`message sent to ${user.displayName}`);
+            } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
+        }
+    }
 });
 
 
