@@ -21,7 +21,7 @@ module.exports = {
         }
         const NumberOfDays = parseInt(args[1]);
         if (!isNaN(NumberOfDays)) {
-            const reasonForBan = message.content.replace(prefix + commandName + ' ' + banMember + ' ' + NumberOfDays, "");
+            const reasonForBan = message.content.replace(prefix + commandName + ' ' + args[0] + ' ' + NumberOfDays, "");
             if (!args[2]) {
                 const r = new Discord.MessageEmbed()
                     .setAuthor(message.guild.name, message.guild.iconURL)
@@ -46,7 +46,7 @@ module.exports = {
                 return;
             }
         } else {
-            const reasonForBan = message.content.replace(prefix + commandName + ' ' + banMember, "");
+            const reasonForBan = message.content.replace(prefix + commandName + ' ' + args[0], "");
             if (!args[1]) {
                 const r = new Discord.MessageEmbed()
                     .setAuthor(message.guild.name, message.guild.iconURL)
