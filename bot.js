@@ -225,7 +225,7 @@ client.on('message', message => {
         client.guilds.cache.get('688102135363141652').channels.cache.get('688109298852692055').send(usermsg);
     }
     if (commandName === 'dm' || commandName === 'reply') {
-        if (!message.startsWith(prefix) || message.author.bot) return;
+        if (!message.content.startsWith(prefix) || message.author.bot) return;
         const toSend = message.mentions.members.first();
         if (toSend) {
             toSend.send(message.content.replace(prefix + commandName + ' ' + args[0], ''));
