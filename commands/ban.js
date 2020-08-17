@@ -13,7 +13,7 @@ module.exports = {
         if (message.mentions.users.size === 0 && !args[0]) {
             return message.channel.send(`Mention someone or use their ID to ban!`);
         }
-        const banMember = message.mentions.members.first() || message.client.members.cache.get(args[0].toString());
+        const banMember = message.mentions.members.first() || message.guild.members.cache.get(args[0].toString());
         if (!banMember) {
             return message.channel.send("User not found!");
         }
