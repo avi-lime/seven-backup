@@ -99,7 +99,10 @@ client.on('message', message => {
     // lottery command 
 
     lottery = require('./autoresponses/lottery');
-
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const commandName = args.shift().toLowerCase();
+    const sub = args[0];
+    const lc = ['688396273723637807'];
 
     // DM channel
 
