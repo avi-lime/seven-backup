@@ -7,7 +7,7 @@ module.exports = {
     execute(msg) {
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
-        const gwchan = ['738643326772707408', '737298442434379867', '688108643966779420'];
+        const gwchan = ['738643326772707408', '737298442434379867', '688108643966779420', '688109298852692055'];
         if (!msg.member.roles.cache.has('690566791407206431') || !gwchan.includes(msg.channel.id)) return;
         const type = args[0];
         const bot = ['verse', 'myuu', 'pokemon'];
