@@ -19,11 +19,11 @@ module.exports = {
         if (!amt || isNaN(amt)) return message.channel.send(`What's the amount of the heist`);
 
         const heistmsg = new Discord.MessageEmbed()
-            .setTitle('<:sevenheist: 750333392104718367>  HEIST TIME!  <:sevenheist: 750333392104718367>')
+            .setTitle('<:sevenheist: 750333392104718367>  :: HEIST TIME! × <:sevenheist: 750333392104718367>')
             .setColor(host.displayHexColor)
             .setThumbnail(message.mentions.users.first().displayAvatarURL({ dynamic: true }))
-            .addFields({ name: 'Amount', value: amt }, { name: 'Host', value: host })
-            .setDescription(`Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!`)
+            .addFields({ name: '× Amount', value: amt }, { name: '× Donator', value: host })
+            .setDescription(`> Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!`)
             .setFooter(`Good Luck!`);
         message.delete().then
         message.channel.send('<@&688428979153272860>').then
