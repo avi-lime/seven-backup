@@ -143,7 +143,7 @@ client.on('message', message => {
         if (!message.content.startsWith(prefix)) return;
         const subCommands = ['start', 'end', 'show'];
         if (!lc.includes(message.channel.id)) return;
-        if (!sub.includes(subCommands) || !subCommands) {
+        if (!sub.includes(subCommands) && !subCommands) {
             const help = new Discord.MessageEmbed()
                 .setTitle(`Lottery!`)
                 .setDescription(`sub-commands: \`start\`,\`show\`,\`end\`\n  \n\`start\`\n  - usage: \`${prefix}lottery start <prize>\`\n  \n\`end\`\n  -usage: \`${prefix}lottery ennd\` in the lottery channel\n  - it also locks the channel for everyone.\n  \n\`show\`\n  - shows the list of people in the lottery\n  - usage \`${prefix}lottery show\``)
