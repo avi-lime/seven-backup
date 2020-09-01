@@ -37,13 +37,13 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    client.ars.execute(message, args);
+
     if (!message.content.startsWith(prefix) || message.author.bot)
         return; // this is for all that, just start with if statements
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
-
+    client.ars.execute(message, args);
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command)
         return;
