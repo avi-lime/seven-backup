@@ -25,7 +25,7 @@ module.exports = {
             .addFields({ name: '× Amount', value: amt }, { name: '× Donator', value: host }, { name: '\u200b', value: `> Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
             .setFooter(`Good Luck!`);
         message.delete().then
-        message.channel.send({ content: '<@&688428979153272860>', heistmsg });
+        message.channel.send({ content: '<@&688428979153272860>', embed: heistmsg });
 
     }
 }
