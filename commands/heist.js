@@ -22,7 +22,7 @@ module.exports = {
             .setTitle('<:sevenheist:750333392104718367>  :: HEIST TIME! × <:sevenheist:750333392104718367>')
             .setColor(message.mentions.members.first().displayHexColor)
             .setThumbnail(message.mentions.users.first().displayAvatarURL({ dynamic: true }))
-            .addFields({ name: '× Amount', value: amt }, { name: '× Donator', value: message.mentions.members.first() }, { name: '\u200b', value: `> Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
+            .addFields({ name: '× Amount', value: amt, inline: true }, { name: '× Donator', value: message.mentions.members.first(), inline: true }, { name: '\u200b', value: `> Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
             .setFooter(`Good Luck!`);
         message.delete().then
         message.channel.send({ content: '<@&688428979153272860>', embed: heistmsg });
