@@ -142,6 +142,7 @@ client.on('message', message => {
     if (commandName === 'lottery') {
         if (!message.content.startsWith(prefix)) return;
         const subCommands = ['start', 'end', 'show'];
+        if (!lc.includes(message.channel.id)) return;
         if (!sub.includes(subCommands) || !subCommands) {
             const help = new Discord.MessageEmbed()
                 .setTitle(`Lottery!`)
