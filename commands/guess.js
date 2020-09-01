@@ -41,7 +41,7 @@ module.exports = {
             message.guild.channels.cache.get('688108643966779420').send(foradmin).then
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
             message.channel.send(startmsg).then(() => {
-                message.channel.awaitMessages(filter, { max: 1, time: endtime, errors: ['time', 'range'] })
+                message.channel.awaitMessages(filter, { max: 1, time: endtime, errors: ['time'] })
                 if (over) message.reply(`the range is between 0 to ${range}`)
                     .then(collected => {
                         const winner = new Discord.MessageEmbed()
