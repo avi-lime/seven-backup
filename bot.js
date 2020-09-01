@@ -6,7 +6,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 client.ars = new Discord.Collection()
-const arfiles = fs.readdirSync('./autoresponses').filter(arfile => file.endsWith('.js'));
+const arfiles = fs.readdirSync('./autoresponses').filter(arfile => arfile.endsWith('.js'));
 
 const prefix = "-";
 var playerList = [];
