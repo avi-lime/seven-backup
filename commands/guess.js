@@ -22,7 +22,6 @@ module.exports = {
             const answer = Math.floor(Math.random() * range);
             var ans = new RegExp("^" + answer + "$", "g")
             const filter = a => a.content.match(ans);
-            const over = a => a.content > range;
             const startmsg = new Discord.MessageEmbed()
                 .setTitle(`GAME STARTED`)
                 .setDescription(`Guess the number between **0 to ${range}** in **${time} minutes**\n  ➵ First to guess the number wins**${prize}**`)
@@ -42,7 +41,6 @@ module.exports = {
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
             message.channel.send(startmsg).then(() => {
                 message.channel.awaitMessages(filter, { max: 1, time: endtime, errors: ['time'] })
-                if (over) message.reply(`the range is between 0 to ${range}`)
                     .then(collected => {
                         const winner = new Discord.MessageEmbed()
                             .setTitle(':tada: CONGRATULATIONS :tada:')
