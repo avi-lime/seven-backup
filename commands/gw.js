@@ -13,106 +13,30 @@ module.exports = {
         const bot = ['verse', 'myuu', 'pokemon'];
         const host = msg.mentions.members.first();
 
-
-        if (!bot.includes(type)) {
-
-            if (!host) {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + host, " ");
+        if (!bot.includes(type) || !type) {
+            if (host) {
+                const gwmsg = msg.content.replace(prefix + commandName + ' ' + host, '');
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields(
-                        { name: `Donated By`, value: `${msg.author}` },
-                        { name: `Message`, value: `${gwmsg}` }
-                    )
                     .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
+                    .setThumbnail(host.displayAvatarURL({ dynamic: true }))
+                    .setColor(host.displayHexColor)
+                    .addFields({ name: 'Donated by', value: host }, { name: 'Message', value: gwmsg });
                 msg.delete().then
-                msg.channel.send('<@&688428862672994307>' + desc);
+                msg.channel.send(`<@&688428862672994307> ${desc}`);
             } else {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + host, " ");
+                const gwmsg = msg.content.replace(prefix + commandName, '');
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
                     .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
+                    .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
+                    .setColor(msg.member.displayHexColor)
+                    .addFields({ name: 'Donated by', value: msg.author }, { name: 'Message', value: gwmsg });
                 msg.delete().then
-                msg.channel.send('<@&688428862672994307>' + desc);
-            }
-
-        }
-        else if (type === 'verse') {
-
-            if (!host) {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + type, " ");
-                const desc = new Discord.MessageEmbed()
-                    .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields(
-                        { name: `Donated By`, value: `${msg.author}` },
-                        { name: `Message`, value: `${gwmsg}` }
-                    )
-                    .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
-                msg.delete().then
-                msg.channel.send('<@&736943085115670568' + desc);
-            } else {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + host + type, " ");
-                const desc = new Discord.MessageEmbed()
-                    .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
-                    .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
-                msg.delete().then
-                msg.channel.send('<@&736943085115670568>' + desc);
+                msg.channel.send(`<@&688428862672994307> ${desc}`);
             }
         }
-        else if (type === 'myuu') {
-            if (!host) {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + type, " ");
-                const desc = new Discord.MessageEmbed()
-                    .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields(
-                        { name: `Donated By`, value: `${msg.author}` },
-                        { name: `Message`, value: `${gwmsg}` }
-                    )
-                    .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
-                msg.delete().then
-                msg.channel.send('<@&736943394353578067>' + desc);
-            } else {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + host + type, " ");
-                const desc = new Discord.MessageEmbed()
-                    .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
-                    .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
-                msg.delete().then
-                msg.channel.send('<@&736943394353578067>' + desc);
-            }
-        }
-        else if (type === 'pokemon') {
-            if (!host) {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + type, " ");
-                const desc = new Discord.MessageEmbed()
-                    .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields(
-                        { name: `Donated By`, value: `${msg.author}` },
-                        { name: `Message`, value: `${gwmsg}` }
-                    )
-                    .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
-                msg.delete().then
-                msg.channel.send('<@&737619474773049384>' + desc);
-            } else {
-                const gwmsg = msg.content.replace(prefix + commandName + " " + host + type, " ");
-                const desc = new Discord.MessageEmbed()
-                    .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
-                    .setTimestamp()
-                    .setColor(msg.member.displayHexColor);
-                msg.delete().then
-                msg.channel.send('<@&737619474773049384>' + desc);
-            }
-        }
+
     }
 
 }
