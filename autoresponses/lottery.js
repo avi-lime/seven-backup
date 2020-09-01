@@ -14,7 +14,7 @@ client.on('message', message => {
     const lc = ['688396273723637807'];
 
     if (message.author.bot) return;
-    if (message.content.match(/You gave (𝗰𝗵𝗼𝗰𝗼𝗹𝗮𝘁𝗲|𝗽𝗹𝘂𝘁𝗼) \*\*10,000\*\* coins/g) && message.author.id === '270904126974590976') {
+    if (message.content.match(/^You gave (𝗰𝗵𝗼𝗰𝗼𝗹𝗮𝘁𝗲|𝗽𝗹𝘂𝘁𝗼) \*\*10,000\*\* coins/g) && message.author.id === '270904126974590976') {
         message.channel.fetchMessages({ limit: 2 })
             .then(messageMappings => {
                 let messages = Array.from(messageMappings.values());
@@ -24,7 +24,7 @@ client.on('message', message => {
                 else {
                     if (!lc.includes(message.channel.id)) return;
                     else {
-                        if (participants.indexOf(last.author) >= 0) {
+                        if (participants.indexOf(previousMessage.author) >= 0) {
                             return message.channel.send(`You've already joined the lottery.`);
                         }
                         else {
