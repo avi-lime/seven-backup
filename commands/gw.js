@@ -17,6 +17,7 @@ module.exports = {
         if (!bot.includes(type)) {
 
             if (!host) {
+                const gwmsg = msg.content.replace(prefix + commandName + " " + host, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
                     .addFields({ name: `Donated By`, value: msg.author }, { name: `Message`, value: gwmsg })
