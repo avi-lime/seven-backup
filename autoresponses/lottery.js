@@ -69,7 +69,7 @@ client.on('message', message => {
                     .setThumbnail(message.author.displayAvatarURL());
                 const started = new Discord.MessageEmbed()
                     .setTitle(`Lottery Started!`)
-                    .setDescription(`The lottery has been started!\n  ➵ Ticket price: 10k dmc / 100k pokeverse gold\n  ➵ To participate, pay the amount to <@629768073414574110>`)
+                    .setDescription(`The lottery has been started!\n  ➵ Ticket price: 10k dmc\n  ➵ To participate, pay the amount to <@629768073414574110> or <@454307252392951819>`)
                     .setTimestamp()
                     .setColor(message.member.displayHexColor)
                     .setThumbnail(message.guild.iconURL({ dynamic: true }));
