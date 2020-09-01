@@ -20,7 +20,10 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + host, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: msg.author }, { name: `Message`, value: gwmsg })
+                    .addFields(
+                        { name: `Donated By`, value: `${msg.author}` },
+                        { name: `Message`, value: `${gwmsg}` }
+                    )
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -29,7 +32,7 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + host, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: host }, { name: `Message`, value: gwmsg })
+                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -43,7 +46,10 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + type, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: msg.author }, { name: `Message`, value: gwmsg })
+                    .addFields(
+                        { name: `Donated By`, value: `${msg.author}` },
+                        { name: `Message`, value: `${gwmsg}` }
+                    )
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -52,7 +58,7 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + host + type, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: host }, { name: `Message`, value: gwmsg })
+                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -64,7 +70,10 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + type, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: msg.author }, { name: `Message`, value: gwmsg })
+                    .addFields(
+                        { name: `Donated By`, value: `${msg.author}` },
+                        { name: `Message`, value: `${gwmsg}` }
+                    )
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -73,7 +82,7 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + host + type, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: host }, { name: `Message`, value: gwmsg })
+                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -85,7 +94,10 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + type, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: msg.author }, { name: `Message`, value: gwmsg })
+                    .addFields(
+                        { name: `Donated By`, value: `${msg.author}` },
+                        { name: `Message`, value: `${gwmsg}` }
+                    )
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
@@ -94,7 +106,7 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + " " + host + type, " ");
                 const desc = new Discord.MessageEmbed()
                     .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
-                    .addFields({ name: `Donated By`, value: host }, { name: `Message`, value: gwmsg })
+                    .addFields({ name: `Donated By`, value: `${host}` }, { name: `Message`, value: `${gwmsg}` })
                     .setTimestamp()
                     .setColor(msg.member.displayHexColor);
                 msg.delete().then
