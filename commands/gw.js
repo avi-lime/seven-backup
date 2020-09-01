@@ -20,7 +20,7 @@ module.exports = {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(msg.mentions.users.first.displayAvatarURL({ dynamic: true }))
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
                         .setColor(host.displayHexColor)
                         .addFields({ name: 'Donated by', value: host }, { name: 'Message', value: gwmsg });
                     msg.delete().then
@@ -30,7 +30,7 @@ module.exports = {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(msg.mentions.users.first.displayAvatarURL({ dynamic: true }))
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
                         .setColor(host.displayHexColor)
                         .addFields({ name: 'Donated by', value: host });
                     msg.delete().then
