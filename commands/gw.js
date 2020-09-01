@@ -15,7 +15,7 @@ module.exports = {
 
         if (!bot.includes(type) || !type) {
             if (host) {
-                const gwmsg = msg.content.replace(prefix + commandName + ' ' + host, '');
+                const gwmsg = msg.content.replace(prefix + commandName + ' ' + args[0], '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
