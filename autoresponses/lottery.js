@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-';
+var playerList = [];
+var lotteryB = false;
 client.on('ready', () => {
     console.log(`lottery up`);
 });
@@ -12,7 +14,7 @@ client.on('message', message => {
     const lc = ['688396273723637807'];
 
     if (message.author.bot) return;
-    if (message.content.match(/^\!pay (\<\@\!?(454307252392951819)\>|\<\@\!?(629768073414574110)\>) (100k|100000)/gi)) {
+    if (message.content.match(/^\!pay (\<\@\!?(454307252392951819)\>|\<\@\!?(629768073414574110)\>) (100k|100000)/gi) || message.content.match(/^pls (give|share) (\<\@\!?(454307252392951819)\>|\<\@\!?(629768073414574110)\>) (10000|10k|1e4|10e3|100e2|1000e1|10000e0)/gi)) {
         if (!lotteryB) return;
         else {
             if (!lc.includes(message.channel.id)) return;
@@ -26,13 +28,13 @@ client.on('message', message => {
                         .setTitle(`Entered!`)
                         .setDescription(`Congratulations ${message.author}, you've successfully entered the lottery\n  ➵ please be patient till the lottery ends.`)
                         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-                        .setColor("ORANGE")
+                        .setColor(message.member.displayHexColor)
                         .setTimestamp();
                     const logjoin = new Discord.MessageEmbed()
                         .setTitle(message.author.tag)
                         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                         .setTimestamp()
-                        .setColor("ORANGE")
+                        .setColor(message.member.displayHexColor)
                         .setDescription(`${message.author} has entered the lottery.`);
                     playerList.push(message.author);
                     logchan.send(logjoin);
@@ -45,32 +47,31 @@ client.on('message', message => {
         if (!message.content.startsWith(prefix)) return;
         const subCommands = ['start', 'end', 'show'];
         if (!lc.includes(message.channel.id)) return;
-        if (!sub.includes(subCommands) && !subCommands) {
+        if (!sub.includes(subCommands) || !subCommands) {
             const help = new Discord.MessageEmbed()
                 .setTitle(`Lottery!`)
-                .setDescription(`sub-commands: \`start\`,\`show\`,\`end\`\n  \n\`start\`\n  - usage: \`${prefix}lottery start <prize>\`\n  \n\`end\`\n  -usage: \`${prefix}lottery ennd\` in the lottery channel\n  - it also locks the channel for everyone.\n  \n\`show\`\n  - shows the list of people in the lottery\n  - usage \`${prefix}lottery show\``)
+                .setDescription(`sub-commands: \`start\`,\`show\`,\`end\`\n  \n\`start\`\n  - usage: \`${prefix}lottery start\`\n  \n\`end\`\n  -usage: \`${prefix}lottery ennd\` in the lottery channel\n  - it also locks the channel for everyone.\n  \n\`show\`\n  - shows the list of people in the lottery\n  - usage \`${prefix}lottery show\``)
                 .setColor('#aab5ee');
             message.channel.send(help);
         }
         if (sub === 'start') {
             if (!message.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.', '催し主事 — event manager'].includes(r.name))) return;
             if (!lc.includes(message.channel.id)) return;
-            const p = args[1];
-            if (!p) return message.channel.send(`The correct usage is \`${prefix}lottery start <prize>\``);
             const logchan = message.guild.channels.cache.get('688108643966779420');
-            const prize = message.content.replace(prefix + commandName + " " + sub, '');
+            const dprize = playerList.length * 10000;
+            const pprize = playerList.length * 100000;
             const logstart = new Discord.MessageEmbed()
                 .setTitle(`Started!`)
-                .setDescription(`${message.author} started the lottery!\n  ➵ prize: ${prize}`)
+                .setDescription(`${message.author} started the lottery!`)
                 .setTimestamp()
                 .setFooter(`Good Luck!`)
-                .setColor('ORANGE')
+                .setColor(message.member.displayHexColor)
                 .setThumbnail(message.author.displayAvatarURL());
             const started = new Discord.MessageEmbed()
                 .setTitle(`Lottery Started!`)
-                .setDescription(`The lottery has been started!\n  ➵ prize: ${prize}\n  ➵ Ticket price: 100k verse gold\n  ➵ To participate, pay the amount to <@629768073414574110>`)
+                .setDescription(`The lottery has been started!\n  ➵ Ticket price: 10k dmc / 100k pokeverse gold\n  ➵ To participate, pay the amount to <@629768073414574110>`)
                 .setTimestamp()
-                .setColor("ORANGE")
+                .setColor(message.member.displayHexColor)
                 .setThumbnail(message.guild.iconURL({ dynamic: true }));
 
             lotteryB = true;
@@ -84,26 +85,27 @@ client.on('message', message => {
             if (!lc.includes(message.channel.id)) return;
             lotteryB = false;
             if (playerList.length >= 1) {
+                const prize = playerList.length * 10000;
                 const logchan = message.guild.channels.cache.get('688108643966779420');
                 const winner = playerList[Math.floor(Math.random() * playerList.length)];
                 const logend = new Discord.MessageEmbed()
                     .setTitle(`Ended!`)
                     .setDescription(`${message.author} ended the lottery!\n  ➵ winner: ${winner}`)
                     .setTimestamp()
-                    .setColor("ORANGE")
+                    .setColor(winner.member.displayHexColor)
                     .setFooter(`Good Luck!`)
-                    .setThumbnail(message.author.displayAvatarURL());
+                    .setThumbnail(winner.displayAvatarURL());
                 const ended = new Discord.MessageEmbed()
                     .setTitle(`Lottery Ended!`)
-                    .setDescription(`:confetti_ball: | ${winner} won the lottery!\n  ➵ For those who didn't win, better luck next time!`)
+                    .setDescription(`:confetti_ball: | ${winner} won the lottery!\n  ➵ They won ${prize}dmc\n  ➵ For those who didn't win, better luck next time!`)
                     .setTimestamp()
-                    .setColor('ORANGE')
+                    .setColor(winner.member.displayHexColor)
                     .setThumbnail(message.guild.iconURL({ dynamic: true }));
                 const winsend = new Discord.MessageEmbed()
                     .setTitle(`:tada: CONGRATULATIONS :tada:`)
-                    .setDescription(`Congratulations! you won the lottery in **your eyes tell :sparkles:**!\n  ➵ Thanks for joining, hope you liked it :heart:`)
+                    .setDescription(`Congratulations! you won the lottery in **your eyes tell :sparkles:**!\n  ➵ You won **${prize}dmc**!\n  ➵ Thanks for joining, hope you liked it :heart:`)
                     .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                    .setColor("ORANGE")
+                    .setColor(winner.member.displayHexColor)
                     .setFooter(`Make sure to join the upcoming lotteries too!`);
                 winner.send(winsend);
                 message.channel.send(ended);
@@ -119,7 +121,7 @@ client.on('message', message => {
                 .setDescription(playerList)
                 .setTitle(`Lottery Participants`)
                 .setColor("ORANGE")
-                .setFooter(`good luck!`);
+                .setFooter(`total prize money: ${playerList.length * 10000}dmc`);
             message.channel.send(show);
         }
     }
