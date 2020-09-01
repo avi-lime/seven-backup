@@ -13,7 +13,7 @@ module.exports = {
         const allowed = ['629768073414574110', '454307252392951819'];
         if (!allowed.includes(message.author.id)) return;
         const host = message.mentions.members.first();
-        const amt = arg[0];
+        const amt = args[0];
 
         if (!host) return message.channel.send(`mention the host of the heist`);
         if (!amt || isNaN(amt)) return message.channel.send(`What's the amount of the heist`);
