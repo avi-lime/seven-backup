@@ -18,42 +18,46 @@ module.exports = {
                 const gwmsg = msg.content.replace(prefix + commandName + ' ' + host, '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
-                        .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
+                        .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(host.displayAvatarURL({ dynamic: true }))
+                        .setThumbnail(msg.mentions.users.first.displayAvatarURL({ dynamic: true }))
                         .setColor(host.displayHexColor)
                         .addFields({ name: 'Donated by', value: host }, { name: 'Message', value: gwmsg });
                     msg.delete().then
+                    msg.channel.send('<@&688428862672994307>');
                     msg.channel.send(desc);
                 } else {
                     const desc = new Discord.MessageEmbed()
-                        .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
+                        .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(host.displayAvatarURL({ dynamic: true }))
+                        .setThumbnail(msg.mentions.users.first.displayAvatarURL({ dynamic: true }))
                         .setColor(host.displayHexColor)
                         .addFields({ name: 'Donated by', value: host });
                     msg.delete().then
+                    msg.channel.send('<@&688428862672994307>');
                     msg.channel.send(desc);
                 }
             } else {
                 const gwmsg = msg.content.replace(prefix + commandName, '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
-                        .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
+                        .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
                         .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
                         .setColor(msg.member.displayHexColor)
                         .addFields({ name: 'Donated by', value: msg.author }, { name: 'Message', value: gwmsg });
                     msg.delete().then
+                    msg.channel.send('<@&688428862672994307>');
                     msg.channel.send(desc);
                 } else {
                     const desc = new Discord.MessageEmbed()
-                        .setTitle(`:sevengiveaway:  GIVEAWAY  :sevengiveaway:`)
+                        .setTitle(`<a:sevengiveaway:750301687591338054>  GIVEAWAY  <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
                         .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
                         .setColor(msg.member.displayHexColor)
                         .addFields({ name: 'Donated by', value: msg.author });
                     msg.delete().then
+                    msg.channel.send('<@&688428862672994307>');
                     msg.channel.send(desc);
                 }
             }
