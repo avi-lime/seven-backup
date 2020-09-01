@@ -5,9 +5,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-client.ars = new Discord.Collection()
-const arfiles = fs.readdirSync('./autoresponses').filter(arfile => arfile.endsWith('.js'));
-
 const prefix = "-";
 var playerList = [];
 var lotteryB = false;
@@ -19,11 +16,9 @@ for (const file of commandFiles) {
     // with the key as the command name and the value as the exported module
     client.commands.set(command.name, command);
 }
-for (const arfile of arfiles) {
-    const ar = require(`./autoresponses/${arfile}`);
 
-    client.ars.set(ar.name, ar);
-}
+helloar = require('./autoresponses/hello');
+
 client.on('ready', () => {
     client.user.setPresence({
         status: 'dnd',
@@ -43,7 +38,7 @@ client.on('message', message => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
-    client.ars.get('hello').execute(message, args);
+
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command)
         return;
