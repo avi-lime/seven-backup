@@ -22,7 +22,7 @@ for (const file of commandFiles) {
 for (const arfile of arfiles) {
     const ar = require(`./autoresponses/${arfile}`);
 
-    client.ars.set(ar.name, ar).execute(message, args);
+    client.ars.set(ar.name, ar);
 }
 client.on('ready', () => {
     client.user.setPresence({
@@ -37,6 +37,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+    client.ars.execute(message, args);
     if (!message.content.startsWith(prefix) || message.author.bot)
         return; // this is for all that, just start with if statements
 
