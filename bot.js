@@ -107,7 +107,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const sub = args[0];
-    const lc = ['688108643966779420', '688668135754432604', '688109298852692055'];
+    const lc = ['688396273723637807'];
 
     if (message.author.bot) return;
     if (message.content.match(/^\!pay (\<\@\!?(454307252392951819)\>|\<\@\!?(629768073414574110)\>) (100k|100000)/gi)) {
