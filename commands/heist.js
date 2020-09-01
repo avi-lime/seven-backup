@@ -12,7 +12,7 @@ module.exports = {
         if (!heistchan.includes(message.channel.id)) return;
         const allowed = ['629768073414574110', '454307252392951819'];
         if (!allowed.includes(message.author.id)) return;
-        const host = message.mentions.members.first();
+        const host = args[1];
         const amt = args[0];
 
         if (!host) return message.channel.send(`mention the host of the heist`);
@@ -20,9 +20,9 @@ module.exports = {
 
         const heistmsg = new Discord.MessageEmbed()
             .setTitle('<:sevenheist:750333392104718367>  :: HEIST TIME! × <:sevenheist:750333392104718367>')
-            .setColor(host.displayHexColor)
+            .setColor(message.mentions.members.first().displayHexColor)
             .setThumbnail(message.mentions.users.first().displayAvatarURL({ dynamic: true }))
-            .addFields({ name: '× Amount', value: amt }, { name: '× Donator', value: host }, { name: '\u200b', value: `> Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
+            .addFields({ name: '× Amount', value: amt }, { name: '× Donator', value: message.mentions.members.first() }, { name: '\u200b', value: `> Keep 2000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
             .setFooter(`Good Luck!`);
         message.delete().then
         message.channel.send({ content: '<@&688428979153272860>', embed: heistmsg });

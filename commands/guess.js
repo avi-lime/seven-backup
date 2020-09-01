@@ -22,6 +22,7 @@ module.exports = {
             const answer = Math.floor(Math.random() * range);
             var ans = new RegExp("^" + answer + "$", "g")
             const filter = a => a.content.match(ans);
+            const over = a => a.content > range;
             const startmsg = new Discord.MessageEmbed()
                 .setTitle(`GAME STARTED`)
                 .setDescription(`Guess the number between **0 to ${range}** in **${time} minutes**\n  ➵ First to guess the number wins**${prize}**`)
@@ -40,7 +41,8 @@ module.exports = {
             message.guild.channels.cache.get('688108643966779420').send(foradmin).then
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
             message.channel.send(startmsg).then(() => {
-                message.channel.awaitMessages(filter, { max: 1, time: endtime, errors: ['time'] })
+                message.channel.awaitMessages(filter, { max: 1, time: endtime, errors: ['time', 'range'] })
+                if (over) message.reply(`the range is between 0 to ${range}`)
                     .then(collected => {
                         const winner = new Discord.MessageEmbed()
                             .setTitle(':tada: CONGRATULATIONS :tada:')
@@ -76,7 +78,7 @@ module.exports = {
                 .setColor('#aab5ee')
                 .setTitle('✧ GUESS THE NUMBER ✧')
                 .setDescription(`➵ Command usage:\n> \`guess start <range> <time> <prize>\`\n   - \`<range>\`  to fix the range from 0, for the random number\n   - \`<time>\`  sets the time limit for the game, **in minutes**\n   - \`<prize>\`  to set the prize for the winner\n\n ➵ The command won't work if any of the fields are missing.\n ➵ The game will end once either someone guesses the number or the time runs out.\n ➵ The channel will be locked once the game end, you're immune to this if you're starting the game.`)
-                .setFooter(`⇀ contact 𝐨𝐜𝐭𝐨𝐛𝐞𝐫#7777 or 𝐯𝐢𝐯𝐢#3952, if you have any other questions.`)
+                .setFooter(`⇀ contact 𝗽𝗹𝘂𝘁𝗼#1822 or 𝗰𝗵𝗼𝗰𝗼𝗹𝗮𝘁𝗲#3952, if you have any other questions.`)
                 .setThumbnail(message.guild.iconURL({ dynamic: true }));
             message.channel.send(help);
         }
