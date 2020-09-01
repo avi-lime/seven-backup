@@ -43,7 +43,7 @@ module.exports = {
                 message.channel.awaitMessages(filter, { max: 1, time: endtime, errors: ['time'] })
                     .then(collected => {
                         const winner = new Discord.MessageEmbed()
-                            .setTitle(':tada: CONGRATULATIONS :tada:')
+                            .setTitle('<a:sevengiveaway:750301687591338054> CONGRATULATIONS <a:sevengiveaway:750301687591338054>')
                             .setDescription(`${collected.first().author} guessed the correct number!\n  ➵ The number was **${answer}**\n  ➵ You won**${prize}**`)
                             .setFooter(`thanks for playing`)
                             .setColor(collected.first().member.displayHexColor)
