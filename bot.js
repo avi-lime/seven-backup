@@ -2,10 +2,11 @@ require('dotenv').config();
 
 const fs = require('fs');
 const Discord = require('discord.js');
-const { setUncaughtExceptionCaptureCallback } = require('process');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+client.ars = new Discord.Collection()
+const arfiles = fs.readdirSync('./autoresponses').filter(arfile => file.endsWith('.js'));
 
 const prefix = "-";
 var playerList = [];
@@ -18,7 +19,11 @@ for (const file of commandFiles) {
     // with the key as the command name and the value as the exported module
     client.commands.set(command.name, command);
 }
+for (const arfile of arfiles) {
+    const ar = require(`./autoresponses/${arfile}`);
 
+    client.ars.set(ar.name, ar).execute(message, args);
+}
 client.on('ready', () => {
     client.user.setPresence({
         status: 'dnd',
@@ -32,13 +37,6 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content.toLowerCase() === "hello") {
-        if (message.author.bot)
-            return;
-        else
-            message.channel.send("안녕하세요!");
-    }
-
     if (!message.content.startsWith(prefix) || message.author.bot)
         return; // this is for all that, just start with if statements
 
