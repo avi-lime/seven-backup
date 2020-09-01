@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['bank'],
     description: 'pings heist ping and sponsor + amount',
     execute(message) {
-        const args = msg.content.slice(prefix.length).trim().split(/ +/);
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const heistchan = ['743202342714998857', '688109298852692055'];
         if (!heistchan.includes(message.channel.id)) return;
