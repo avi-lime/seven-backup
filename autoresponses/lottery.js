@@ -73,19 +73,12 @@ client.on('message', message => {
         }
         if (sub === 'show') {
             prize = 100 + lotteryrole.members.size * 10;
-            if (lotteryrole.members.size <= 10) {
-                const show = new Discord.MessageEmbed()
-                    .setTitle(`Lottery Stats`)
-                    .setColor(message.member.displayHexColor)
-                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members.get() }, { name: `Prize`, value: `${prize}k` });
-                message.channel.send(show);
-            } else {
-                const show = new Discord.MessageEmbed()
-                    .setTitle(`Lottery Stats`)
-                    .setColor(message.member.displayHexColor)
-                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: `${lotteryrole.members.size} participants` }, { name: `Prize`, value: `${prize}k` });
-                message.channel.send(show);
-            }
+            const show = new Discord.MessageEmbed()
+                .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
+                .setTitle(`Lottery Stats`)
+                .setColor(message.member.displayHexColor)
+                .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.size} participants` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
+            message.channel.send(show);
         }
     }
 })
