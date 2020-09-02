@@ -25,7 +25,7 @@ client.on('message', message => {
             prize = 100 + lotteryrole.members.size * 10;
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
-                .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize}k**\n  × I've added the lottery role to you, winner will be announced soon`)
+                .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize + 10}k**\n  × I've added the lottery role to you, winner will be announced soon`)
                 .setColor(message.member.displayHexColor)
                 .setFooter(`Good Luck`, message.guild.iconURL({ dynamic: true }));
             message.channel.send(joined);
@@ -65,7 +65,7 @@ client.on('message', message => {
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             if (!status) return message.channel.send(`No giveaway running`);
             const winner = lotteryrole.members.random();
-            message.channel.send(winner).then
+            message.channel.send(winner.toString()).then
             lotteryrole.members.forEach(member => {
                 member.roles.remove(lotteryrole);
             });
