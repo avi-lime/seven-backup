@@ -98,6 +98,11 @@ client.on('message', message => {
     // lottery command 
 
     lottery = require('./autoresponses/lottery');
+
+    // Powerbar
+    powerbar = require('./autoresponses/powerbar');
+
+
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const sub = args[0];
