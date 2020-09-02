@@ -65,13 +65,13 @@ client.on('message', message => {
         if (sub === 'end') {
 
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
-            if (!status) return message.channel.send(`No ongoing lottery to end`);
+            if (!status) return message.channel.send(`There\'s no ongoing lottery to end`);
             prize = 100 + lotteryrole.members.size * 10;
             const winner = lotteryrole.members.random();
             const winmsg = new Discord.MessageEmbed()
                 .setTitle(`:: WINNER! ×`)
                 .setDescription(`The Lottery has ended and we have a winner!`)
-                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: `> you can collect your prize from`, value: `<@${hostid}>` })
+                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: `> you can claim your prize from`, value: `<@${hostid}>` })
                 .setFooter(`For those who didn't win, better luck next time.`)             
                 .setTimestamp()
                 .setColor(winner.displayHexColor);
