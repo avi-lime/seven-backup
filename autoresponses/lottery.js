@@ -11,7 +11,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const sub = args[0];
-    const lc = ['688396273723637807'];
+    const lc = ['688396273723637807', '688109298852692055'];
 
     if (message.author.bot) return;
     if (message.content.match(/^You gave (𝗰𝗵𝗼𝗰𝗼𝗹𝗮𝘁𝗲|𝗽𝗹𝘂𝘁𝗼) \*\*10,000\*\* coins/g) && message.author.id === '270904126974590976') {
