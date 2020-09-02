@@ -85,7 +85,7 @@ client.on('message', message => {
                 .setDescription(`Lottery has been ended by ${message.author.tag}`)
                 .setColor(message.member.displayHexColor)
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }));
-            message.channel.send(winmsg).then
+            message.channel.send({ content: "<@&750657899847614476>", embed: winmsg }).then
             logchan.send(logend).then
             winner.send(windm).then
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then
