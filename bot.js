@@ -22,7 +22,7 @@ client.on('ready', () => {
     client.user.setPresence({
         status: 'dnd',
         activity: {
-            name: 'new mini-games',
+            name: 'added lottery command! we\'ll be hosting one tomorrow! keep 10k ready ;)',
             type: "PLAYING",
             url: 'http://twitch.tv/seven'
         }
