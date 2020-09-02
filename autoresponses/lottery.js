@@ -77,7 +77,7 @@ client.on('message', message => {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
                     .setColor(message.member.displayHexColor)
-                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members.get }, { name: `Prize`, value: `${prize}k` });
+                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members.get().split("\n") }, { name: `Prize`, value: `${prize}k` });
                 message.channel.send(show);
             } else {
                 const show = new Discord.MessageEmbed()
