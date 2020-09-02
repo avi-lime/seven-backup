@@ -5,7 +5,7 @@ var status = false;
 var hostid;
 
 // dank currency system 
-var prize = 100;
+var prize;
 
 client.on('ready', () => {
     console.log(`lottery up and running`);
@@ -14,6 +14,7 @@ client.on('ready', () => {
 client.on('message', message => {
     const lotteryChan = ['688109298852692055', '688396273723637807'];
     const lotteryrole = message.guild.roles.cache.get('750657899847614476');
+    prize = 100 + (lotteryrole.members.size * 10);
     const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k)", "gi");
     if (message.content.match(regex)) {
         if (!lotteryChan.includes(message.channel.id) || !status) return;
@@ -22,7 +23,7 @@ client.on('message', message => {
         } else {
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
-                .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × I've added the lottery role to you, winner will be announced soon`)
+                .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize}k**\n  × I've added the lottery role to you, winner will be announced soon`)
                 .setColor(message.member.displayHexColor)
                 .setFooter(`Good Luck`, message.guild.iconURL({ dynamic: true }));
             message.member.roles.add(lotteryrole).then
@@ -69,7 +70,7 @@ client.on('message', message => {
             status = false;
         }
         if (sub === 'show') {
-            prize = prize + (lotteryrole.members.size * 10);
+
             if (lotteryrole.members.size <= 10) {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
