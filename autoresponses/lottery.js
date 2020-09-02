@@ -16,7 +16,7 @@ client.on('message', message => {
     const lotteryrole = message.guild.roles.cache.get('750657899847614476');
     const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k)", "gi");
     if (message.content.match(regex)) {
-        if (!lotteryrole.includes(message.channel.id) || !status) return;
+        if (!lotteryChan.includes(message.channel.id) || !status) return;
         if (message.member.roles.cache.get('750657899847614476')) {
             return message.channel.send(`you've already participated in the lottery!`);
         } else {
