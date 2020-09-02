@@ -15,11 +15,13 @@ client.on('message', message => {
     const commandName = args.shift().toLowerCase();
     const sub = args[0];
     const lotteryChan = ['688109298852692055', '688396273723637807'];
-    const logchan = client.guilds.cache.get('739554666752376984').channel.cache.get('750663554901737503');
+
     if (commandName === 'lottery') {
         if (sub === 'start') {
+            const logchan = client.guilds.cache.get('739554666752376984').channel.cache.get('750663554901737503');
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             hostid = message.author.id;
+            status = true;
             const started = new Discord.MessageEmbed()
                 .setTitle(`<:seventickets:750410697233662052> :: LOTTERY × <:seventickets:750410697233662052>`)
                 .setDescription(`the lottery has been started!`)
