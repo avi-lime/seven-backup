@@ -12,8 +12,8 @@ client.on('ready', () => {
 
 client.on('message', message => {
     const lotteryChan = ['688109298852692055', '688396273723637807'];
-    let lotteryrole = message.guild.roles.cache.get('750657899847614476'),
-        lotterylist = Array.from(lotteryrole.members.keys());
+    var lotteryrole = message.guild.roles.cache.get('750657899847614476');
+    var lotterylist = Array.from(lotteryrole.members.keys());
 
     const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k)", "gi");
     if (message.content.match(regex)) {
