@@ -56,16 +56,40 @@ client.on('message', message => {
             message.channel.send(started);
             const logstart = new Discord.MessageEmbed()
                 .setTitle(`Lottery Started!`)
-                .setDescription(`Lottery started in ${message.channel} by ${message.author} (${message.author.username})`)
+                .setDescription(`Lottery started in ${message.channel} by ${message.author} (${message.author.tag})`)
                 .setColor(message.member.displayHexColor)
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }));
-            logchan.send(logstart)
+            logchan.send(logstart);
+            message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
         }
         if (sub === 'end') {
+
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             if (!status) return message.channel.send(`No giveaway running`);
+            prize = 100 + lotteryrole.members.size * 10;
             const winner = lotteryrole.members.random();
-            message.channel.send(winner.toString()).then
+            const winmsg = new Discord.MessageEmbed()
+                .setTitle(`:: WINNER! ×`)
+                .setDescription(`The Lottery has ended and we have a winner!`)
+                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: '\u200b', value: `> you can collect your prize from <@${hostid}>` })
+                .setFooter(`For those who didn't win, better luck next time.`)
+                .setTimestamp()
+                .setColor(winner.displayHexColor);
+            const windm = new Discord.MessageEmbed()
+                .setTitle(`CONGRATULATIONS`)
+                .setDescription(`> You won the lottery in **${message.guild.name}**`)
+                .addFields({ name: 'prize', value: `**${prize}k**` }, { name: '\u200b', value: `you can collect your prize from <@${hostid}>` })
+                .setColor(winner.displayHexColor)
+                .setThumbnail(message.guild.iconURL({ dynamic: true }));
+            const logend = new Discord.MessageEmbed()
+                .setTitle(`Lottery Ended`)
+                .setDescription(`Lottery has been ended by ${message.author.tag}`)
+                .setColor(message.member.displayHexColor)
+                .setThumbnail(message.author.displayAvatarURL({ dynamic: true }));
+            message.channel.send(winmsg).then
+            logchan.send(logend).then
+            winner.send(windm).then
+            message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then
             lotteryrole.members.forEach(member => {
                 member.roles.remove(lotteryrole);
             });
@@ -73,6 +97,7 @@ client.on('message', message => {
             status = false;
         }
         if (sub === 'show') {
+            if (!status) return message.channel.send(`There is no lottery running`);
             prize = 100 + lotteryrole.members.size * 10;
             if (lotteryrole.members.size < 1) {
                 const show = new Discord.MessageEmbed()
