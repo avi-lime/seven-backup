@@ -12,7 +12,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     const lotteryChan = ['688109298852692055', '688396273723637807'];
-    const lotteryrole = message.guild.roles.cache.get('750657899847614476');
+    let lotteryrole = message.guild.roles.cache.get('750657899847614476');
 
     const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k)", "gi");
     if (message.content.match(regex)) {
@@ -20,7 +20,7 @@ client.on('message', message => {
         if (message.member.roles.cache.get('750657899847614476')) {
             return message.channel.send(`you've already participated in the lottery!`);
         } else {
-            prize = Math.floor[100 + lotteryrole.members.size * 10]
+            prize = Math.floor[100 + `${lotteryrole.members.size}` * 10];
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
                 .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize}k**\n  × I've added the lottery role to you, winner will be announced soon`)
@@ -72,7 +72,7 @@ client.on('message', message => {
             status = false;
         }
         if (sub === 'show') {
-            prize = Math.floor[100 + lotteryrole.members.size * 10];
+            prize = Math.floor[100 + `${lotteryrole.members.size}` * 10];
             if (lotteryrole.members.size <= 10) {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
