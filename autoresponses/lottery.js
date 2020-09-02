@@ -71,14 +71,13 @@ client.on('message', message => {
             const winmsg = new Discord.MessageEmbed()
                 .setTitle(`:: WINNER! ×`)
                 .setDescription(`The Lottery has ended and we have a winner!`)
-                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: '\u200b', value: `> you can collect your prize from <@${hostid}>` })
-                .setFooter(`For those who didn't win, better luck next time.`)
+                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: `> you can collect your prize from <@${hostid}>`, value: `For those who didn't win, better luck next time.` })
                 .setTimestamp()
                 .setColor(winner.displayHexColor);
             const windm = new Discord.MessageEmbed()
                 .setTitle(`CONGRATULATIONS`)
                 .setDescription(`> You won the lottery in **${message.guild.name}**`)
-                .addFields({ name: 'prize', value: `**${prize}k**` }, { name: '\u200b', value: `you can collect your prize from <@${hostid}>` })
+                .addFields({ name: 'prize', value: `**${prize}k**` }, { name: `you can claim your prize from <@${hostid}>`, value: `thanks for joining, stay tuned for more lotteries and fun events!` })
                 .setColor(winner.displayHexColor)
                 .setThumbnail(message.guild.iconURL({ dynamic: true }));
             const logend = new Discord.MessageEmbed()
@@ -96,7 +95,7 @@ client.on('message', message => {
             prize = 100;
             status = false;
         }
-        if (sub === 'show') {
+        if (sub === 'stats') {
             if (!status) return message.channel.send(`There is no lottery running`);
             prize = 100 + lotteryrole.members.size * 10;
             if (lotteryrole.members.size < 1) {
@@ -122,6 +121,19 @@ client.on('message', message => {
                         .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.map(m => m.user.tag).join("\n")}` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
                     message.channel.send(show);
                 }
+        }
+        if (sub === 'show') {
+            if (!status) return message.channel.send(`There is no lottery running`);
+            if (lotteryrole.members.size = 0) {
+                message.channel.send(`No one has joined the lottery yet`)
+            } else {
+                const participants = new Discord.MessageEmbed()
+                    .setTitle(`Participants List`)
+                    .setDescription(lotteryrole.members.map(m => m.user.tag).join("\n"))
+                    .setColor(message.member.displayHexColor)
+                    .setFooter(`Total Participants: ${lotteryrole.members.size}`);
+                message.channel.send(participants);
+            }
         }
     }
 })
