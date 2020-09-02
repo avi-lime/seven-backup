@@ -72,12 +72,12 @@ client.on('message', message => {
             status = false;
         }
         if (sub === 'show') {
-            prize = 100 + lotteryrole.size * 10;
+            prize = 100 + lotteryrole.members.size * 10;
             if (lotteryrole.members.size <= 10) {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
                     .setColor(message.member.displayHexColor)
-                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members }, { name: `Prize`, value: `${prize}k` });
+                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members.split("\n") }, { name: `Prize`, value: `${prize}k` });
                 message.channel.send(show);
             } else {
                 const show = new Discord.MessageEmbed()
