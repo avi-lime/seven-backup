@@ -20,13 +20,13 @@ client.on('message', message => {
         if (message.member.roles.cache.get('750657899847614476')) {
             return message.channel.send(`you've already participated in the lottery!`);
         } else {
+            message.member.roles.add(lotteryrole).then
             prize = 100 + lotteryrole.size * 10;
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
                 .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize}k**\n  × I've added the lottery role to you, winner will be announced soon`)
                 .setColor(message.member.displayHexColor)
                 .setFooter(`Good Luck`, message.guild.iconURL({ dynamic: true }));
-            message.member.roles.add(lotteryrole).then
             message.channel.send(joined);
 
         }
@@ -75,9 +75,9 @@ client.on('message', message => {
             prize = 100 + lotteryrole.members.size * 10;
             const show = new Discord.MessageEmbed()
                 .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
-                .setTitle(`Lottery Stats`)
+                .setTitle(`:: Lottery Stats ×`)
                 .setColor(message.member.displayHexColor)
-                .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.size} participants` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
+                .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>`, inline: true }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.size} participants`, inline: true }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k`, inline: true });
             message.channel.send(show);
         }
     }
