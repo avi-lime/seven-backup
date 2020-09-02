@@ -13,7 +13,7 @@ client.on('ready', () => {
 client.on('message', message => {
     const lotteryChan = ['688109298852692055', '688396273723637807'];
     var lotteryrole = message.guild.roles.cache.get('750657899847614476');
-    var lotterylist = Array.from(lotteryrole.members);
+
 
     const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k)", "gi");
     if (message.content.match(regex)) {
@@ -64,7 +64,7 @@ client.on('message', message => {
         if (sub === 'end') {
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             if (!status) return message.channel.send(`No giveaway running`);
-            const winner = lotterylist[Math.floor(Math.random() * lotterylist.length)];
+            const winner = lotteryrole.members.random().user;
             message.channel.send(winner).then
             lotteryrole.members.forEach(member => {
                 member.roles.remove(lotteryrole);
@@ -86,7 +86,7 @@ client.on('message', message => {
                     .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
                     .setTitle(`:: Lottery Stats ×`)
                     .setColor(message.member.displayHexColor)
-                    .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>`, inline: true }, { name: `<:seventickets:750410697233662052> Participants`, value: lotterylist, inline: true }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
+                    .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>`, inline: true }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.map(m => m.user.tag).join("\n")}`, inline: true }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
                 message.channel.send(show);
             }
         }
