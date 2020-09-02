@@ -71,14 +71,16 @@ client.on('message', message => {
             const winmsg = new Discord.MessageEmbed()
                 .setTitle(`:: WINNER! ×`)
                 .setDescription(`The Lottery has ended and we have a winner!`)
-                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: `> you can collect your prize from <@${hostid}>`, value: `For those who didn't win, better luck next time.` })
+                .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: `> you can collect your prize from`, value: `<@${hostid}>` })
+                .setFooter(`For those who didn't win, better luck next time.`)             
                 .setTimestamp()
                 .setColor(winner.displayHexColor);
             const windm = new Discord.MessageEmbed()
                 .setTitle(`CONGRATULATIONS`)
                 .setDescription(`> You won the lottery in **${message.guild.name}**`)
-                .addFields({ name: 'prize', value: `**${prize}k**` }, { name: `you can claim your prize from <@${hostid}>`, value: `thanks for joining, stay tuned for more lotteries and fun events!` })
+                .addFields({ name: 'prize', value: `**${prize}k**` }, { name: `you can claim your prize from the lottery host`, value: `host: <@${hostid}>` })
                 .setColor(winner.displayHexColor)
+                .setFooter(`Thanks for joining, stay tuned for more lotteries and fun events!`)
                 .setThumbnail(message.guild.iconURL({ dynamic: true }));
             const logend = new Discord.MessageEmbed()
                 .setTitle(`Lottery Ended`)
