@@ -4,8 +4,7 @@ const prefix = '-';
 var status = false;
 var hostid;
 
-// dank currency system 
-var prize;
+
 
 client.on('ready', () => {
     console.log(`lottery up and running`);
@@ -21,7 +20,7 @@ client.on('message', message => {
         if (message.member.roles.cache.get('750657899847614476')) {
             return message.channel.send(`you've already participated in the lottery!`);
         } else {
-            prize = 100 + (lotteryrole.members.size * 10);
+            var prize = 100 + lotteryrole.members.size * 10;
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
                 .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize}k**\n  × I've added the lottery role to you, winner will be announced soon`)
@@ -73,7 +72,7 @@ client.on('message', message => {
             status = false;
         }
         if (sub === 'show') {
-            prize = 100 + (lotteryrole.members.size * 10);
+            prize = 100 + lotteryrole.members.size * 10;
             if (lotteryrole.members.size <= 10) {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
