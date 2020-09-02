@@ -39,7 +39,7 @@ client.on('message', message => {
     const logchan = client.guilds.cache.get('739554666752376984').channels.cache.get('750663554901737503');
     if (commandName === 'lottery') {
         if (sub === 'start') {
-
+            if (status) return message.channel.send(`Lottery already running`);
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             hostid = message.author.id;
             status = true;
@@ -61,27 +61,26 @@ client.on('message', message => {
         }
         if (sub === 'end') {
             const winner = lotteryrole.members.random();
-            message.channel.send(winner);
-            status = false;
-            message.guild.members.forEach(member => {
-                if (!member.roles.cache.has(lotteryrole)) return;
+            message.channel.send(winner).then
+            lotteryrole.members.forEach(member => {
                 member.roles.remove(lotteryrole);
             });
             prize = 100;
-
+            status = false;
         }
         if (sub === 'show') {
-            if (!lotteryrole.members.size > 10) {
+            prize = prize + (lotteryrole.members.size * 10);
+            if (lotteryrole.members.size <= 10) {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
                     .setColor(message.member.displayHexColor)
-                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members.map().split("\n") }, { name: `Prize`, value: `${prize + (lotteryrole.size * 10)}k` });
+                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: lotteryrole.members.map().split("\n") }, { name: `Prize`, value: `${prize}k` });
                 message.channel.send(show);
             } else {
                 const show = new Discord.MessageEmbed()
                     .setTitle(`Lottery Stats`)
                     .setColor(message.member.displayHexColor)
-                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: `${lotteryrole.members.size} participants` }, { name: `Prize`, value: `${prize + (lotteryrole.size * 10)}k` });
+                    .addFields({ name: 'Host', value: `<@${hostid}>` }, { name: `Participants`, value: `${lotteryrole.members.size} participants` }, { name: `Prize`, value: `${prize}k` });
                 message.channel.send(show);
             }
         }
