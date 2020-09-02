@@ -61,6 +61,8 @@ client.on('message', message => {
             logchan.send(logstart)
         }
         if (sub === 'end') {
+            if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
+            if (!status) return message.channel.send(`No giveaway running`);
             const winner = lotteryrole.members.random();
             message.channel.send(winner).then
             lotteryrole.members.forEach(member => {
