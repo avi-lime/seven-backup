@@ -22,7 +22,7 @@ client.on('message', message => {
             return message.channel.send(`you've already participated in the lottery!`);
         } else {
             message.member.roles.add(lotteryrole).then
-            prize = 100 + lotteryrole.size * 10;
+            prize = 100 + lotteryrole.members.size * 10;
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
                 .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize}k**\n  × I've added the lottery role to you, winner will be announced soon`)
@@ -64,7 +64,7 @@ client.on('message', message => {
         if (sub === 'end') {
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             if (!status) return message.channel.send(`No giveaway running`);
-            const winner = lotteryrole.members.random().user;
+            const winner = lotteryrole.members.random();
             message.channel.send(winner).then
             lotteryrole.members.forEach(member => {
                 member.roles.remove(lotteryrole);
@@ -74,21 +74,29 @@ client.on('message', message => {
         }
         if (sub === 'show') {
             prize = 100 + lotteryrole.members.size * 10;
-            if (lotteryrole.members.size > 10) {
+            if (lotteryrole.members.size < 1) {
                 const show = new Discord.MessageEmbed()
                     .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
                     .setTitle(`:: Lottery Stats ×`)
                     .setColor(message.member.displayHexColor)
-                    .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>`, inline: true }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.size} participants`, inline: true }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k`, inline: true });
-                message.channel.send(show);
-            } else {
-                const show = new Discord.MessageEmbed()
-                    .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
-                    .setTitle(`:: Lottery Stats ×`)
-                    .setColor(message.member.displayHexColor)
-                    .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>`, inline: true }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.map(m => m.user.tag).join("\n")}`, inline: true }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
-                message.channel.send(show);
-            }
+                    .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `0 participants` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
+                return message.channel.send(show);
+            } else
+                if (lotteryrole.members.size > 10) {
+                    const show = new Discord.MessageEmbed()
+                        .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
+                        .setTitle(`:: Lottery Stats ×`)
+                        .setColor(message.member.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.size} participants` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
+                    message.channel.send(show);
+                } else {
+                    const show = new Discord.MessageEmbed()
+                        .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
+                        .setTitle(`:: Lottery Stats ×`)
+                        .setColor(message.member.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.map(m => m.user.tag).join("\n")}` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
+                    message.channel.send(show);
+                }
         }
     }
 })
