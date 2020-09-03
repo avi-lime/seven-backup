@@ -63,6 +63,8 @@ client.on('message', message => {
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
         }
         if (sub === 'on') {
+            if (status) return message.channel.send(`lottery already running`);
+            hostid = message.author.id;
             status = true;
         }
         if (sub === 'end') {
