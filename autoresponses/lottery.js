@@ -12,7 +12,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     const lotteryChan = ['688109298852692055', '688396273723637807'];
-    var lotteryrole = message.guild.roles.cache.get('750657899847614476');
+    var lotteryrole = client.guilds.cache.get('688102135363141652').roles.cache.get('750657899847614476');
 
 
     const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k)", "gi");
@@ -95,10 +95,13 @@ client.on('message', message => {
             message.channel.send({ content: "<@&750657899847614476>", embed: winmsg }).then
             logchan.send(logend).then
             winner.send(windm).then
-            message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then
-            lotteryrole.members.forEach(member => {
-                member.roles.remove(lotteryrole);
-            });
+            message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false }).then(() =>
+                setTimeout(() => {
+                    lotteryrole.members.forEach(member => {
+                        member.roles.remove(lotteryrole);
+                    });
+                }, 5000)
+            );
             prize = 100;
             status = false;
         }
