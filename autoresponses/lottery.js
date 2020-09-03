@@ -62,6 +62,9 @@ client.on('message', message => {
             logchan.send(logstart);
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
         }
+        if (sub === 'on') {
+            status = true;
+        }
         if (sub === 'end') {
 
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
@@ -72,7 +75,7 @@ client.on('message', message => {
                 .setTitle(`:: WINNER! ×`)
                 .setDescription(`The Lottery has ended and we have a winner!`)
                 .addFields({ name: `<a:sevenrich:750415401694920727> winner`, value: winner.toString() }, { name: `<a:sevenmoney:750415278973648947> prize`, value: `**${prize}k**` }, { name: `> you can claim your prize from`, value: `<@${hostid}>` })
-                .setFooter(`For those who didn't win, better luck next time.`)             
+                .setFooter(`For those who didn't win, better luck next time.`)
                 .setTimestamp()
                 .setColor(winner.displayHexColor);
             const windm = new Discord.MessageEmbed()
