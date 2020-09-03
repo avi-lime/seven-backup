@@ -71,6 +71,7 @@ client.on('message', message => {
 
             if (!lotteryChan.includes(message.channel.id) || !message.member.roles.cache.has('735069864636710923')) return;
             if (!status) return message.channel.send(`There\'s no ongoing lottery to end`);
+            if (message.author.id !== hostid) return message.channel.send(`only the lottery host can end the lottery\nhost: <@${hostid}>`);
             prize = 100 + lotteryrole.members.size * 10;
             const winner = lotteryrole.members.random();
             const winmsg = new Discord.MessageEmbed()
@@ -108,29 +109,13 @@ client.on('message', message => {
         if (sub === 'stats') {
             if (!status) return message.channel.send(`There is no lottery running`);
             prize = 100 + lotteryrole.members.size * 10;
-            if (lotteryrole.members.size < 1) {
-                const show = new Discord.MessageEmbed()
-                    .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
-                    .setTitle(`:: Lottery Stats ×`)
-                    .setColor(message.member.displayHexColor)
-                    .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `0 participants` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
-                return message.channel.send(show);
-            } else
-                if (lotteryrole.members.size > 10) {
-                    const show = new Discord.MessageEmbed()
-                        .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
-                        .setTitle(`:: Lottery Stats ×`)
-                        .setColor(message.member.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.size} participants` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
-                    message.channel.send(show);
-                } else {
-                    const show = new Discord.MessageEmbed()
-                        .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
-                        .setTitle(`:: Lottery Stats ×`)
-                        .setColor(message.member.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: `${lotteryrole.members.map(m => m.user.tag).join("\n")}` }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `${prize}k` });
-                    message.channel.send(show);
-                }
+            const show = new Discord.MessageEmbed()
+                .setThumbnail(message.channel.guild.iconURL({ dynamic: true }))
+                .setTitle(`:: Lottery Stats ×`)
+                .setColor(message.member.displayHexColor)
+                .addFields({ name: '<a:sevenrich:750415401694920727> Host', value: `<@${hostid}>` }, { name: `<:seventickets:750410697233662052> Participants`, value: lotteryrole.members.size }, { name: `<a:sevenmoney:750415278973648947> Prize`, value: `**${prize}k**` });
+            message.channel.send(show);
+
         }
         if (sub === 'show') {
             if (!status) return message.channel.send(`There is no lottery running`);
