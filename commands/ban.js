@@ -29,7 +29,11 @@ module.exports = {
                     .setDescription(`You've been banned from **${message.guild.name}**`)
                     .setTimestamp()
                     .setColor("RED");
-                banMember.send(r).then
+                try {
+                    banMember.send(r);
+                } catch (error) {
+                    message.channel.send(`could'nt send reason to user`);
+                };
                 banMember.ban({ days: NumberOfDays });
                 message.channel.send(`<:jirachi_ban:737976093398663169> **${banMember.displayName}** has been banned by **${message.author}**`);
                 return;
@@ -40,7 +44,11 @@ module.exports = {
                     .setDescription(`You've been banned from **${message.guild.name}**\n**Reason**: ${reasonForBan}`)
                     .setTimestamp()
                     .setColor("RED");
-                banMember.send(r).then
+                try {
+                    banMember.send(r);
+                } catch (error) {
+                    message.channel.send(`could'nt send reason to user`);
+                };
                 banMember.ban({ days: NumberOfDays, reason: reasonForBan });
                 message.channel.send(`<:jirachi_ban:737976093398663169> **${banMember.displayName}** has been banned by **${message.author}**`);
                 return;
@@ -54,7 +62,11 @@ module.exports = {
                     .setDescription(`You've been banned from **${message.guild.name}****`)
                     .setTimestamp()
                     .setColor("RED");
-                banMember.send(r).then
+                try {
+                    banMember.send(r);
+                } catch (error) {
+                    message.channel.send(`could'nt send reason to user`);
+                };
                 banMember.ban({ days: 3 });
                 message.channel.send(`<:jirachi_ban:737976093398663169> **${banMember.displayName}** has been banned by **${message.author}**`);
                 return;
@@ -65,7 +77,11 @@ module.exports = {
                     .setDescription(`You've been banned from **${message.guild.name}**\n**Reason**: ${reasonForBan}`)
                     .setTimestamp()
                     .setColor("RED");
-                banMember.send(r).then
+                try {
+                    banMember.send(r);
+                } catch (error) {
+                    message.channel.send(`could'nt send reason to user`);
+                };
                 banMember.ban({ days: 3, reason: reasonForBan });
                 message.channel.send(`<:jirachi_ban:737976093398663169> **${banMember.displayName}** has been banned by **${message.author}**`);
                 return;
