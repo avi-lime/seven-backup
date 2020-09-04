@@ -28,7 +28,7 @@ client.on('message', message => {
                 message.delete;
                 message.channel.send(`message sent to ${toSend.displayName}`);
             } catch (error) {
-                return message.channel.send(`can't send a dm to this user`);
+                if (error === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
             };
         } else if (message.mentions.users.size === 0) {
             const userid = args[0].toString();
@@ -39,7 +39,7 @@ client.on('message', message => {
                     message.delete;
                     message.channel.send(`message sent to ${user.displayName}`);
                 } catch (error) {
-                    return message.channel.send(`can't send a dm to this user`);
+                    if (error === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
                 };
 
             } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
@@ -55,7 +55,7 @@ client.on('message', message => {
                 message.delete;
                 message.channel.send(`message sent to ${toSend.displayName}`);
             } catch (error) {
-                return message.channel.send(`can't send a dm to this user`);
+                if (error === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
             };
 
         } else if (message.mentions.users.size === 0) {
@@ -67,7 +67,7 @@ client.on('message', message => {
                     message.delete;
                     message.channel.send(`message sent to ${user.displayName}`);
                 } catch (error) {
-                    return message.channel.send(`can't send a dm to this user`);
+                    if (error === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
                 };
 
             } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
