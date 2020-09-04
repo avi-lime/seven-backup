@@ -26,7 +26,6 @@ client.on('message', message => {
             toSend.send(message.content.replace(prefix + commandName + ' ' + args[0], '')).catch(e => {
                 if (e === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
             });
-            message.delete();
             message.channel.send(`message sent to ${toSend.displayName}`);
 
         } else if (message.mentions.users.size === 0) {
@@ -36,7 +35,6 @@ client.on('message', message => {
                 user.send(message.content.replace(prefix + commandName + ' ' + args[0], '')).catch(e => {
                     if (e === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
                 });
-                message.delete();
                 message.channel.send(`message sent to ${user.displayName}`);
             } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
         }
@@ -49,7 +47,6 @@ client.on('message', message => {
             toSend.send(`${message.author.tag}: ${message.content.replace(prefix + commandName + ' ' + args[0], '')}`).catch(e => {
                 if (e === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
             });
-            message.delete;
             message.channel.send(`message sent to ${toSend.displayName}`);
         } else if (message.mentions.users.size === 0) {
             const userid = args[0].toString();
@@ -58,7 +55,6 @@ client.on('message', message => {
                 user.send(`${message.author.tag}: ${message.content.replace(prefix + commandName + ' ' + args[0], '')}`).catch(e => {
                     if (e === Discord.DiscordAPIError) return message.channel.send(`can't send a dm to this user`);
                 });;
-                message.delete;
                 message.channel.send(`message sent to ${user.displayName}`);
 
             } else return message.channel.send(`No user found, either mention a proper user or use their ID`);
