@@ -15,7 +15,7 @@ client.on('message', message => {
     var lotteryrole = client.guilds.cache.get('688102135363141652').roles.cache.get('750657899847614476');
 
 
-    const regex = new RegExp("^pls (give|share) \<\@!?" + hostid + "\> (1e4|10e3|100e2|1000e1|10000e0|10k|10000)", "gi");
+    const regex = new RegExp("^pls (give|share) ?(1e4|10e3|100e2|1000e1|10000e0|10k|10000) \<\@!?" + hostid + "\> ?(1e4|10e3|100e2|1000e1|10000e0|10k|10000)", "gi");
     if (message.content.match(regex)) {
         if (!lotteryChan.includes(message.channel.id) || !status) return;
         if (message.member.roles.cache.get('750657899847614476')) {
