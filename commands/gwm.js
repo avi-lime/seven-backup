@@ -43,7 +43,7 @@ module.exports = {
             }).then
             user.send(guide);
         } else if (sub === 'guide') {
-            if (args[1] === 'all') {
+            if (args[2] === 'all') {
                 const gwmrole = client.guilds.cache.get('688102135363141652').roles.cache.get('688386729807577284');
                 const guide = new Discord.MessageEmbed()
                     .setTitle(`Giveaway guide for ${msg.guild.name}`)
