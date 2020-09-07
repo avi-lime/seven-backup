@@ -29,7 +29,8 @@ module.exports = {
                 .setColor(message.member.displayHexColor);
             message.delete().then
             message.channel.send(format);
-        } else if (cooldown) {
+        }
+        if (cooldown) {
             const remaining = Duration(cooldown - Date.now(), { units: ['m', 's'], round: true });
             return msg.channel.send(`You just used this command \nYou need to wait **${remaining}** before using it again.`).catch((err) => msg.reply(`${err}`));
         }
@@ -42,6 +43,8 @@ module.exports = {
                 .setFooter(`wait patiently for a giveaway manager to reply!`);
             message.delete().then
             message.channel.send({ content: `<@&688386729807577284>`, embed: donate });
+            lastUsed.set(message.author.id, Date.now() + 1000 * 60 * 10);
+            setTimeout(() => { lastUsed.delete(message.author.id) }, 1000 * 60 * 10);
         }
 
     }
