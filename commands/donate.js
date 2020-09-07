@@ -1,7 +1,8 @@
 const prefix = '-';
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const gwmrole = client.guilds.cache.get('688102135363141652').roles.cache.get('688386729807577284');
+const lastUsed = new Map();
+const Duration = require('humanize-duration');
+
 module.exports = {
     name: 'donate',
     description: 'pings giveaway managers when someone wants to donate',
@@ -10,13 +11,14 @@ module.exports = {
         // -donate 100k 1m 1w none message
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
-
+        const cooldown = lastUsed.get(message.author.id);
         const prize = args[0];
         const time = args[1];
         const winners = args[2];
         const req = args[3];
         const msg = message.content.replace(prefix + commandName + ' ' + args[0] + ' ' + args[1] + ' ' + args[2] + ' ' + args[3], '');
 
+        if (message.channel.id !== '738458175187058698') return;
         if (!prize || !time || !winners || !req || !msg || args[0] === 'help') {
             const format = new Discord.MessageEmbed()
                 .setTitle(`Donate Command`)
@@ -26,10 +28,14 @@ module.exports = {
                 .setColor(message.member.displayHexColor);
             message.delete().then
             message.channel.send(format);
-        } else {
+        } else if (cooldown) {
+            const remaining = Duration(cooldown - Date.now(), { units: ['m', 's'], round: true });
+            return msg.channel.send(`You just used this command \nYou need to wait **${remaining}** before using it again.`).catch((err) => msg.reply(`${err}`));
+        }
+        else {
             const donate = new Discord.MessageEmbed()
                 .setTitle(`Thanks for the donation`)
-                .addFields({ name: 'Prize', value: prize }, { name: 'Time', value: time }, { name: 'Winners' }, { name: "Requirement", value: req }, { name: "Message", value: msg })
+                .addFields({ name: 'Prize', value: prize }, { name: 'Time', value: time }, { name: 'Winners', value: winners }, { name: "Requirement", value: req }, { name: "Message", value: msg })
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                 .setColor(message.member.displayHexColor)
                 .setFooter(`wait patiently for a giveaway manager to reply!`);
