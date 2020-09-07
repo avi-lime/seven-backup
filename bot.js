@@ -62,7 +62,7 @@ powerbar = require('./autoresponses/powerbar');
 // DM channel
 dm = require('./autoresponses/dm');
 
-
+heist = require('./autoresponses/heist');
 
 /*client.on('guildMemberAdd', member =>  {
   
