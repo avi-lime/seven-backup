@@ -66,6 +66,7 @@ client.on('message', message => {
             if (status) return message.channel.send(`lottery already running`);
             hostid = message.author.id;
             status = true;
+            message.react('688423930490257511');
         }
         if (sub === 'end') {
 
