@@ -19,7 +19,7 @@ client.on('message', message => {
         message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
         const ended = new Discord.MessageEmbed()
             .setTitle(`Time up!`)
-            .setDescription(`Time's up to join the heist!`)
+            .setDescription(`Time's up to join the heist!\n - I've locked the channel!`)
             .setColor('RED');
         message.channel.send(ended);
     }
@@ -29,7 +29,9 @@ client.on('message', message => {
             .setDescription(`<a:sevenmoney:750415278973648947> **Lots of giveaways**, **Daily heists** and **pepec** giveaway after heist, so stay for those!\n<:sevenban:739558172611838105> **freeloaders will be banned**\n ⋅ check out <#737298442434379867> & <#688396273723637807>\n ⋅ get roles in <#688438603965268105>`)
             .setFooter(`Thanks for joining, have a lovely day~`)
             .setColor('ORANGE');
-        message.channel.send(stay);
+        setTimeout(() => {
+            message.channel.send(stay);
+        }, 1500);
     }
 
 });
