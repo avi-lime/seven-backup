@@ -10,7 +10,7 @@ module.exports = {
         const sub = args[1];
         const subCommands = ['fix', 'guide'];
         if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
-        if (!user) {
+        if (!user && !subCommands.includes(sub)) {
             return msg.channel.send('mention someone to appoint as giveaway manager');
         }
         if (sub === 'fix') {
