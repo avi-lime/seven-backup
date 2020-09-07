@@ -11,12 +11,13 @@ module.exports = {
         // -donate 100k 1m 1w none message
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
+        const fields = message.content.slice(prefix.length + commandName.length).trim().split(/,+/);
         const cooldown = lastUsed.get(message.author.id);
-        const prize = args[0];
-        const time = args[1];
-        const winners = args[2];
-        const req = args[3];
-        const msg = message.content.replace(prefix + commandName + ' ' + args[0] + ' ' + args[1] + ' ' + args[2] + ' ' + args[3], '');
+        const prize = fields[0];
+        const time = fields[1];
+        const winners = fields[2];
+        const req = fields[3];
+        const msg = fields[4];
 
         if (message.channel.id !== '738458175187058698') return;
         if (!prize || !time || !winners || !req || !msg || args[0] === 'help') {
