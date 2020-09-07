@@ -24,7 +24,7 @@ module.exports = {
             const format = new Discord.MessageEmbed()
                 .setTitle(`Donate Command`)
                 .setDescription(`Use the \`-donate\` command to donate for giveaways and ping giveaway managers\n - There's a 10 minute cooldown on the command to avoid abuse and spam`)
-                .addFields({ name: 'Format', value: `\`-donate <prize> <time> <winners> <requirements> <message>\`` }, { name: 'Example', value: `\`-donate 100k 1min 1 none thank me or reroll ._.\`` })
+                .addFields({ name: 'Format', value: `\`-donate <prize>, <time>, <winners>, <requirements>, <message>\`` }, { name: 'Example', value: `\`-donate 2 pepes, 1 min, 1, none, thank me or reroll ._.\`` })
                 .setFooter(`ping an onlive giveaway manager if u need any help.`)
                 .setColor(message.member.displayHexColor);
             message.delete().then
