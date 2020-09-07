@@ -1,7 +1,5 @@
 const prefix = '-';
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const gwmrole = client.guilds.cache.get('688102135363141652').roles.cache.get('688386729807577284');
 module.exports = {
     name: 'donate',
     description: 'pings giveaway managers when someone wants to donate',
