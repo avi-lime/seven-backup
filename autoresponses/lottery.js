@@ -94,6 +94,12 @@ client.on('message', message => {
                 .setDescription(`Lottery has been ended by ${message.author.tag}`)
                 .setColor(message.member.displayHexColor)
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }));
+            const winlog = new Discord.MessageEmbed()
+                .setTitle(`:: WINNER! ×`)
+                .setDescription(`The lotteyr winner is ${winner.toString}`)
+                .setColor(winner.displayHexColor)
+                .setFooter(`Congrats!`)
+            client.guilds.cache.get('688102135363141652').channels.cache.get('752909824811073619').send(winlog).then
             message.channel.send({ content: "<@&750657899847614476>", embed: winmsg }).then
             logchan.send(logend).then
             winner.send(windm).then

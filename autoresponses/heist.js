@@ -26,7 +26,7 @@ client.on('message', message => {
     if (message.content.match(/^Amazing job everybody, we racked up a total of/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
         const stay = new Discord.MessageEmbed()
             .setTitle(`Good Job everyone!`)
-            .setDescription(`<a:sevenmoney:750415278973648947> **Lots of giveaways**, **Daily heists** and **pepec** giveaway after heist, so stay for those!\n<:sevenban:739558172611838105> **freeloaders will be banned**\n ⋅ check out <#737298442434379867> & <#688396273723637807>\n ⋅ get roles in <#688438603965268105>`)
+            .setDescription(`<a:sevenmoney:750415278973648947> **Lots of giveaways**, **Daily heists** and **pepec** giveaway after heist, so stay for those!\n> **10 Million heist at 1000 members**\n ⋅ check out <#737298442434379867> & <#688396273723637807>\n ⋅ get roles in <#688438603965268105>`)
             .setFooter(`Thanks for joining, have a lovely day~`)
             .setColor('ORANGE');
         setTimeout(() => {

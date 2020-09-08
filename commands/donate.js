@@ -37,7 +37,7 @@ module.exports = {
             else {
                 const donate = new Discord.MessageEmbed()
                     .setTitle(`Thanks for the donation`)
-                    .addFields({ name: 'Prize', value: prize }, { name: 'Time', value: time }, { name: 'Winners', value: winners }, { name: "Requirement", value: req }, { name: "Message", value: msg })
+                    .addFields({ name: `Donator`, value: `${message.author} (${message.author.tag}) ` }, { name: 'Prize', value: prize }, { name: 'Time', value: time }, { name: 'Winners', value: winners }, { name: "Requirement", value: req }, { name: "Message", value: msg })
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                     .setColor(message.member.displayHexColor)
                     .setFooter(`wait patiently for a giveaway manager to reply!`);
