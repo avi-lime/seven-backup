@@ -28,7 +28,7 @@ module.exports = {
 
             const id = matches[1];
 
-            return client.members.cache.get(id);
+            return client.guilds.cache.get('688102135363141652').members.cache.get(id);
         }
         if (!bot.includes(args[0])) {
             const mentionedUser = getUserFromMention(args[0]);
@@ -54,7 +54,7 @@ module.exports = {
                     msg.delete().then
                     msg.channel.send({ content: '<@&688428862672994307>', embed: desc });
                 }
-            } else {
+            } else if (!mentionedUser || !args[0]) {
                 const gwmsg = msg.content.replace(prefix + commandName, '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
