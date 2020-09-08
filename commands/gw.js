@@ -1,60 +1,41 @@
 const Discord = require('discord.js')
 const prefix = '-';
-const client = new Discord.Client();
+
 module.exports = {
     name: 'gw',
     description: 'giveaway ping',
     execute(msg) {
         const args = msg.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
-        const gwchan = ['738643326772707408', '737298442434379867', '688108643966779420', '688109298852692055', '688109345187037402'];
+        const gwchan = ['738643326772707408', '737298442434379867', '688108643966779420', '688109298852692055'];
         if (!msg.member.roles.cache.has('690566791407206431') || !gwchan.includes(msg.channel.id)) return;
+        const type = args[0];
         const bot = ['verse', 'myuu', 'pokemon'];
-        function getUserFromMention(mention) {
-            const matches = mention.match(/^<@!?(\d+)>$/);
+        const host = msg.mentions.members.first();
 
-            if (!matches) return;
-
-            const id = matches[1];
-
-            return client.users.cache.get(id);
-        }
-        function getMemberFromMention(mention) {
-
-            const matches = mention.match(/^<@!?(\d+)>$/);
-
-            if (!matches) return;
-
-
-            const id = matches[1];
-
-            return client.guilds.cache.get('688102135363141652').members.cache.get(id);
-        }
-        if (!bot.includes(args[0])) {
-            const mentionedUser = getUserFromMention(args[0]);
-            const metnionedMember = getMemberFromMention(args[0]);
-            if (mentionedUser) {
+        if (!bot.includes(type) || !type) {
+            if (host) {
                 const gwmsg = msg.content.replace(prefix + commandName + ' ' + args[0], '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
                     msg.delete().then
                     msg.channel.send({ content: '<@&688428862672994307>', embed: desc });
                 } else {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host });
                     msg.delete().then
                     msg.channel.send({ content: '<@&688428862672994307>', embed: desc });
                 }
-            } else if (!mentionedUser || !args[0]) {
+            } else {
                 const gwmsg = msg.content.replace(prefix + commandName, '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
@@ -76,34 +57,29 @@ module.exports = {
                     msg.channel.send({ content: '<@&688428862672994307>', embed: desc });
                 }
             }
-        }
-
-        if (args[0] === 'verse') {
-            const mentionedUser = getUserFromMention(args[1]);
-            const metnionedMember = getMemberFromMention(args[1]);
-            if (mentionedUser) {
+        } else if (type === 'verse') {
+            if (host) {
                 const gwmsg = msg.content.replace(prefix + commandName + ' ' + args[0] + ' ' + args[1], '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
                     msg.delete().then
                     msg.channel.send({ content: '<@&736943085115670568>', embed: desc });
                 } else {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host });
                     msg.delete().then
                     msg.channel.send({ content: '<@&736943085115670568>', embed: desc });
                 }
-            }
-            else {
+            } else {
                 const gwmsg = msg.content.replace(prefix + commandName + ' ' + args[0], '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
@@ -125,29 +101,25 @@ module.exports = {
                     msg.channel.send({ content: '<@&736943085115670568>', embed: desc });
                 }
             }
-        }
-
-        if (args[0] === 'myuu') {
-            const mentionedUser = getUserFromMention(args[1]);
-            const metnionedMember = getMemberFromMention(args[1]);
-            if (mentionedUser) {
+        } else if (type === 'myuu') {
+            if (host) {
                 const gwmsg = msg.content.replace(prefix + commandName + ' ' + args[0] + ' ' + args[1], '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
                     msg.delete().then
                     msg.channel.send({ content: '<@&736943394353578067>', embed: desc });
                 } else {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host });
                     msg.delete().then
                     msg.channel.send({ content: '<@&736943394353578067>', embed: desc });
                 }
@@ -173,28 +145,25 @@ module.exports = {
                     msg.channel.send({ content: '<@&736943394353578067>', embed: desc });
                 }
             }
-        }
-        if (args[0] === 'pokemon') {
-            const mentionedUser = getUserFromMention(args[1]);
-            const metnionedMember = getMemberFromMention(args[1]);
-            if (mentionedUser) {
+        } else if (type === 'pokemon') {
+            if (host) {
                 const gwmsg = msg.content.replace(prefix + commandName + ' ' + args[0] + ' ' + args[1], '');
                 if (gwmsg) {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host }, { name: '<:sevenmessage:750647888958324747> Message', value: gwmsg });
                     msg.delete().then
                     msg.channel.send({ content: '<@&737619474773049384>', embed: desc });
                 } else {
                     const desc = new Discord.MessageEmbed()
                         .setTitle(`<a:sevengiveaway:750301687591338054> :: GIVEAWAY × <a:sevengiveaway:750301687591338054>`)
                         .setTimestamp()
-                        .setThumbnail(mentionedUser.displayAvatarURL({ dynamic: true }))
-                        .setColor(metnionedMember.displayHexColor)
-                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: mentionedUser });
+                        .setThumbnail(msg.mentions.users.first().displayAvatarURL({ dynamic: true }))
+                        .setColor(host.displayHexColor)
+                        .addFields({ name: '<a:sevenrich:750415401694920727> Donated by', value: host });
                     msg.delete().then
                     msg.channel.send({ content: '<@&737619474773049384>', embed: desc });
                 }
@@ -222,8 +191,8 @@ module.exports = {
             }
         }
     }
-}
 
+}
 // pokemon: <@&737619474773049384>
 // myuu: <@&736943394353578067>
 // pokeverse: <@&736943085115670568>
