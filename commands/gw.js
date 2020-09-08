@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const prefix = '-';
-
+const client = new Discord.Client();
 module.exports = {
     name: 'gw',
     description: 'giveaway ping',
@@ -30,7 +30,7 @@ module.exports = {
 
             return client.members.cache.get(id);
         }
-        if (args[0]) {
+        if (!bot.includes(args[0])) {
             const mentionedUser = getUserFromMention(args[0]);
             const metnionedMember = getMemberFromMention(args[0]);
             if (mentionedUser) {
