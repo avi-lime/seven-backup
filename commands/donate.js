@@ -19,7 +19,7 @@ module.exports = {
         const req = fields[3];
         const msg = fields[4];
 
-        if (message.channel.id !== '753278301254189156') return;
+        if (message.channel.id !== '738458175187058698') return;
         if (!prize || !time || !winners || !req || !msg || args[0] === 'help') {
             const format = new Discord.MessageEmbed()
                 .setTitle(`Donate Command`)
