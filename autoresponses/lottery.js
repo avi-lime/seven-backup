@@ -11,7 +11,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    const lotteryChan = ['688109298852692055', '688396273723637807'];
+    const lotteryChan = ['688109298852692055', '688396273723637807', '752909824811073619'];
     var lotteryrole = client.guilds.cache.get('688102135363141652').roles.cache.get('750657899847614476');
 
 
