@@ -22,8 +22,8 @@ client.on('ready', () => {
     client.user.setPresence({
         status: 'dnd',
         activity: {
-            name: 'lottery up and running, enjoy OwO',
-            type: "PLAYING",
+            name: 'application submissions',
+            type: "LISTENING",
             url: 'http://twitch.tv/seven'
         }
     })
