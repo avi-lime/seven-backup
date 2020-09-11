@@ -63,7 +63,7 @@ powerbar = require('./autoresponses/powerbar');
 dm = require('./autoresponses/dm');
 
 heist = require('./autoresponses/heist');
-
+application = require('./application/application');
 /*client.on('guildMemberAdd', member =>  {
   
   console.log('User' + member.user.username + 'has joined the server!')

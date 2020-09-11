@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 let questions = require('./questions'); // ok could be more complicated than i thought; let's only keep 1 set of questions for now ._. lol
-const prefix = '=';
+const prefix = '-';
 
 let usersApplicationStatus = [];
 
