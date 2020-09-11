@@ -3,7 +3,6 @@ const client = new Discord.Client();
 
 let questions = require('./questions'); // ok could be more complicated than i thought; let's only keep 1 set of questions for now ._. lol
 const prefix = '-';
-
 let usersApplicationStatus = [];
 
 const applicationFormCompleted = (data) => {
@@ -25,14 +24,15 @@ const applicationFormCompleted = (data) => {
 }
 
 const sendUserApplyForm = message => {
+    if (message.member.roles.cache.has('749662555395326045')) return message.channel.send(`you need to be atleast level 3 to apply for the role.`);
     if (message.channel.id !== '750005536107266138') return message.channel.send(`you can apply in <#750005536107266138>`);
     const user = usersApplicationStatus.find(user => user.id === message.author.id);
 
     if (!user) {
         message.react('688423930490257511');
-        message.author.send(`> Thank you for applying for Giveaway Manager in \`your eyes tell \\✨\`. I will ask you several questions, please make sure to answer all questions truthfully!\nApplication commands: \`\`\`${prefix}cancel, ${prefix}redo\`\`\``);
+        message.author.send(`> Thank you for applying for Giveaway Manager in \`your eyes tell ✨\`. I will ask you several questions, please make sure to answer all questions truthfully!\nApplication commands: \`\`\`${prefix}cancel, ${prefix}redo\`\`\``);
         message.author.send(questions[0]);
-        usersApplicationStatus.push({ id: message.author.id, currentStep: 0, answers: [], user: message.author });
+        usersApplicationStatus.push({ id: message.author.id, currentStep: 0, answers: [], user: message.author, status: true });
     } else {
         if (user.currentStep >= questions.length) {
             message.channel.send(`you've already applied, please wait for the staff to check your application!`);
@@ -88,7 +88,12 @@ client.on('message', message => {
                 const toBeDenied = usersApplicationStatus.find(user => user.id === parameters[0]);
                 if (toBeDenied) {
                     const reason = message.content.replace(prefix + command + " " + parameters[0], " ");
-                    client.users.cache.get(parameters[0]).send(`your application has been denied for the following reason:\n${reason}`);
+                    const reasonEmbed = new Discord.MessageEmbed()
+                        .setTitle(`Application Denied`)
+                        .addFields({ name: `your application has been denied for the following reason:`, value: reason })
+                        .setFooter(`sorry, but you can reapply in 24h`);
+                    client.users.cache.get(parameters[0]).send(reasonEmbed);
+                    message.channel.send(`application denied and reason sent to the user`);
                 }
             default:
                 return;
