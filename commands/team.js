@@ -11,12 +11,13 @@ module.exports = {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const subCommands = ['view', 'stats'];
+        var teamAngi = message.guild.roles.cache.get('735606747481374770');
+        var teamAvi = message.guild.roles.cache.get('735608688441557055');
 
         if (!args[0] || !subCommands.includes(args[0])) {
             return message.channel.send(`available commands are\n\`${prefix}team view\` and \`${prefix}team stats\``);
         } else if (args[0] === 'view') {
-            var teamAngi = client.guilds.cache.get('688102135363141652').roles.cache.get('735606747481374770');
-            var teamAvi = client.guilds.cache.get('688102135363141652').roles.cache.get('735608688441557055');
+
             const teams = ['avi', 'angi'];
             if (!args[1] || !teams.includes(args[1])) {
                 message.channel.send(`available teams to view are \`angi\` and \`avi\``);
@@ -36,8 +37,7 @@ module.exports = {
                 message.channel.send(angi)
             }
         } else if (args[0] === 'stats') {
-            var teamAngi = client.guilds.cache.get('688102135363141652').roles.cache.get('735606747481374770');
-            var teamAvi = client.guilds.cache.get('688102135363141652').roles.cache.get('735608688441557055');
+
             const teamStats = new Discord.MessageEmbed()
                 .setTitle(`Team Statistics`)
                 .addFields({ name: `Team Angi`, value: `Members: ${teamAngi.members.size}` }, { name: `Team Avi`, value: `Member: ${teamAvi.members.size}` })
