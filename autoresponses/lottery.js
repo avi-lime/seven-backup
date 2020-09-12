@@ -96,7 +96,7 @@ client.on('message', message => {
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }));
             const winlog = new Discord.MessageEmbed()
                 .setTitle(`:: WINNER! ×`)
-                .setDescription(`The lotteyr winner is ${winner.toString}`)
+                .setDescription(`The lotteyr winner is ${winner.toString()}`)
                 .setColor(winner.displayHexColor)
                 .setFooter(`Congrats!`)
             client.guilds.cache.get('688102135363141652').channels.cache.get('752909824811073619').send(winlog).then
