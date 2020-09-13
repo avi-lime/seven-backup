@@ -5,9 +5,9 @@ client.on('ready', () => {
     console.log('powerbar working');
 })
 client.on('message', message => {
-       if(message.content.match(/https\:\/\/discordapp.com\/channels\//)) {
-         if (message.author.bot) {
-             message.channel.send("✩̣̣̣┄•͙✧⃝•͙┄✩ͯ•͙͙✧⃝•͙͙✩ͯ┄•͙✧⃝•͙┄✩̣̣̣");
+    if (message.content.match(/https\:\/\/discord(app)?.com\/channels\//)) {
+        if (message.author.bot) {
+            message.channel.send("✩̣̣̣┄•͙✧⃝•͙┄✩ͯ•͙͙✧⃝•͙͙✩ͯ┄•͙✧⃝•͙┄✩̣̣̣");
         }
     }
 });
