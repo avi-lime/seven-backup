@@ -28,7 +28,7 @@ client.on('message', message => {
                 .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${prize + 10}k**\n  × I've added the lottery role to you, winner will be announced soon`)
                 .setColor(message.member.displayHexColor)
                 .setFooter(`Good Luck`, message.guild.iconURL({ dynamic: true }));
-            message.channel.send(joined);
+            message.reply(joined);
 
         }
     }
