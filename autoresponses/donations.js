@@ -49,7 +49,7 @@ Reflect.defineProperty(currency, 'getBalance', {
 });
 
 client.once('ready', async () => {
-    Users.sync({ force: true });
+    Users.sync();
     const storedBalances = await Users.findAll();
     storedBalances.forEach(b => currency.set(b.user_id, b));
     console.log(`donation tracking ready`);
