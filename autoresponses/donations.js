@@ -2,6 +2,7 @@ const prefix = '-';
 const Sequelize = require('sequelize');
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const currency = new Discord.Collection();
 
 const sequelize = new Sequelize('database', 'user', 'password', {
     host: 'localhost',
