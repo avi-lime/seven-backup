@@ -89,6 +89,7 @@ client.on('message', async message => {
                 if (!message.member.roles.cache.has('688386729807577284')) return;
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't change your own donations`);
+                if (donatedAmount > currency.getBalance(target.id)) return message.channel.send(`they don't even have that many donations ._.`);
                 currency.add(target.id, -donatedAmount).then
                 message.channel.send(`${donatedAmount.toLocaleString()} Donation removed from ${target.username}\n - Their current total donation is ${currency.getBalance(target.id).toLocaleString()}`);
             } else if (sub === 'view') {

@@ -10,8 +10,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 const Users = require('./donations/users')(sequelize, Sequelize.DataTypes);
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
-sequelize.sync({ force }).then(async () => {
-    Users.sync();
-    console.log(`Database Synced`);
-}).catch(console.error);
+Users.sync();
+console.log(`Database Synced`);
+
 
