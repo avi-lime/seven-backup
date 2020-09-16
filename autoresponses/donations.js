@@ -25,6 +25,9 @@ const Users = sequelize.define('users', {
     {
         timestamps: false,
     });
+client.on('ready', () => {
+    Users.sync({ force: true });
+});
 
 Reflect.defineProperty(currency, 'add', {
     /* eslint-disable-next-line func-name-matching */
@@ -48,9 +51,7 @@ Reflect.defineProperty(currency, 'getBalance', {
     },
 });
 
-client.on('ready', () => {
-    Users.sync({ force: true });
-})
+
 
 client.once('ready', async () => {
     const storedBalances = await Users.findAll();
