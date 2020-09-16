@@ -48,7 +48,7 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
         const sub = args[0];
         const target = message.mentions.users.first();
-        const donatedAmount = args[2];
+        const donatedAmount = parseInt(args[2]);
 
         if (command === 'donations' || command === 'dono') {
 
