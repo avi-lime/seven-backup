@@ -61,10 +61,10 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
         const sub = args[0];
         const target = message.mentions.users.first();
-        const donatedAmount = getVal(args[2]);
 
         if (command === 'donation' || command === 'dono' || command === 'donations') {
             if (sub === 'add') {
+                const donatedAmount = getVal(args[2]);
                 if (!message.member.roles.cache.has('688386729807577284')) return;
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't add donations to yourself ._.`);
@@ -86,6 +86,7 @@ client.on('message', async message => {
                 message.guild.channels.cache.get('750350291332759622').send(log);
 
             } else if (sub === 'remove') {
+                const donatedAmount = getVal(args[2]);
                 if (!message.member.roles.cache.has('688386729807577284')) return;
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't change your own donations`);
