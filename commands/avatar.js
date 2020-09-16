@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'avatar',
-    aliases: 'av',
+    aliases: ['av'],
     description: 'to see avatar',
     execute(msg) {
         if (!msg.mentions.users.size) {
