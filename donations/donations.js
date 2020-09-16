@@ -50,6 +50,7 @@ function getVal(val) {
 // }
 
 client.once('ready', async () => {
+    Users.sync();
     const storedBalances = await Users.findAll();
     storedBalances.forEach(b => currency.set(b.user_id, b));
     console.log(`donation tracking ready`);
