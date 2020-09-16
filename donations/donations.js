@@ -72,13 +72,13 @@ client.on('message', async message => {
                 const added = new Discord.MessageEmbed()
                     .setTitle(`Donation Added`)
                     .setDescription(`Donation successfully added to ${target}`)
-                    .addFields({ name: 'Amount Donated', value: donatedAmount }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id) })
+                    .addFields({ name: 'Amount Donated', value: donatedAmount.toLocaleString() }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id).toLocaleString() })
                     .setColor(message.mentions.members.first().displayHexColor)
                     .setThumbnail(target.displayAvatarURL({ dynamic: true }))
                     .setFooter(`Thanks for the donation`);
                 const log = new Discord.MessageEmbed()
                     .setTitle(`${target.username} donated`)
-                    .addFields({ name: 'Amount Donated', value: donatedAmount }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id) })
+                    .addFields({ name: 'Amount Donated', value: donatedAmount.toLocaleString() }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id).toLocaleString() })
                     .setColor(message.mentions.members.first().displayHexColor)
                     .setThumbnail(target.displayAvatarURL({ dynamic: true }))
                 message.channel.send(added);
@@ -90,12 +90,12 @@ client.on('message', async message => {
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't change your own donations`);
                 currency.add(target.id, -donatedAmount).then
-                message.channel.send(`Donation removed from ${target.username}\n - Their current total donation is ${currency.getBalance(target.id)}`);
+                message.channel.send(`${donatedAmount.toLocaleString()} Donation removed from ${target.username}\n - Their current total donation is ${currency.getBalance(target.id).toLocaleString()}`);
             } else if (sub === 'view') {
                 if (!target) {
                     const dono = new Discord.MessageEmbed()
                         .setTitle(`Your Total Donation`)
-                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(message.author.id)}`)
+                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(message.author.id).toLocaleString()}`)
                         .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                         .setFooter(`you can contact staff if you don't have your doantor roles!`)
                         .setColor(message.member.displayHexColor);
@@ -103,7 +103,7 @@ client.on('message', async message => {
                 } else {
                     const dono = new Discord.MessageEmbed()
                         .setTitle(`${target.username}'s Total Donation`)
-                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(target.id)}`)
+                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(target.id).toLocaleString()}`)
                         .setThumbnail(target.displayAvatarURL({ dynamic: true }))
                         .setFooter(`you can contact staff if you don't have your doantor roles!`)
                         .setColor(message.mentions.members.first().displayHexColor);
@@ -115,7 +115,7 @@ client.on('message', async message => {
                     .setDescription(currency.sort((a, b) => b.balance - a.balance)
                         .filter(user => client.users.cache.has(user.user_id))
                         .first(10)
-                        .map((user, position) => `(${position + 1}) ${(client.users.cache.get(user.user_id).tag)}: ${user.balance}`)
+                        .map((user, position) => `(${position + 1}) ${(client.users.cache.get(user.user_id).tag)}: **${user.balance.toLocaleString()}**`)
                         .join('\n')
                     )
                     .setColor(message.member.displayHexColor)
