@@ -34,7 +34,20 @@ Reflect.defineProperty(currency, 'getBalance', {
     },
 });
 
+function thousand(number) {
+    if (number.endsWith('k') || number.endsWith('K')) {
+        number = 1000 * parseInt(number.slice(0, -1));
+    } else {
+        number = parseInt(number);
+    }
+}
 
+// function donatorRole(donator) {
+//     const donatedAmount = currency.getBalance(donator.id);
+//     if (donatedAmount >= 250000) {
+//         donator.roles.add()
+//     }
+// }
 
 client.once('ready', async () => {
     const storedBalances = await Users.findAll();
@@ -48,33 +61,65 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
         const sub = args[0];
         const target = message.mentions.users.first();
-        const donatedAmount = parseInt(args[2]);
+        const donatedAmount = thousand(args[2]);
 
-        if (command === 'donations' || command === 'dono') {
-
+        if (command === 'donation' || command === 'dono' || command === 'donations') {
             if (sub === 'add') {
+                if (!message.member.roles.cache.has('688386729807577284')) return;
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't add donations to yourself ._.`);
-                currency.add(target.id, donatedAmount);
+                const added = new Discord.MessageEmbed()
+                    .setTitle(`Donation Added`)
+                    .setDescription(`Donation successfully added to ${target}`)
+                    .addFields({ name: 'Amount Donated', value: donatedAmount }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id) })
+                    .setColor(message.mentions.members.first().displayHexColor)
+                    .setThumbnail(target.displayAvatarURL({ dynamic: true }))
+                    .setFooter(`Thanks for the donation`);
+                const log = new Discord.MessageEmbed()
+                    .setTitle(`${target.username} donated`)
+                    .addFields({ name: 'Amount Donated', value: donatedAmount }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id) })
+                    .setColor(message.mentions.members.first().displayHexColor)
+                    .setThumbnail(target.displayAvatarURL({ dynamic: true }))
+
+                currency.add(target.id, donatedAmount).then
+                message.channel.send(added);
+                message.guild.channels.cache.get('750350291332759622').send(log);
+
             } else if (sub === 'remove') {
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't change your own donations`);
-                currency.add(target.id, -donatedAmount);
+                currency.add(target.id, -donatedAmount).then
+                message.channel.send(`Donation removed from ${target.username}\n - Their current total donation is ${currency.getBalance(target.id)}`);
             } else if (sub === 'view') {
                 if (!target) {
-                    message.channel.send(`your total donations, ${currency.getBalance(message.author.id)}`);
+                    const dono = new Discord.MessageEmbed()
+                        .setTitle(`Your Total Donation`)
+                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(message.author.id)}`)
+                        .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+                        .setFooter(`you can contact staff if you don't have your doantor roles!`)
+                        .setColor(message.member.displayHexColor);
+                    message.channel.send(dono);
                 } else {
-                    message.channel.send(`${target}'s total donations ${currency.getBalance(target.id)}`);
+                    const dono = new Discord.MessageEmbed()
+                        .setTitle(`${target.username}'s Total Donation`)
+                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(message.author.id)}`)
+                        .setThumbnail(target.displayAvatarURL({ dynamic: true }))
+                        .setFooter(`you can contact staff if you don't have your doantor roles!`)
+                        .setColor(message.mentions.members.first().displayHexColor);
+                    message.channel.send(dono);
                 }
             } else if (sub === 'lb' || sub === 'leaderboards') {
-                return message.channel.send(
-                    currency.sort((a, b) => b.balance - a.balance)
+                const lb = new Discord.MessageEmbed()
+                    .setTitle(`Donations Leaderboard`)
+                    .setDescription(currency.sort((a, b) => b.balance - a.balance)
                         .filter(user => client.users.cache.has(user.user_id))
                         .first(10)
-                        .map((user, position) => `(${position + 1}) ${(client.users.cache.get(user.user_id).tag)}: ${user.balance}💰`)
-                        .join('\n'),
-                    { code: true }
-                );
+                        .map((user, position) => `(${position + 1}) ${(client.users.cache.get(user.user_id).tag)}: ${user.balance}`)
+                        .join('\n')
+                    )
+                    .setColor(message.member.displayHexColor)
+                    .setThumbnail(message.guild.iconURL({ dynamic: true }));
+                return message.channel.send(lb);
             }
         }
     }
