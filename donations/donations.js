@@ -68,6 +68,7 @@ client.on('message', async message => {
                 if (!message.member.roles.cache.has('688386729807577284')) return;
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't add donations to yourself ._.`);
+                currency.add(target.id, donatedAmount).then
                 const added = new Discord.MessageEmbed()
                     .setTitle(`Donation Added`)
                     .setDescription(`Donation successfully added to ${target}`)
@@ -80,8 +81,6 @@ client.on('message', async message => {
                     .addFields({ name: 'Amount Donated', value: donatedAmount }, { name: `${target.username}'s Total Donation`, value: currency.getBalance(target.id) })
                     .setColor(message.mentions.members.first().displayHexColor)
                     .setThumbnail(target.displayAvatarURL({ dynamic: true }))
-
-                currency.add(target.id, donatedAmount).then
                 message.channel.send(added);
                 message.guild.channels.cache.get('750350291332759622').send(log);
 
@@ -104,7 +103,7 @@ client.on('message', async message => {
                 } else {
                     const dono = new Discord.MessageEmbed()
                         .setTitle(`${target.username}'s Total Donation`)
-                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(message.author.id)}`)
+                        .setDescription(`<a:sevenmoney:750415278973648947> ${currency.getBalance(target.id)}`)
                         .setThumbnail(target.displayAvatarURL({ dynamic: true }))
                         .setFooter(`you can contact staff if you don't have your doantor roles!`)
                         .setColor(message.mentions.members.first().displayHexColor);
