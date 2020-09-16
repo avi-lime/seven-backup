@@ -34,11 +34,11 @@ Reflect.defineProperty(currency, 'getBalance', {
     },
 });
 
-function thousand(number) {
+function Numerize(number) {
     if (number.endsWith('k') || number.endsWith('K')) {
-        number = 1000 * parseInt(number.slice(0, -1));
+        number.slice(0, -1) * 1000;
     } else {
-        number = parseInt(number);
+        parseInt(number);
     }
 }
 
@@ -61,7 +61,7 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
         const sub = args[0];
         const target = message.mentions.users.first();
-        const donatedAmount = thousand(args[2]);
+        const donatedAmount = Numerize(args[2]);
 
         if (command === 'donation' || command === 'dono' || command === 'donations') {
             if (sub === 'add') {
@@ -86,6 +86,7 @@ client.on('message', async message => {
                 message.guild.channels.cache.get('750350291332759622').send(log);
 
             } else if (sub === 'remove') {
+                if (!message.member.roles.cache.has('688386729807577284')) return;
                 if (!target) return message.reply(`mention a user to add donation amount to`);
                 if (target.id === message.author.id) return message.reply(`can't change your own donations`);
                 currency.add(target.id, -donatedAmount).then
