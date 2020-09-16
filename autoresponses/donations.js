@@ -11,24 +11,7 @@ const sequelize = new Sequelize('database', 'user', 'password', {
     storage: 'database.sqlite',
 });
 
-const Users = sequelize.define('users', {
-    user_id: {
-        type: Sequelize.STRING,
-        primaryKey: true,
-    },
-    balance: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-        allowNull: false,
-    },
-},
-    {
-        timestamps: false,
-    });
-client.on('ready', () => {
-    Users.sync({ force: true });
-});
-
+const Users = requrie('./models/users')(sequelize, Sequelize.DataTypes);
 Reflect.defineProperty(currency, 'add', {
     /* eslint-disable-next-line func-name-matching */
     value: async function add(id, amount) {
