@@ -48,6 +48,10 @@ Reflect.defineProperty(currency, 'getBalance', {
     },
 });
 
+client.on('ready', () => {
+    Users.sync({ force: true });
+})
+
 client.once('ready', async () => {
     const storedBalances = await Users.findAll();
     storedBalances.forEach(b => currency.set(b.user_id, b));
