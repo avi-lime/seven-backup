@@ -7,7 +7,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
     storage: 'database.sqlite',
 });
 
-const Users = require('./models/users')(sequelize, Sequelize.DataTypes);
+const Users = require('./donations/users')(sequelize, Sequelize.DataTypes);
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
 sequelize.sync({ force }).then(async () => {

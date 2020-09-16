@@ -11,7 +11,7 @@ const sequelize = new Sequelize('database', 'user', 'password', {
     storage: 'database.sqlite',
 });
 
-const Users = require('./models/users')(sequelize, Sequelize.DataTypes);
+const Users = require('./users')(sequelize, Sequelize.DataTypes);
 Reflect.defineProperty(currency, 'add', {
     /* eslint-disable-next-line func-name-matching */
     value: async function add(id, amount) {
