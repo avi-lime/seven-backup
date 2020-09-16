@@ -34,12 +34,12 @@ Reflect.defineProperty(currency, 'getBalance', {
     },
 });
 
-function Numerize(number) {
-    if (number.endsWith('k') || number.endsWith('K')) {
-        number.slice(0, -1) * 1000;
-    } else {
-        parseInt(number);
-    }
+function getVal(val) {
+    multiplier = val.substr(-1).toLowerCase();
+    if (multiplier == "k")
+        return parseFloat(val) * 1000;
+    else if (multiplier == "m")
+        return parseFloat(val) * 1000000;
 }
 
 // function donatorRole(donator) {
@@ -61,7 +61,7 @@ client.on('message', async message => {
         const command = args.shift().toLowerCase();
         const sub = args[0];
         const target = message.mentions.users.first();
-        const donatedAmount = Numerize(args[2]);
+        const donatedAmount = getVal(args[2]);
 
         if (command === 'donation' || command === 'dono' || command === 'donations') {
             if (sub === 'add') {
