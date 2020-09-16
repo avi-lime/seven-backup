@@ -44,15 +44,15 @@ client.once('ready', async () => {
 
 client.on('message', async message => {
     if (message.content.startsWith(prefix)) {
-        const input = message.content.slice(prefix.length).trim().split();
-        const command = input.shift();
-        const commandArgs = input.join(' ');
+        const args = message.content.slice(prefix.length).trim().split();
+        const command = args.shift().toLowerCase();
+
 
         if (command === 'donations' || command === 'dono') {
-            const splitArgs = commandArgs.split(' ');
-            const donatedAmount = splitArgs.join(' ');
+
+            const donatedAmount = args[2];
             const target = message.mentions.users.first();
-            const sub = splitArgs.shift();
+            const sub = args[0];
 
             if (sub === 'add') {
                 if (!target) return message.reply(`mention a user to add donation amount to`);
