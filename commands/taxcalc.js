@@ -14,6 +14,8 @@ module.exports = {
                 return parseFloat(val) * 1000;
             else if (multiplier == "m")
                 return parseFloat(val) * 1000000;
+            else if (!multiplier)
+                return;
         }
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -45,8 +47,8 @@ module.exports = {
         }
         const taxEmbed = new Discord.MessageEmbed()
             .setTitle(`Tax Calculator`)
-            .setDescription(`Tax Calculated for ${amount.toLocaleString}`)
-            .addFields({ name: `Amount to be Paid`, value: amtToBePaid.toLocaleString }, { name: `Tax Paid`, value: taxPaid.toLocaleString }, { name: `Tax`, value: `${tax}%` })
+            .setDescription(`Tax Calculated for ${amount.toLocaleString()}`)
+            .addFields({ name: `Amount to be Paid`, value: amtToBePaid.toLocaleString() }, { name: `Tax Paid`, value: taxPaid.toLocaleString() }, { name: `Tax`, value: `${tax}%` })
             .setFooter(`💖 made for the lovely members of your eyes tell ✨`, message.guild.iconURL({ dynamic: true }))
             .setColor(message.member.displayHexColor)
             .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }));
