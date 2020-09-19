@@ -40,40 +40,40 @@ module.exports = {
             amtToBePaid = Math.round(amount * 1.010101);
             if (amtToBePaid > 50000) {
                 tax = 3;
-                taxPaid = Math.round(amount * 0.030927);
-                finalAmt = Math.round(amount * 1.030927)
+                taxPaid = Math.round(amount * 0.0309278343);
+                finalAmt = Math.round(amount * 1.0309278343)
             } else {
                 tax = 1;
                 finalAmt = amtToBePaid;
                 taxPaid = Math.round(amount * 1.010101);
             }
         } else if (amount > 50000 && amount < 500001) {
-            amtToBePaid = Math.round(amount * 1.030927);
+            amtToBePaid = Math.round(amount * 1.0309278343);
             if (amtToBePaid > 500000) {
                 tax = 5;
-                taxPaid = Math.round(amount * 0.052625);
-                finalAmt = Math.round(amount * 1.052625);
+                taxPaid = Math.round(amount * 0.052631578125);
+                finalAmt = Math.round(amount * 1.052631578125);
             } else {
                 tax = 3;
                 finalAmt = amtToBePaid;
-                taxPaid = Math.round(amount * 0.030927);
+                taxPaid = Math.round(amount * 0.0309278343);
             }
         } else if (amount > 500000 && amount < 1000001) {
-            amtToBePaid = Math.round(amount * 1.052625);
+            amtToBePaid = Math.round(amount * 1.052631578125);
             if (amtToBePaid > 1000000) {
                 tax = 8;
-                finalAmt = Math.round(amount * 1.086912);
-                taxPaid = Math.round(amount * 0.086912);
+                finalAmt = Math.round(amount * 1.086956498944);
+                taxPaid = Math.round(amount * 0.086956498944);
             } else {
                 tax = 5;
                 finalAmt = amtToBePaid;
-                taxPaid = Math.round(amount * 0.052625);
+                taxPaid = Math.round(amount * 0.052631578125);
             }
         } else if (amount > 1000000) {
             tax = 8;
-            amtToBePaid = Math.round(amount * 1.086912);
+            amtToBePaid = Math.round(amount * 1.086956498944);
             finalAmt = amtToBePaid;
-            taxPaid = Math.round(amount * 0.086912);
+            taxPaid = Math.round(amount * 0.086956498944);
         }
         const taxEmbed = new Discord.MessageEmbed()
             .setTitle(`Tax Calculator`)
