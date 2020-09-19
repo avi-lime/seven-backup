@@ -37,32 +37,35 @@ module.exports = {
             finalAmt = amtToBePaid;
             taxPaid = 0;
         } else if (amount > 20000 && amount < 50001) {
-            tax = 1;
             amtToBePaid = Math.round(amount * 1.010101);
             if (amtToBePaid > 50000) {
+                tax = 3;
                 taxPaid = Math.round(amount * 0.030927);
                 finalAmt = Math.round(amount * 1.030927)
             } else {
+                tax = 1;
                 finalAmt = amtToBePaid;
                 taxPaid = Math.round(amount * 1.010101);
             }
         } else if (amount > 50000 && amount < 500001) {
-            tax = 3;
             amtToBePaid = Math.round(amount * 1.030927);
             if (amtToBePaid > 500000) {
+                tax = 5;
                 taxPaid = Math.round(amount * 0.052625);
                 finalAmt = Math.round(amount * 1.052625);
             } else {
+                tax = 3;
                 finalAmt = amtToBePaid;
                 taxPaid = Math.round(amount * 0.030927);
             }
         } else if (amount > 500000 && amount < 1000001) {
-            tax = 5;
             amtToBePaid = Math.round(amount * 1.052625);
             if (amtToBePaid > 1000000) {
+                tax = 8;
                 finalAmt = Math.round(amount * 1.086912);
                 taxPaid = Math.round(amount * 0.086912);
             } else {
+                tax = 5;
                 finalAmt = amtToBePaid;
                 taxPaid = Math.round(amount * 0.052625);
             }
