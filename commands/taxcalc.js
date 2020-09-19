@@ -49,7 +49,7 @@ module.exports = {
         const taxEmbed = new Discord.MessageEmbed()
             .setTitle(`Tax Calculator`)
             .setDescription(`Tax Calculated for **${amount.toLocaleString()}**`)
-            .addFields({ name: `Amount to be Paid`, value: amtToBePaid.toLocaleString() }, { name: `Tax Paid`, value: taxPaid.toLocaleString() }, { name: `Tax`, value: `${tax}%` })
+            .addFields({ name: `Amount to be Paid`, value: amtToBePaid.toLocaleString() }, { name: `Tax Paid`, value: taxPaid.toLocaleString(), inline: true }, { name: `Tax`, value: `${tax}%`, inline: true })
             .setFooter(`💖 made for the lovely members of your eyes tell ✨`, message.guild.iconURL({ dynamic: true }))
             .setColor(message.member.displayHexColor)
             .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }));
