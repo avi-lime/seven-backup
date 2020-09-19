@@ -21,9 +21,10 @@ module.exports = {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         var tax, amtToBePaid, taxPaid;
+        if (!args[0]) return message.channel.send(`Give me a number to calculate tax for`);
         const amount = getVal(args[0]);
 
-        if (!amount || amount <= 0) return message.channel.send(`Give me a valid number above 0 to calculate tax for!`);
+        if (amount <= 0) return message.channel.send(`Give me a valid number above 0 to calculate tax for!`);
         if (amount < 20001) {
             tax = 0;
             amtToBePaid = amount;
