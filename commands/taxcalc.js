@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'taxcalc',
-    aliases: 'tc',
+    aliases: ['tc'],
     description: 'to calculate tax for dank memer',
 
     execute(message) {
@@ -62,8 +62,8 @@ module.exports = {
             amtToBePaid = Math.round(amount * 1.052631578125);
             if (amtToBePaid > 1000000) {
                 tax = 8;
-                finalAmt = Math.round(amount * 1.086956498944);
-                taxPaid = Math.round(amount * 0.086956498944);
+                finalAmt = Math.round(amount * 1.0869565022994432);
+                taxPaid = Math.round(amount * 0.0869565022994432);
             } else {
                 tax = 5;
                 finalAmt = amtToBePaid;
@@ -71,9 +71,9 @@ module.exports = {
             }
         } else if (amount > 1000000) {
             tax = 8;
-            amtToBePaid = Math.round(amount * 1.086956498944);
+            amtToBePaid = Math.round(amount * 1.0869565022994432);
             finalAmt = amtToBePaid;
-            taxPaid = Math.round(amount * 0.086956498944);
+            taxPaid = Math.round(amount * 0.0869565022994432);
         }
         const taxEmbed = new Discord.MessageEmbed()
             .setTitle(`Tax Calculator`)
