@@ -14,8 +14,9 @@ module.exports = {
                 return parseFloat(val) * 1000;
             else if (multiplier == "m")
                 return parseFloat(val) * 1000000;
-            else if (!multiplier)
-                return;
+            else if (!isNaN(val))
+                return parseFloat(val);
+            else return message.channel.send(`Give me a valid number`);
         }
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
