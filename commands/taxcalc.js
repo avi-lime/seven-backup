@@ -30,24 +30,24 @@ module.exports = {
             taxPaid = 0;
         } else if (amount > 20000 && amount < 50001) {
             tax = 1;
-            amtToBePaid = Math.round(amount + amount * 1.010101);
-            taxPaid = Math.round(amount * 1.010101);
+            amtToBePaid = Math.round(amount * 1.010101);
+            taxPaid = Math.round(amount * 0.010101);
         } else if (amount > 50000 && amount < 500001) {
             tax = 3;
-            amtToBePaid = Math.round(amount + amount * 1.030927);
-            taxPaid = Math.round(amount * 1.030927);
+            amtToBePaid = Math.round(amount * 1.030927);
+            taxPaid = Math.round(amount * 0.030927);
         } else if (amount > 500000 && amount < 1000001) {
             tax = 5;
-            amtToBePaid = Math.round(amount + amount * 1.052625);
-            taxPaid = Math.round(amount * 1.052625);
+            amtToBePaid = Math.round(amount * 1.052625);
+            taxPaid = Math.round(amount * 0.052625);
         } else if (amount > 1000000) {
             tax = 8;
-            amtToBePaid = Math.round(amount + amount * 1.086912);
-            taxPaid = Math.round(amount * 1.086912);
+            amtToBePaid = Math.round(amount * 1.086912);
+            taxPaid = Math.round(amount * 0.086912);
         }
         const taxEmbed = new Discord.MessageEmbed()
             .setTitle(`Tax Calculator`)
-            .setDescription(`Tax Calculated for ${amount.toLocaleString()}`)
+            .setDescription(`Tax Calculated for **${amount.toLocaleString()}**`)
             .addFields({ name: `Amount to be Paid`, value: amtToBePaid.toLocaleString() }, { name: `Tax Paid`, value: taxPaid.toLocaleString() }, { name: `Tax`, value: `${tax}%` })
             .setFooter(`💖 made for the lovely members of your eyes tell ✨`, message.guild.iconURL({ dynamic: true }))
             .setColor(message.member.displayHexColor)
