@@ -47,7 +47,7 @@ module.exports = {
             .setTitle(`Tax Calculator`)
             .setDescription(`Tax Calculated for ${amount.toLocaleString}`)
             .addFields({ name: `Amount to be Paid`, value: amtToBePaid.toLocaleString }, { name: `Tax Paid`, value: taxPaid.toLocaleString }, { name: `Tax`, value: `${tax}%` })
-            .setFooter(`💖 made for the lovely members of your eyes tell ✨`, message.gulid.iconURL({ dynamic: true }))
+            .setFooter(`💖 made for the lovely members of your eyes tell ✨`, message.guild.iconURL({ dynamic: true }))
             .setColor(message.member.displayHexColor)
             .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }));
         message.channel.send(taxEmbed);
