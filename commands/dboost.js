@@ -6,8 +6,7 @@ module.exports = {
     name: 'dboost',
     description: 'adds the double booster role, private channel role and sends a dm to the booster',
     execute(message) {
-        const allowedRoles = ['732910738334548031', '751518094844887142', '688388305938677939'];
-        if (!message.member.roles.cache.has(r => allowedRoles.includes(r.id))) return;
+        if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
         const booster = message.mentions.members.first();
         const boosterUser = message.mentions.users.first();
         const rolesToAdd = ['749638466618523778', '757190782632329286', '735378963844694098'];
