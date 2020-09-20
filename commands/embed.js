@@ -5,6 +5,7 @@ module.exports = {
     name: 'embed',
     description: 'embed creator to make an embed',
     execute(message) {
+        if (message.author.id !== '454307252392951819') return;
         const Embed = new Discord.MessageEmbed()
             .setColor('#FF32F8')
             .setFooter(`for more booster perks check out the booster channel`)
