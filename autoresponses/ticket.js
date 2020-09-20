@@ -8,7 +8,7 @@ client.on('ready', () => {
 var earray = ['❥', '⚜', '☆', '☂', '⚖'];
 
 client.on('messageReactionAdd', (reaction, user) => {
-    if (reaction.message.id !== '') return;
+    if (reaction.message.id !== '757241156424958033') return;
     if (reaction.emoji.id === '757147160684003399') {
         const emoji = earray[Math.floor(Math.random() * earray.length)];
         const server = reaction.message.guild;
