@@ -23,7 +23,7 @@ module.exports = {
         message.delete().then
         message.channel.send(`<a:sevenloading:739558030420475904> adding roles to ${boosterUser}`).then(sentMessage => {
             setTimeout(() => {
-                sentMessage.edit(`<:sevenboost:757160467226558536> ${boosterUser} **thank you for boosting ${server.name} **\n<a:sevenlove:756425240568922162> I've send you a **dm with more information** about your **booster perks!**`);
+                sentMessage.edit(`<:sevenboost:757160467226558536> ${boosterUser} **thank you for boosting ${message.guild.name} **\n<a:sevenlove:756425240568922162> I've send you a **dm with more information** about your **booster perks!**`);
             }, 1500);
         }).then
         boosterUser.send(dm);
