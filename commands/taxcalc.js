@@ -45,7 +45,7 @@ module.exports = {
             } else {
                 tax = 1;
                 finalAmt = amtToBePaid;
-                taxPaid = Math.round(amount * 1.010101);
+                taxPaid = Math.round(amount * 0.010101);
             }
         } else if (amount > 50000 && amount < 500001) {
             amtToBePaid = Math.round(amount * 1.0309278343);
