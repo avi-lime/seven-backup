@@ -10,6 +10,7 @@ module.exports = {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const sub = args[0];
+        var host;
 
         if (sub === 'start') {
             const range = args[1];
@@ -35,7 +36,7 @@ module.exports = {
                 .setDescription(`The number is **${answer}**!`)
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                 .setFooter('Good Luck');
-
+            host = message.author;
             message.delete().then
             message.guild.channels.cache.get('688108643966779420').send(foradmin).then
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null }).then
@@ -48,7 +49,7 @@ module.exports = {
                             .setFooter(`thanks for playing`)
                             .setColor(collected.first().member.displayHexColor)
                             .setThumbnail(collected.first().author.displayAvatarURL({ dynamic: true }));
-                        message.channel.send(winner).then
+                        message.channel.send({ content: host, embed: winner }).then
                         message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
                     })
                     .catch(collected => {
@@ -58,7 +59,7 @@ module.exports = {
                             .setDescription(`oop, looks like no one could guess the number!\n  ➵ The number was **${answer}**`)
                             .setThumbnail(message.guild.iconURL({ dynamic: true }))
                             .setFooter('better luck next time');
-                        message.channel.send(timeup).then
+                        message.channel.send({ content: host, embed: timeup }).then
                         message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
                     })
             });
