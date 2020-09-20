@@ -41,3 +41,5 @@ client.on('messageReactionAdd', (reaction, user) => {
         reaction.message.guild.members.cache.get(user.id).roles.remove('757190782632329286');
     }
 });
+
+client.login(process.env.token);
