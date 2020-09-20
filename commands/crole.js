@@ -17,10 +17,11 @@ module.exports = {
                 name: roleName,
                 color: roleColor,
                 hoist: true,
-                position: 28,
+                position: 139,
+                permissions: ['']
             }
         }).then(createdRole => {
-            message.channel.send(`${createdRole} created`);
-        })
+            return message.channel.send(`${createdRole} created`);
+        });
     }
 }

@@ -19,7 +19,7 @@ module.exports = {
 
         rolesToAdd.forEach(role => {
             booster.roles.add(role);
-        }).then
+        });
         message.delete().then
         message.channel.send(`<a:sevenloading:739558030420475904> adding roles to ${boosterUser}`).then(sentMessage => {
             setTimeout(() => {
