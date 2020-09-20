@@ -1,5 +1,6 @@
 const prefix = '-';
 const Discord = require('discord.js');
+const { noExtendLeft } = require('sequelize/types/lib/operators');
 const client = new Discord.Client();
 
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
                 color: roleColor,
                 hoist: true,
                 position: 139,
-                permissions: ['']
+                permissions: none
             }
         }).then(createdRole => {
             return message.channel.send(`${createdRole} created`);
