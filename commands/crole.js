@@ -19,7 +19,6 @@ module.exports = {
                 color: roleColor,
                 hoist: true,
                 position: 139,
-                permissions: none
             }
         }).then(createdRole => {
             return message.channel.send(`${createdRole} created`);
