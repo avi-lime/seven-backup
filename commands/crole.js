@@ -6,7 +6,7 @@ module.exports = {
     name: 'crole',
     description: 'creates a role with a specific hex color',
     execute(message) {
-        if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
+        if (!message.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const roleColor = args[0];
@@ -18,7 +18,6 @@ module.exports = {
                 color: roleColor,
                 hoist: true,
                 position: 28,
-                permissions: [""]
             }
         }).then(createdRole => {
             message.channel.send(`${createdRole} created`);
