@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 module.exports = {
-    name: 'lock',
-    description: 'locks either the specified or the current channel or a certain amount of channels',
+    name: 'unlock',
+    description: 'unlocks either the specified or the current channel or a certain amount of channels',
     execute(message) {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
