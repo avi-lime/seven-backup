@@ -8,8 +8,8 @@ client.on('ready', () => {
 client.on('message', message => {
 
     if (message.content.match(/is starting a bank robbery\. They're trying to break into/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
-        //      message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
-        message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: true });
+        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
+        //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: true });
         const begun = new Discord.MessageEmbed()
             .setTitle(`Heist Started!`)
             .setDescription(`The heist has begun\n ⋅ I've unlocked the channel, Good luck`)
@@ -17,8 +17,8 @@ client.on('message', message => {
         message.channel.send(begun);
     }
     if (message.content.match(/^Time is up to join/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
-        //      message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
-        message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: null });
+        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
+        //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: null });
         const ended = new Discord.MessageEmbed()
             .setTitle(`Time up!`)
             .setDescription(`Time's up to join the heist!\n - I've locked the channel!`)
