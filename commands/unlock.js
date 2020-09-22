@@ -21,26 +21,26 @@ module.exports = {
             .setFooter(`Sorry for any inconviniences`)
             .setColor('GREEN')
             .setThumbnail(message.guild.iconURL({ dynamic: true }));
-        if (!args[0] || !sub.includes(args[0])) {
+        if (!args[0] || !ChanType.includes(args[0])) {
             const toBeUnLocked = message.mentions.channels.first();
             if (!toBeUnLocked) {
                 const chan = message.channel;
-                chan.overWritePermissions(everyone, { SEND_MESSAGES: null }).then
+                chan.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
                 chan.send(unlocked);
             } else {
-                toBeUnLocked.overWritePermissions(everyone, { SEND_MESSAGES: null }).then
+                toBeUnLocked.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
                 toBeUnLocked.send(unlocked).then
                 message.channel.send(`${toBeUnLocked} has been unlocked`);
             }
         } else if (sub === 'dank') {
             DankChan.forEach(channel => {
-                channel.overWritePermissions(everyone, { SEND_MESSAGES: null }).then
+                channel.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
                 channel.send(unlocked);
             }).then
             message.channel.send(`All Dank Memer Channels unlocked!`);
         } else if (sub === 'verse') {
             VerseChan.forEach(chan => {
-                chan.overWritePermissions(everyone, { SEND_MESSAGES: null }).then
+                chan.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
                 chan.send(unlocked);
             }).then
             message.channel.send(`All Pokeverse Channels unlocked!`);

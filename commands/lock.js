@@ -35,7 +35,7 @@ module.exports = {
                         .setColor('RED')
                         .setFooter(`please be patient 💗`);
                 }
-                chan.overWritePermissions(everyone, { SEND_MESSAGES: false }).then
+                chan.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                 chan.send(locked);
             } else {
                 reason = message.content.replace(prefix + commandName + ' ' + args[0], '');
@@ -55,7 +55,7 @@ module.exports = {
                         .setColor('RED')
                         .setFooter(`please be patient 💗`);
                 }
-                toBeLocked.overWritePermissions(everyone, { SEND_MESSAGES: false }).then
+                toBeLocked.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                 toBeLocked.send(locked).then
                 message.channel.send(`${toBeLocked} has been locked!`)
             } if (sub === 'dank') {
@@ -77,7 +77,7 @@ module.exports = {
                         .setFooter(`please be patient 💗`);
                 }
                 DankChan.forEach(channel => {
-                    channel.overWritePermissions(everyone, { SEND_MESSAGES: false }).then
+                    channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                     channel.send(locked);
                 }).then
                 message.channel.send(`All Dank Memer Channels have been locked!`);
@@ -100,7 +100,7 @@ module.exports = {
                         .setFooter(`please be patient 💗`);
                 }
                 VerseChan.forEach(channel => {
-                    channel.overWritePermissions(everyone, { SEND_MESSAGES: false }).then
+                    channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                     channel.send(locked);
                 }).then
                 message.channel.send(`All Pokeverse Channels have been locked!`);
