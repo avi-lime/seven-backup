@@ -57,54 +57,54 @@ module.exports = {
                 }
                 toBeLocked.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                 toBeLocked.send(locked).then
-                message.channel.send(`${toBeLocked} has been locked!`)
-            } if (sub === 'dank') {
-                reason = message.channel.replace(prefix + commandName + ' ' + args[0], '');
-                if (!reason) {
-                    locked = new Discord.MessageEmbed()
-                        .setTitle(`Channel Locked`)
-                        .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
-                        .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                        .setColor('RED')
-                        .setFooter(`please be patient 💗`);
-                } else {
-                    locked = new Discord.MessageEmbed()
-                        .setTitle(`Channel Locked`)
-                        .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
-                        .addField(`Reason`, reason)
-                        .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                        .setColor('RED')
-                        .setFooter(`please be patient 💗`);
-                }
-                DankChan.forEach(channel => {
-                    channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-                    channel.send(locked);
-                }).then
-                message.channel.send(`All Dank Memer Channels have been locked!`);
-            } if (sub === 'verse') {
-                reason = message.channel.replace(prefix + commandName + ' ' + args[0], '');
-                if (!reason) {
-                    locked = new Discord.MessageEmbed()
-                        .setTitle(`Channel Locked`)
-                        .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
-                        .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                        .setColor('RED')
-                        .setFooter(`please be patient 💗`);
-                } else {
-                    locked = new Discord.MessageEmbed()
-                        .setTitle(`Channel Locked`)
-                        .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
-                        .addField(`Reason`, reason)
-                        .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                        .setColor('RED')
-                        .setFooter(`please be patient 💗`);
-                }
-                VerseChan.forEach(channel => {
-                    channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-                    channel.send(locked);
-                }).then
-                message.channel.send(`All Pokeverse Channels have been locked!`);
+                message.channel.send(`${toBeLocked} has been locked!`);
             }
+        } if (sub === 'dank') {
+            reason = message.channel.replace(prefix + commandName + ' ' + args[0], '');
+            if (!reason) {
+                locked = new Discord.MessageEmbed()
+                    .setTitle(`Channel Locked`)
+                    .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
+                    .setThumbnail(message.guild.iconURL({ dynamic: true }))
+                    .setColor('RED')
+                    .setFooter(`please be patient 💗`);
+            } else {
+                locked = new Discord.MessageEmbed()
+                    .setTitle(`Channel Locked`)
+                    .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
+                    .addField(`Reason`, reason)
+                    .setThumbnail(message.guild.iconURL({ dynamic: true }))
+                    .setColor('RED')
+                    .setFooter(`please be patient 💗`);
+            }
+            DankChan.forEach(channel => {
+                channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+                channel.send(locked);
+            }).then
+            message.channel.send(`All Dank Memer Channels have been locked!`);
+        } if (sub === 'verse') {
+            reason = message.channel.replace(prefix + commandName + ' ' + args[0], '');
+            if (!reason) {
+                locked = new Discord.MessageEmbed()
+                    .setTitle(`Channel Locked`)
+                    .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
+                    .setThumbnail(message.guild.iconURL({ dynamic: true }))
+                    .setColor('RED')
+                    .setFooter(`please be patient 💗`);
+            } else {
+                locked = new Discord.MessageEmbed()
+                    .setTitle(`Channel Locked`)
+                    .setDescription(`This channel has been locked\n ➵ While you wait you can talk to others in <#688102136243814471>\n ➵ Or you can use other bots in <#738305518203961364>`)
+                    .addField(`Reason`, reason)
+                    .setThumbnail(message.guild.iconURL({ dynamic: true }))
+                    .setColor('RED')
+                    .setFooter(`please be patient 💗`);
+            }
+            VerseChan.forEach(channel => {
+                channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+                channel.send(locked);
+            }).then
+            message.channel.send(`All Pokeverse Channels have been locked!`);
         }
     }
 }
