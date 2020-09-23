@@ -60,7 +60,7 @@ module.exports = {
                 message.channel.send(`${toBeLocked} has been locked!`);
             }
         } if (sub === 'dank') {
-            reason = message.channel.replace(prefix + commandName + ' ' + args[0], '');
+            reason = message.content.replace(prefix + commandName + ' ' + args[0], '');
             if (!reason) {
                 locked = new Discord.MessageEmbed()
                     .setTitle(`Channel Locked`)
@@ -83,7 +83,7 @@ module.exports = {
             }).then
             message.channel.send(`All Dank Memer Channels have been locked!`);
         } if (sub === 'verse') {
-            reason = message.channel.replace(prefix + commandName + ' ' + args[0], '');
+            reason = message.content.replace(prefix + commandName + ' ' + args[0], '');
             if (!reason) {
                 locked = new Discord.MessageEmbed()
                     .setTitle(`Channel Locked`)
