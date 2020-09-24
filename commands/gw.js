@@ -26,7 +26,7 @@ module.exports = {
                 if (mention.startsWith('!')) {
                     mention = mention.slice(1);
                 }
-                return client.users.cache.get(mention);
+                return message.guild.users.cache.get(mention);
             }
         }
 
