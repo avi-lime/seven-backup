@@ -9,7 +9,7 @@ var earray = ['❥', '⚜', '☆', '☂', '⚖'];
 
 client.on('messageReactionAdd', (reaction, user) => {
     const msg = client.channels.cache.get('757140358734807120').messages.fetch('757241156424958033');
-    if (!msg) return;
+    if (reaction.message.id !== msg.id) return;
     if (reaction.me) return;
     if (reaction.emoji.id === '757147160684003399') {
         const emoji = earray[Math.floor(Math.random() * earray.length)];

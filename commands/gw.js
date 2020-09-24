@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const prefix = '-';
-
+const client = new Discord.Client();
 module.exports = {
     name: 'gw',
     description: 'giveaway ping',
