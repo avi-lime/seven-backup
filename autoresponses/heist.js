@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+const prefix = '-';
 var host, amount;
 
 function getMetionedMember(mention) {
