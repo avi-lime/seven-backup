@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-';
-var host, amount;
+var host, amount, hostMember;
 
 function getMetionedMember(mention) {
     if (!mention) return;
@@ -50,8 +50,8 @@ client.on('ready', () => {
 client.on('message', message => {
 
     if (message.content.match(/is starting a bank robbery\. They're trying to break into/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
-        //message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
-        message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: true });
+        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
+        //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: true });
         const begun = new Discord.MessageEmbed()
             .setTitle(`Heist Started!`)
             .setDescription(`The heist has begun\n ⋅ I've unlocked the channel, Good luck`)
@@ -59,8 +59,8 @@ client.on('message', message => {
         message.channel.send(begun);
     }
     if (message.content.match(/^Time is up to join/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
-        //message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
-        message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: null });
+        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
+        //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: null });
         const ended = new Discord.MessageEmbed()
             .setTitle(`Time up!`)
             .setDescription(`Time's up to join the heist!\n ⋅ I've locked the channel!`)
@@ -89,7 +89,7 @@ client.on('message', message => {
         if (commandName === 'heist') {
             if (!args[0] || !args[1] || message.mentions.users.size === 0) return message.channel.send(`Correct usage is \`-heist <host> <amount>\``);
             host = getMentionedUser(args[0]);
-            var hostMember = getMetionedMember(args[0]);
+            hostMember = getMetionedMember(args[0]);
             amount = getVal(args[1]);
             var embed = new Discord.MessageEmbed()
                 .setTitle('<:sevenheist:750333392104718367>  :: HEIST TIME! × <:sevenheist:750333392104718367>')
