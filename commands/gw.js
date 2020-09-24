@@ -15,7 +15,7 @@ module.exports = {
                     mention = mention.slice(1);
                 }
 
-                return message.guild.members.cache.get(mention);
+                return msg.guild.members.cache.get(mention);
             }
         }
 
@@ -26,7 +26,7 @@ module.exports = {
                 if (mention.startsWith('!')) {
                     mention = mention.slice(1);
                 }
-                return message.guild.users.cache.get(mention);
+                return msg.guild.users.cache.get(mention);
             }
         }
 
