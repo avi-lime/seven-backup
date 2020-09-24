@@ -27,6 +27,7 @@ function getMentionedUser(mention) {
     }
 }
 function getVal(val) {
+    if (!val) return;
     multiplier = val.substr(-1).toLowerCase();
     if (multiplier == "k")
         return parseFloat(val) * 1000;
@@ -77,27 +78,28 @@ client.on('message', message => {
         }, 1500);
     }
 
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
-    const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const commandName = args.shift().toLowerCase();
-    const heistchan = ['743202342714998857', '688109345187037402'];
-    if (!heistchan.includes(message.channel.id)) return;
-    const allowed = ['629768073414574110', '454307252392951819'];
-    if (!allowed.includes(message.author.id)) return;
+    if (message.content.startsWith(prefix) || !message.author.bot) {
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
+        const commandName = args.shift().toLowerCase();
+        const heistchan = ['743202342714998857', '688109345187037402'];
+        if (!heistchan.includes(message.channel.id)) return;
+        const allowed = ['629768073414574110', '454307252392951819'];
+        if (!allowed.includes(message.author.id)) return;
 
-    if (commandName === 'heist') {
-        if (!args[0] || !args[1] || message.mentions.users.size === 0) return message.channel.send(`Correct usage is \`-heist <host> <amount>\``);
-        host = getMentionedUser(args[0]);
-        var hostMember = getMetionedMember(args[0]);
-        amount = getVal(args[1]);
-        var embed = new Discord.MessageEmbed()
-            .setTitle('<:sevenheist:750333392104718367>  :: HEIST TIME! × <:sevenheist:750333392104718367>')
-            .setColor(hostMember.displayHexColor)
-            .setThumbnail(host.displayAvatarURL({ dynamic: true }))
-            .addFields({ name: '<a:sevenrich:750415401694920727> Donator', value: host, inline: true }, { name: '<a:sevenmoney:750415278973648947> Amount', value: amount.toLocaleString(), inline: true }, { name: '\u200b', value: `> Keep 1000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
-            .setFooter(`Good Luck!`);
-        message.delete().then
-        message.channel.send({ content: '<@&688428979153272860>', embed: embed });
+        if (commandName === 'heist') {
+            if (!args[0] || !args[1] || message.mentions.users.size === 0) return message.channel.send(`Correct usage is \`-heist <host> <amount>\``);
+            host = getMentionedUser(args[0]);
+            var hostMember = getMetionedMember(args[0]);
+            amount = getVal(args[1]);
+            var embed = new Discord.MessageEmbed()
+                .setTitle('<:sevenheist:750333392104718367>  :: HEIST TIME! × <:sevenheist:750333392104718367>')
+                .setColor(hostMember.displayHexColor)
+                .setThumbnail(host.displayAvatarURL({ dynamic: true }))
+                .addFields({ name: '<a:sevenrich:750415401694920727> Donator', value: host, inline: true }, { name: '<a:sevenmoney:750415278973648947> Amount', value: amount.toLocaleString(), inline: true }, { name: '\u200b', value: `> Keep 1000 ready, you'll only get 1 chance to say \`Join Heist\`!` })
+                .setFooter(`Good Luck!`);
+            message.delete().then
+            message.channel.send({ content: '<@&688428979153272860>', embed: embed });
+        }
     }
 
 
