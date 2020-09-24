@@ -78,8 +78,9 @@ module.exports = {
                     .setFooter(`please be patient 💗`);
             }
             DankChan.forEach(channel => {
-                channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-                channel.send(locked);
+                toBeLocked = message.guild.channels.cache.get(channel);
+                toBeLocked.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+                toBeLocked.send(locked);
             }).then
             message.channel.send(`All Dank Memer Channels have been locked!`);
         } if (sub === 'verse') {
@@ -101,8 +102,9 @@ module.exports = {
                     .setFooter(`please be patient 💗`);
             }
             VerseChan.forEach(channel => {
-                channel.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
-                channel.send(locked);
+                toBeLocked = message.guild.channels.cache.get(channel);
+                toBeLocked.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
+                toBeLocked.send(locked);
             }).then
             message.channel.send(`All Pokeverse Channels have been locked!`);
         }
