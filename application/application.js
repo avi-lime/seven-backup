@@ -24,7 +24,7 @@ const applicationFormCompleted = (data) => {
 }
 
 const sendUserApplyForm = message => {
-    if (!message.member.roles.cache.has('749662555395326045')) return message.channel.send(`you need to be atleast level 3 to apply for the role.`);
+    if (!message.member.roles.cache.has('735795586078605342')) return message.channel.send(`you need to be atleast level 7 to apply for the role.`);
     if (message.channel.id !== '750005536107266138') return message.channel.send(`you can apply in <#750005536107266138>`);
     const user = usersApplicationStatus.find(user => user.id === message.author.id);
 
