@@ -18,7 +18,10 @@ const applicationFormCompleted = (data) => {
             .setColor('#aab5ee')
             .setFooter(data.user.id);
     }
-    client.channels.cache.get('688109345187037402').send(form);
+    client.channels.cache.get('759085310545100820').send(form).then(sentMessage => {
+    sentMessage.react('759079111716503592').then
+    sentMessage.react('759078873068470303')
+    });
     client.users.cache.get('629768073414574110').send(`${data.user.username} has submitted a form <#688109345187037402>`);
     client.users.cache.get('454307252392951819').send(`${data.user.username} has submitted a form <#688109345187037402>`);
 }
