@@ -109,9 +109,10 @@ client.on('message', message => {
                 user.answers.push(message.content);
                 user.currentStep++;
 
-                if (user.currentStep >= questions.length) {
+                if (user.currentStep > questions.length) {
                     applicationFormCompleted(user);
                     message.author.send("Congratulations your application has been sent!");
+                    return;
                 } else {
                     message.author.send(questions[user.currentStep]);
                 }
