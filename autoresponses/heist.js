@@ -50,19 +50,19 @@ client.on('ready', () => {
 client.on('message', message => {
 
     if (message.content.match(/is starting a bank robbery\. They're trying to break into/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
-        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
+        //message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
         //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: true });
-        //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('688158532847272043'), {SEND_MESSAGES: true});
+        message.channel.updateOverwrite(message.channel.guild.roles.cache.get('688158532847272043'), { SEND_MESSAGES: true });
         const begun = new Discord.MessageEmbed()
             .setTitle(`Heist Started!`)
             .setDescription(`The heist has begun\n ⋅ I've unlocked the channel, Good luck`)
-            .setColor(hostMember.displayHexColor);
+            .setColor('ORANGE');
         message.channel.send(begun);
     }
     if (message.content.match(/^Time is up to join/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
-        message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
+        //message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
         //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('749662555395326045'), { SEND_MESSAGES: null });
-        //message.channel.updateOverwrite(message.channel.guild.roles.cache.get('688158532847272043'), {SEND_MESSAGES: null});
+        message.channel.updateOverwrite(message.channel.guild.roles.cache.get('688158532847272043'), { SEND_MESSAGES: null });
         const ended = new Discord.MessageEmbed()
             .setTitle(`Time up!`)
             .setDescription(`Time's up to join the heist!\n ⋅ I've locked the channel!`)
@@ -74,7 +74,7 @@ client.on('message', message => {
             .setTitle(`Good Job everyone!`)
             .setDescription(`<a:sevenmoney:750415278973648947> Go thank ${host} in <#688102136243814471> for the heist, Daily 2 heists minimum and lots of giveaways, so stay for those!\n> **25 Million heist, Trophy, 2 Medals and 10 pepec giveaway at 1000 members**\n ⋅ check out <#737298442434379867> & <#688396273723637807>\n ⋅ get roles in <#688438603965268105>`)
             .setFooter(`Thanks for joining, have a lovely day~`)
-            .setColor(hostMember.displayHexColor);
+            .setColor('ORANGE');
         setTimeout(() => {
             message.channel.send(stay);
         }, 1500);
