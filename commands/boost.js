@@ -6,7 +6,7 @@ module.exports = {
     name: 'boost',
     description: 'shows booster perks',
     execute(message) {
-        if (!msg.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
+        if (!message.member.roles.cache.some(r => ['✈ 守護天使 — angi', '❦ 管理人 — admin', '.•° head mod  °•.'].includes(r.name))) return;
         const boost = new Discord.MessageEmbed()
             .setTitle(`__;; booster perks!!__`)
             .setDescription(`\u200b`)
