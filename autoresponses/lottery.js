@@ -83,8 +83,8 @@ client.on('message', message => {
             if (!status) return message.channel.send(`There\'s no ongoing lottery to end`);
             if (message.author.id !== hostid) return message.channel.send(`only the lottery host can end the lottery\nhost: <@${hostid}>`);
             prize = 1000 + lotteryrole.members.size * 10;
-            if (prize)
-                const winner = lotteryrole.members.random();
+
+            const winner = lotteryrole.members.random();
             const winmsg = new Discord.MessageEmbed()
                 .setTitle(`:: WINNER! ×`)
                 .setDescription(`The Lottery has ended and we have a winner!`)
@@ -123,6 +123,7 @@ client.on('message', message => {
             prize = 1000;
             status = false;
         }
+
         if (sub === 'stats') {
             if (!status) return message.channel.send(`There is no lottery running`);
             prize = 1000 + lotteryrole.members.size * 10;
