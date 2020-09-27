@@ -6,12 +6,10 @@ var hostid;
 var prize;
 function convert(amount) {
     if (amount < 1000) {
-        amount = `${amount}k`;
-        return;
+        return `${amount}k`;
     }
     if (amount >= 1000) {
-        amount = `${parseFloat(amount / 1000)}m`;
-        return;
+        return `${parseFloat(amount / 1000)}m`;
     }
 }
 
