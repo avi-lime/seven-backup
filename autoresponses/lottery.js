@@ -4,13 +4,13 @@ const prefix = '-';
 var status = false;
 var hostid;
 var prize;
-function convert(prize) {
-    if (prize < 1000) {
-        prize = `${prize}k`;
+function convert(amount) {
+    if (amount < 1000) {
+        amount = `${amount}k`;
         return;
     }
-    if (prize >= 1000) {
-        prize = `${prize / 1000}m`;
+    if (amount >= 1000) {
+        amount = `${amount / 1000}m`;
         return;
     }
 }
