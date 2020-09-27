@@ -56,7 +56,7 @@ client.on('message', message => {
         const begun = new Discord.MessageEmbed()
             .setTitle(`Heist Started!`)
             .setDescription(`The heist has begun\n ⋅ I've unlocked the channel, Good luck`)
-            .setColor('ORANGE');
+            .setColor(hostMember.displayHexColor);
         message.channel.send(begun);
     }
     if (message.content.match(/^Time is up to join/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
@@ -72,9 +72,9 @@ client.on('message', message => {
     if (message.content.match(/^Amazing job everybody, we racked up a total of/g) && message.author.id === '270904126974590976' && message.channel.id === '743202342714998857') {
         const stay = new Discord.MessageEmbed()
             .setTitle(`Good Job everyone!`)
-            .setDescription(`<a:sevenmoney:750415278973648947> Go thank ${host} in <#688102136243814471> for the heist, Daily 2 heists minimum and lots of giveaways, so stay for those!\n> **25 Million heist, Trophy, 2 Medals and 10 pepec giveaway at 1000 members**\n ⋅ check out <#737298442434379867> & <#688396273723637807>\n ⋅ get roles in <#688438603965268105>`)
+            .setDescription(`<a:sevenmoney:750415278973648947> Go thank ${host} in <#688102136243814471> for the heist, Daily 2 heists minimum and lots of giveaways, so stay for those!\n\u200b\n<:sevenbuy:747770443603378186> check out <#759685859733012510> for __**pepe trophy and medal giveaway!**__\n\u200b\n<a:sevenlove:756425240568922162> and head over to <#759706557306241075> and <#759704464423780422> for more __**dank memer cash giveaways up to 15m**__\n\u200b\n<a:sevenbubbletea:759115779903062026> get your **roles in <#688438603965268105> and <#732892307384303697>**`)
             .setFooter(`Thanks for joining, have a lovely day~`)
-            .setColor('ORANGE');
+            .setColor(hostMember.displayHexColor);
         setTimeout(() => {
             message.channel.send(stay);
         }, 1500);
