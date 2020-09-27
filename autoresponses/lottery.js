@@ -32,7 +32,7 @@ client.on('message', message => {
             prize = 1000 + lotteryrole.members.size * 10;
             const joined = new Discord.MessageEmbed()
                 .setTitle(`Lottery Joined!`)
-                .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${convert(prize)}**\n  × I've added the lottery role to you, winner will be announced soon`)
+                .setDescription(`> <:seventicket:750410632318156900> You've successfully joined the lottery\n  × current prize: **${convert(prize + 10)}**\n  × I've added the lottery role to you, winner will be announced soon`)
                 .setColor(message.member.displayHexColor)
                 .setFooter(`Good Luck`, message.guild.iconURL({ dynamic: true }));
             message.reply(joined);
