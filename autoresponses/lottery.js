@@ -10,7 +10,7 @@ function convert(amount) {
         return;
     }
     if (amount >= 1000) {
-        amount = `${amount / 1000}m`;
+        amount = `${parseFloat(amount / 1000)}m`;
         return;
     }
 }
