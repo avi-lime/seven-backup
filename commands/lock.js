@@ -81,7 +81,7 @@ module.exports = {
                 toBeLocked = message.guild.channels.cache.get(channel);
                 toBeLocked.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                 toBeLocked.send(locked);
-            }).then
+            });
             message.channel.send(`All Dank Memer Channels have been locked!`);
         } if (sub === 'verse') {
             reason = message.content.replace(prefix + commandName + ' ' + args[0], '');
@@ -105,7 +105,7 @@ module.exports = {
                 toBeLocked = message.guild.channels.cache.get(channel);
                 toBeLocked.updateOverwrite(everyone, { SEND_MESSAGES: false }).then
                 toBeLocked.send(locked);
-            }).then
+            });
             message.channel.send(`All Pokeverse Channels have been locked!`);
         }
     }
