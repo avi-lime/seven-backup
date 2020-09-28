@@ -37,14 +37,14 @@ module.exports = {
                 chan = message.guild.channels.cache.get(channel);
                 chan.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
                 chan.send(unlocked);
-            }).then
+            });
             message.channel.send(`All Dank Memer Channels unlocked!`);
         } else if (sub === 'verse') {
             VerseChan.forEach(chan => {
                 channel = message.guild.channels.cache.get(chan);
                 channel.updateOverwrite(everyone, { SEND_MESSAGES: null }).then
                 channel.send(unlocked);
-            }).then
+            });
             message.channel.send(`All Pokeverse Channels unlocked!`);
         }
     }
