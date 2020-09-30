@@ -66,6 +66,7 @@ heist = require('./autoresponses/heist');
 application = require('./application/application');
 donations = require('./donations/donations');
 ticket = require('./autoresponses/ticket');
+filters = require('./autoresponses/filer');
 /*client.on('guildMemberAdd', member =>  {
   
   console.log('User' + member.user.username + 'has joined the server!')
