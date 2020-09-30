@@ -6,7 +6,7 @@ client.on('ready', () => {
     console.log(`filter ready`)
 });
 client.on('message', message => {
-    if (message.content.match(/ ?(immortal|high5|titans) /ig)) {
+    if (message.content.match(/ ?(immortal|high5|titans) ?/ig) && !message.author.bot) {
         const allowed = ['629768073414574110', '454307252392951819'];
         if (!allowed.includes(message.author.id)) {
             message.guild.channels.cache.get('688109298852692055').send(`${message.author} said one of the banned words in ${message.channel}\nThey said-\n${message.content}`).then
